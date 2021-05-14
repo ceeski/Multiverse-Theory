@@ -1,0 +1,131 @@
+{
+  "time": {
+    "numberOfTurns": 5
+  },
+  "regions": [
+    {
+      "name":  "Average",
+      "initialPopulation": 500,
+
+      "heatResource":  500,
+      "waterResource": 500,
+
+      "lightResource":  500,
+      "darknessResource": 500,
+
+      "earthResource":  500,
+      "airResource": 500,
+
+      "knowledgeResource":  500,
+      "amusementResource": 500,
+
+      "loveResource":  500,
+      "restraintResource": 500
+    },
+    {
+      "name":  "Low",
+      "initialPopulation": 700,
+
+      "heatResource":  300,
+      "waterResource": 300,
+
+      "lightResource":  300,
+      "darknessResource": 300,
+
+      "earthResource":  300,
+      "airResource": 300,
+
+      "knowledgeResource":  300,
+      "amusementResource": 300,
+
+      "loveResource":  300,
+      "restraintResource": 300
+    }
+  ],
+  "gods": [
+    {
+      "name": "Poseidon",
+      "type": "Creator",
+
+      "speed":  10,
+      "chanceToShareKnowledgePercent": 90,
+      "chanceToCooperatePercent":   75,
+
+      "knownGods": ["Hades"],
+      "knownRegions":  ["Average", "Low"],
+
+      "maxSkillPoints": 30,
+
+      "fireSkill":  1,
+      "waterSkill": 7,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 4,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+    {
+      "name": "Hades",
+      "type": "Destructor",
+
+      "speed":  5,
+      "chanceToShareKnowledgePercent": 20,
+      "chanceToCooperatePercent":   20,
+
+      "knownGods": ["Hermes", "Poseidon"],
+      "knownRegions":  ["Low"],
+
+      "maxSkillPoints": 40,
+
+      "fireSkill":  0,
+      "waterSkill": 0,
+
+      "lightSkill":  1,
+      "darknessSkill": 10,
+
+      "earthSkill":  5,
+      "airSkill": 1,
+
+      "knowledgeSkill":  3,
+      "amusementSkill": 0,
+
+      "loveSkill":  3,
+      "restraintSkill": 7
+    },
+    {
+      "name": "Hermes",
+      "type": "Chaotic",
+
+      "speed":  12,
+      "chanceToShareKnowledgePercent": 50,
+      "chanceToCooperatePercent":   50,
+
+      "knownGods": ["Hades"],
+      "knownRegions":  ["Average"],
+
+      "maxSkillPoints": 25,
+
+      "fireSkill":  0,
+      "waterSkill": 0,
+
+      "lightSkill":  0,
+      "darknessSkill": 0,
+
+      "earthSkill":  0,
+      "airSkill": 0,
+
+      "knowledgeSkill":  2,
+      "amusementSkill": 10,
+
+      "loveSkill":  5,
+      "restraintSkill": 5
+    }
+  ]
+}
