@@ -1,0 +1,22 @@
+Gods' skill points are between 0 and 10
+
+Regions has attributes between 0 and 1000 with 500 being perfect score
+At the end of each turn all values of a region are recalculated in order:
+    1. All gods' actions are calculated by simple add/subtract (and clamped between 0 and 1000 AFTER EACH ADD/SUBTRACT)
+        If we are increasing value: for each point below 100 of opposite element (at the moment of calculation) effect will be increased by 1% (applies before precision)
+        If we are decreasing value: for each point above 900 of opposite element (at the moment of calculation) effect will be increased by 1% (applies before precision)
+    2. Each of 10 elements provide population modifier according to the formula (x = amount of resource):
+        1.1 - |500 - x| * 0.0005 if |500 - x| <= 200
+        1.0 - (|500 - x| - 200) * 0.003 if |500 - x| > 200
+    - basically growth is between 300 and 700 (multiplier up to 1.1 at 500), below 300 and above 700 multiplier goes from 1 to 0.1 quickly
+    2.5 Actual population is multiplied by all ten multipliers (10 perfect scores means population multiplied by around 2.6, 10 worst scores basically removes all people unless there are more than 10 billions (milliards) of them
+    3. All resources are decreased by (p = population)
+        350 - (350 * exp(-p/10000))
+    - basically resources an be decreased at most by 350 (with infinite population). At p = 10 000 decrease is about 220, at p = 1000 it is about 30
+
+God that is having n skill points in given element can decide to:
+a) Increase this element up to 25 * n (250 at 10sp)
+b) Decrease this element up to 15 * n (150 at 10sp)
+c) Decrease opposite element up to 8 * n (80 at 10sp)
+
+After the decision is done, precision should be applied: pick random number p up to +-(100 - 10n) and for value of interaction v picked by god the real value is v(1+p) - so god with only 1sp can increase element up to 25 +- (randomly)90%, when with 10sp it can increase element up to 250 (precisely). Note: even if opposite element was used to lower the element, precision from this element applies.

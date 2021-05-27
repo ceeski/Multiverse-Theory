@@ -1,4 +1,4 @@
-package teamwork.agents.jsonwrappers;
+package teamwork.agents.wrappers;
 
 import java.util.List;
 

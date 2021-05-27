@@ -10,6 +10,7 @@ All needed libs are given in `/lib` folder, so they can be added from there (but
 Used libraries: 
 * JADE - agent platform
 * GSON - reading json with settings
+* Javatuples - generic tuples classes for java, mainly used for pairs and triplets
 
 Similar projects:
 - https://github.com/Greg3380/Holonic-System (holonic with jade, but in eclipse with sarl)

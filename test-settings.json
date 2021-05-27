@@ -1,11 +1,12 @@
 {
   "time": {
-    "numberOfTurns": 5
+    "numberOfTurns": 20,
+    "pathToLogFile": "./testlog.txt"
   },
   "regions": [
     {
       "name":  "Average",
-      "initialPopulation": 500,
+      "population": 500,
 
       "heatResource":  500,
       "waterResource": 500,
@@ -24,7 +25,7 @@
     },
     {
       "name":  "Low",
-      "initialPopulation": 700,
+      "population": 700,
 
       "heatResource":  300,
       "waterResource": 300,
@@ -45,9 +46,9 @@
   "gods": [
     {
       "name": "Poseidon",
-      "type": "Creator",
+      "type": "Chaotic",
 
-      "speed":  10,
+      "speed":  20,
       "chanceToShareKnowledgePercent": 90,
       "chanceToCooperatePercent":   75,
 
@@ -73,9 +74,9 @@
     },
     {
       "name": "Hades",
-      "type": "Destructor",
+      "type": "Chaotic",
 
-      "speed":  5,
+      "speed":  15,
       "chanceToShareKnowledgePercent": 20,
       "chanceToCooperatePercent":   20,
 
@@ -103,7 +104,7 @@
       "name": "Hermes",
       "type": "Chaotic",
 
-      "speed":  12,
+      "speed":  40,
       "chanceToShareKnowledgePercent": 50,
       "chanceToCooperatePercent":   50,
 
