@@ -5,13 +5,10 @@ import com.google.gson.GsonBuilder;
 import jade.Boot;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
-import jade.wrapper.ContainerController;
-import jade.wrapper.StaleProxyException;
-import teamwork.agents.jsonwrappers.SimulationWrapper;
+import teamwork.agents.wrappers.SimulationWrapper;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.sql.SQLOutput;
 
 public class Main {
 

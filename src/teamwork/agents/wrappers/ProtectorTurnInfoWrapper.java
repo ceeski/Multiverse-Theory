@@ -1,6 +1,6 @@
-package teamwork.agents.utility;
+package teamwork.agents.wrappers;
 
-import teamwork.agents.jsonwrappers.RegionWrapper;
+import teamwork.agents.actions.GodInfluenceRegionAction;
 
 import java.util.List;
 

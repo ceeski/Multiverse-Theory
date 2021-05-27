@@ -3,15 +3,16 @@ package teamwork.agents;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import jade.core.Agent;
-import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
-import teamwork.agents.jsonwrappers.GodWrapper;
-import teamwork.agents.jsonwrappers.RegionWrapper;
-import teamwork.agents.utility.GodAction;
-import teamwork.agents.utility.GodDoNothingAction;
-import teamwork.agents.utility.GodInfluenceRegionAction;
-import teamwork.agents.utility.ProtectorTurnInfoWrapper;
+import teamwork.agents.enums.ElementType;
+import teamwork.agents.wrappers.GodWrapper;
+import teamwork.agents.wrappers.RegionWrapper;
+import teamwork.agents.actions.GodAction;
+import teamwork.agents.actions.GodDoNothingAction;
+import teamwork.agents.actions.GodInfluenceRegionAction;
+import teamwork.agents.wrappers.ProtectorTurnInfoWrapper;
+import teamwork.agents.utility.Common;
 
 public class God extends Agent {
     private GodWrapper settings;

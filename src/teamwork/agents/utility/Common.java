@@ -1,4 +1,4 @@
-package teamwork.agents;
+package teamwork.agents.utility;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

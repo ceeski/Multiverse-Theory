@@ -5,10 +5,9 @@ import com.google.gson.GsonBuilder;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
-import teamwork.agents.jsonwrappers.RegionWrapper;
-import teamwork.agents.utility.GodInfluenceRegionAction;
-
-import java.util.List;
+import teamwork.agents.wrappers.RegionWrapper;
+import teamwork.agents.actions.GodInfluenceRegionAction;
+import teamwork.agents.utility.Common;
 
 public class Region extends Agent {
     private RegionWrapper settings;

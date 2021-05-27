@@ -1,6 +1,6 @@
-package teamwork.agents.utility;
+package teamwork.agents.actions;
 
-import teamwork.agents.ElementType;
+import teamwork.agents.enums.ElementType;
 
 /**
  * God's action representing influencing a region

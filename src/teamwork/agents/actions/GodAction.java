@@ -1,4 +1,4 @@
-package teamwork.agents.utility;
+package teamwork.agents.actions;
 
 /**
  * Abstract class representing god's action.

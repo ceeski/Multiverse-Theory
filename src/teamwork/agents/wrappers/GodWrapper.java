@@ -1,6 +1,6 @@
-package teamwork.agents.jsonwrappers;
+package teamwork.agents.wrappers;
 
-import teamwork.agents.GodType;
+import teamwork.agents.enums.GodType;
 
 import java.util.List;
 

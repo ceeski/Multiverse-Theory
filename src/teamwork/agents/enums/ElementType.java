@@ -1,4 +1,4 @@
-package teamwork.agents;
+package teamwork.agents.enums;
 
 import com.google.gson.annotations.SerializedName;
 
