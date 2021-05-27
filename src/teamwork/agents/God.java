@@ -119,6 +119,13 @@ public class God extends Agent {
             ACLMessage msg = receive();
 
             if(msg != null) {
+                //If message is not from time and god don't know the sender, add sender to known gods
+                if(!msg.getSender().getLocalName().equals("Time")) {
+                    if(settings.getKnownGods().stream().noneMatch(name -> name.equals(msg.getSender().getLocalName()))) {
+                        settings.getKnownGods().add(msg.getSender().getLocalName());
+                    }
+                }
+
                 switch(msg.getPerformative()) {
                     case ACLMessage.REQUEST:
                         if(msg.getOntology().equals("Initial Information"))
