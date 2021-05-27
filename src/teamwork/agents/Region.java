@@ -32,61 +32,61 @@ public class Region extends Agent {
                 if(value > 0 && settings.getHeatResource() < 100)
                     value = (int)((double)value * (1.0 + (100.0 - (double)settings.getHeatResource())/100.0));
                 if(value < 0 && settings.getHeatResource() > 900)
-                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getHeatResource())/100.0));
+                    value = (int)((double)value * (1.0 - (900.0 - (double)settings.getHeatResource())/100.0));
                 break;
             case FIRE:
                 if(value > 0 && settings.getWaterResource() < 100)
                     value = (int)((double)value * (1.0 + (100.0 - (double)settings.getWaterResource())/100.0));
                 if(value < 0 && settings.getWaterResource() > 900)
-                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getWaterResource())/100.0));
+                    value = (int)((double)value * (1.0 - (900.0 - (double)settings.getWaterResource())/100.0));
                 break;
             case LIGHT:
                 if(value > 0 && settings.getDarknessResource() < 100)
                     value = (int)((double)value * (1.0 + (100.0 - (double)settings.getDarknessResource())/100.0));
                 if(value < 0 && settings.getDarknessResource() > 900)
-                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getDarknessResource())/100.0));
+                    value = (int)((double)value * (1.0 - (900.0 - (double)settings.getDarknessResource())/100.0));
                 break;
             case DARKNESS:
                 if(value > 0 && settings.getLightResource() < 100)
                     value = (int)((double)value * (1.0 + (100.0 - (double)settings.getLightResource())/100.0));
                 if(value < 0 && settings.getLightResource() > 900)
-                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getLightResource())/100.0));
+                    value = (int)((double)value * (1.0 - (900.0 - (double)settings.getLightResource())/100.0));
                 break;
             case EARTH:
                 if(value > 0 && settings.getAirResource() < 100)
                     value = (int)((double)value * (1.0 + (100.0 - (double)settings.getAirResource())/100.0));
                 if(value < 0 && settings.getAirResource() > 900)
-                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getAirResource())/100.0));
+                    value = (int)((double)value * (1.0 - (900.0 - (double)settings.getAirResource())/100.0));
                 break;
             case AIR:
                 if(value > 0 && settings.getEarthResource() < 100)
                     value = (int)((double)value * (1.0 + (100.0 - (double)settings.getEarthResource())/100.0));
                 if(value < 0 && settings.getEarthResource() > 900)
-                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getEarthResource())/100.0));
+                    value = (int)((double)value * (1.0 - (900.0 - (double)settings.getEarthResource())/100.0));
                 break;
             case KNOWLEDGE:
                 if(value > 0 && settings.getAmusementResource() < 100)
                     value = (int)((double)value * (1.0 + (100.0 - (double)settings.getAmusementResource())/100.0));
                 if(value < 0 && settings.getAmusementResource() > 900)
-                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getAmusementResource())/100.0));
+                    value = (int)((double)value * (1.0 - (900.0 - (double)settings.getAmusementResource())/100.0));
                 break;
             case AMUSEMENT:
                 if(value > 0 && settings.getKnowledgeResource() < 100)
                     value = (int)((double)value * (1.0 + (100.0 - (double)settings.getKnowledgeResource())/100.0));
                 if(value < 0 && settings.getKnowledgeResource() > 900)
-                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getKnowledgeResource())/100.0));
+                    value = (int)((double)value * (1.0 - (900.0 - (double)settings.getKnowledgeResource())/100.0));
                 break;
             case LOVE:
                 if(value > 0 && settings.getRestraintResource() < 100)
                     value = (int)((double)value * (1.0 + (100.0 - (double)settings.getRestraintResource())/100.0));
                 if(value < 0 && settings.getRestraintResource() > 900)
-                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getRestraintResource())/100.0));
+                    value = (int)((double)value * (1.0 - (900.0 - (double)settings.getRestraintResource())/100.0));
                 break;
             case RESTRAINT:
                 if(value > 0 && settings.getLoveResource() < 100)
                     value = (int)((double)value * (1.0 + (100.0 - (double)settings.getLoveResource())/100.0));
                 if(value < 0 && settings.getLoveResource() > 900)
-                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getLoveResource())/100.0));
+                    value = (int)((double)value * (1.0 - (900.0 - (double)settings.getLoveResource())/100.0));
                 break;
         }
 

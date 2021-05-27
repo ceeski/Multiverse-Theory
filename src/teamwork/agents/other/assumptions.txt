@@ -4,7 +4,7 @@ Regions has attributes between 0 and 1000 with 500 being perfect score
 At the end of each turn all values of a region are recalculated in order:
     1. All gods' actions are calculated by simple add/subtract (and clamped between 0 and 1000 AFTER EACH ADD/SUBTRACT)
         If we are increasing value: for each point below 100 of opposite element (at the moment of calculation) effect will be increased by 1% (applies before precision)
-        If we are decreasing value: for each point above 900 of opposite element (at the moment of calculation) effect will be decreased by 1% (applies before precision)
+        If we are decreasing value: for each point above 900 of opposite element (at the moment of calculation) effect will be increased by 1% (applies before precision)
     2. Each of 10 elements provide population modifier according to the formula (x = amount of resource):
         1.1 - |500 - x| * 0.0005 if |500 - x| <= 200
         1.0 - (|500 - x| - 200) * 0.003 if |500 - x| > 200
