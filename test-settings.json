@@ -46,7 +46,7 @@
   "gods": [
     {
       "name": "Poseidon",
-      "type": "Creator",
+      "type": "Chaotic",
 
       "speed":  20,
       "chanceToShareKnowledgePercent": 90,
@@ -74,7 +74,7 @@
     },
     {
       "name": "Hades",
-      "type": "Destructor",
+      "type": "Chaotic",
 
       "speed":  15,
       "chanceToShareKnowledgePercent": 20,
