@@ -2,6 +2,9 @@ package teamwork.agents;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Types of gods used in simulation (as enum)
+ */
 public enum GodType {
 
     @SerializedName("Creator")

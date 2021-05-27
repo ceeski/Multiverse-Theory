@@ -2,7 +2,7 @@ package teamwork.agents.jsonwrappers;
 
 public class RegionWrapper {
     private String name;
-    private int initialPopulation;
+    private int population;
 
     private int heatResource;
     private int waterResource;
@@ -22,9 +22,9 @@ public class RegionWrapper {
     public RegionWrapper() {
     }
 
-    public RegionWrapper(String name, int initialPopulation, int heatResource, int waterResource, int lightResource, int darknessResource, int earthResource, int airResource, int knowledgeResource, int amusementResource, int loveResource, int restraintResource) {
+    public RegionWrapper(String name, int population, int heatResource, int waterResource, int lightResource, int darknessResource, int earthResource, int airResource, int knowledgeResource, int amusementResource, int loveResource, int restraintResource) {
         this.name = name;
-        this.initialPopulation = initialPopulation;
+        this.population = population;
         this.heatResource = heatResource;
         this.waterResource = waterResource;
         this.lightResource = lightResource;
@@ -37,6 +37,12 @@ public class RegionWrapper {
         this.restraintResource = restraintResource;
     }
 
+    @Override
+    public String toString() {
+        return String.format("Region [%s]:\n\tPopulation: [%d]\n\tHeat: [%d]; Water: [%d]; Light: [%d]; Darkness: [%d]; Earth: [%d]\n\tAir: [%d]; Knowledge: [%d]; Amusement: [%d]; Love: [%d]; Restraint: [%d]\n",
+                name, population, heatResource, waterResource, lightResource, darknessResource, earthResource, airResource, knowledgeResource, amusementResource, loveResource, restraintResource);
+    }
+
     public String getName() {
         return name;
     }
@@ -45,12 +51,12 @@ public class RegionWrapper {
         this.name = name;
     }
 
-    public int getInitialPopulation() {
-        return initialPopulation;
+    public int getPopulation() {
+        return population;
     }
 
-    public void setInitialPopulation(int initialPopulation) {
-        this.initialPopulation = initialPopulation;
+    public void setPopulation(int population) {
+        this.population = population;
     }
 
     public int getHeatResource() {
