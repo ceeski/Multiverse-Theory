@@ -95,8 +95,8 @@ public class Time extends Agent {
         turnActions = new ArrayList<>();
 
         Gson _gson = new GsonBuilder().create();
-        DFAgentDescription[] godDescriptors = Common.FindAgentsInDf(this, God.class);
-        DFAgentDescription[] regionDescriptors = Common.FindAgentsInDf(this, Region.class);
+        DFAgentDescription[] godDescriptors = Common.findAgentsInDf(this, God.class);
+        DFAgentDescription[] regionDescriptors = Common.findAgentsInDf(this, Region.class);
 
         for(var godDescriptor : godDescriptors) {
             var godAID = godDescriptor.getName();
@@ -162,7 +162,7 @@ public class Time extends Agent {
             if(round >= settings.getNumberOfTurns()) {
                 if(!endMessageShown) {
                     endMessageShown = true;
-                    say("SIMULATION FINISHED AFTER " + round + " ROUNDS");
+                    say("SIMULATION FINISHED AFTER " + round + " ROUNDS\n");
                     //Log final state of regions
                     getGodsAndRegionsInfo();
                     logRegionsState();

@@ -14,7 +14,7 @@ public class Common {
      * Registers agent in the DF
      * @param agent Agent to register
      */
-    public static void RegisterAgentInDf(Agent agent) {
+    public static void registerAgentInDf(Agent agent) {
         DFAgentDescription dfd = new DFAgentDescription();
         dfd.setName( agent.getAID() );
 
@@ -34,7 +34,7 @@ public class Common {
      * Removes agent from DF
      * @param agent Agent to be removed
      */
-    public static void RemoveAgentFromDf(Agent agent) {
+    public static void removeAgentFromDf(Agent agent) {
         try {
             DFService.deregister(agent);
         } catch(FIPAException e) {
@@ -48,7 +48,7 @@ public class Common {
      * @param agentClass Class of agents that we are looking for
      * @return Array of found descriptors
      */
-    public static DFAgentDescription[] FindAgentsInDf(Agent agent, Class<?> agentClass) {
+    public static DFAgentDescription[] findAgentsInDf(Agent agent, Class<?> agentClass) {
         DFAgentDescription dfd = new DFAgentDescription();
         ServiceDescription sd  = new ServiceDescription();
         sd.setType(agentClass.getCanonicalName());
@@ -72,7 +72,7 @@ public class Common {
      * @param msg Message to respond to
      * @param <T> Type of settings
      */
-    public static <T> void ResponseWithInformationAbout(Agent agent, T settings, ACLMessage msg) {
+    public static <T> void responseWithInformationAbout(Agent agent, T settings, ACLMessage msg) {
         Gson _gson = new GsonBuilder().create();
         ACLMessage response = msg.createReply();
         response.setPerformative(ACLMessage.INFORM);

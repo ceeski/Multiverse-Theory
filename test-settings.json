@@ -1,6 +1,6 @@
 {
   "time": {
-    "numberOfTurns": 5,
+    "numberOfTurns": 20,
     "pathToLogFile": "./testlog.txt"
   },
   "regions": [

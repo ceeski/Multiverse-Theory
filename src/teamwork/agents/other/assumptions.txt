@@ -3,6 +3,8 @@ Gods' skill points are between 0 and 10
 Regions has attributes between 0 and 1000 with 500 being perfect score
 At the end of each turn all values of a region are recalculated in order:
     1. All gods' actions are calculated by simple add/subtract (and clamped between 0 and 1000 AFTER EACH ADD/SUBTRACT)
+        If we are increasing value: for each point below 100 of opposite element (at the moment of calculation) effect will be increased by 1% (applies before precision)
+        If we are decreasing value: for each point above 900 of opposite element (at the moment of calculation) effect will be decreased by 1% (applies before precision)
     2. Each of 10 elements provide population modifier according to the formula (x = amount of resource):
         1.1 - |500 - x| * 0.0005 if |500 - x| <= 200
         1.0 - (|500 - x| - 200) * 0.003 if |500 - x| > 200
@@ -14,8 +16,7 @@ At the end of each turn all values of a region are recalculated in order:
 
 God that is having n skill points in given element can decide to:
 a) Increase this element up to 25 * n (250 at 10sp)
-    a2) For each point below 100 of opposite element (at the moment of calculation) maximal value is increased by 1%, (up to 500 at 10sp with 0 in opposite element)
 b) Decrease this element up to 15 * n (150 at 10sp)
-d) Decrease opposite element up to 8 * n (80 at 10sp)
+c) Decrease opposite element up to 8 * n (80 at 10sp)
 
-After the decision is done, precision should be applied: pick random number p up to +-(100 - 10n) and for value of interaction v picked by god the real value is v(1+p) - so god with only 1sp can increase element up to 25 +- (randomly)90%, when with 10sp it can increase element up to 250 (precisely)
+After the decision is done, precision should be applied: pick random number p up to +-(100 - 10n) and for value of interaction v picked by god the real value is v(1+p) - so god with only 1sp can increase element up to 25 +- (randomly)90%, when with 10sp it can increase element up to 250 (precisely). Note: even if opposite element was used to lower the element, precision from this element applies.

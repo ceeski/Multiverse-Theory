@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
+import teamwork.agents.enums.ElementType;
 import teamwork.agents.wrappers.RegionWrapper;
 import teamwork.agents.actions.GodInfluenceRegionAction;
 import teamwork.agents.utility.Common;
@@ -15,8 +16,81 @@ public class Region extends Agent {
     @Override
     protected void setup() {
         settings = (RegionWrapper)getArguments()[0];
-        Common.RegisterAgentInDf(this);
+        Common.registerAgentInDf(this);
         addBehaviour(processMessage);
+    }
+
+    /**
+     * Modifies value by opposite element modifier (less impact if opposite above 900, more if opposite under 100)
+     * @param type Type of the element that is used
+     * @param value Value of that element
+     * @return New value after applying modifier
+     */
+    private int applyOppositeElementModifier(ElementType type, int value) {
+        switch(type) {
+            case WATER:
+                if(value > 0 && settings.getHeatResource() < 100)
+                    value = (int)((double)value * (1.0 + (100.0 - (double)settings.getHeatResource())/100.0));
+                if(value < 0 && settings.getHeatResource() > 900)
+                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getHeatResource())/100.0));
+                break;
+            case FIRE:
+                if(value > 0 && settings.getWaterResource() < 100)
+                    value = (int)((double)value * (1.0 + (100.0 - (double)settings.getWaterResource())/100.0));
+                if(value < 0 && settings.getWaterResource() > 900)
+                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getWaterResource())/100.0));
+                break;
+            case LIGHT:
+                if(value > 0 && settings.getDarknessResource() < 100)
+                    value = (int)((double)value * (1.0 + (100.0 - (double)settings.getDarknessResource())/100.0));
+                if(value < 0 && settings.getDarknessResource() > 900)
+                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getDarknessResource())/100.0));
+                break;
+            case DARKNESS:
+                if(value > 0 && settings.getLightResource() < 100)
+                    value = (int)((double)value * (1.0 + (100.0 - (double)settings.getLightResource())/100.0));
+                if(value < 0 && settings.getLightResource() > 900)
+                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getLightResource())/100.0));
+                break;
+            case EARTH:
+                if(value > 0 && settings.getAirResource() < 100)
+                    value = (int)((double)value * (1.0 + (100.0 - (double)settings.getAirResource())/100.0));
+                if(value < 0 && settings.getAirResource() > 900)
+                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getAirResource())/100.0));
+                break;
+            case AIR:
+                if(value > 0 && settings.getEarthResource() < 100)
+                    value = (int)((double)value * (1.0 + (100.0 - (double)settings.getEarthResource())/100.0));
+                if(value < 0 && settings.getEarthResource() > 900)
+                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getEarthResource())/100.0));
+                break;
+            case KNOWLEDGE:
+                if(value > 0 && settings.getAmusementResource() < 100)
+                    value = (int)((double)value * (1.0 + (100.0 - (double)settings.getAmusementResource())/100.0));
+                if(value < 0 && settings.getAmusementResource() > 900)
+                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getAmusementResource())/100.0));
+                break;
+            case AMUSEMENT:
+                if(value > 0 && settings.getKnowledgeResource() < 100)
+                    value = (int)((double)value * (1.0 + (100.0 - (double)settings.getKnowledgeResource())/100.0));
+                if(value < 0 && settings.getKnowledgeResource() > 900)
+                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getKnowledgeResource())/100.0));
+                break;
+            case LOVE:
+                if(value > 0 && settings.getRestraintResource() < 100)
+                    value = (int)((double)value * (1.0 + (100.0 - (double)settings.getRestraintResource())/100.0));
+                if(value < 0 && settings.getRestraintResource() > 900)
+                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getRestraintResource())/100.0));
+                break;
+            case RESTRAINT:
+                if(value > 0 && settings.getLoveResource() < 100)
+                    value = (int)((double)value * (1.0 + (100.0 - (double)settings.getLoveResource())/100.0));
+                if(value < 0 && settings.getLoveResource() > 900)
+                    value = (int)((double)value * (1.0 + (900.0 - (double)settings.getLoveResource())/100.0));
+                break;
+        }
+
+        return value;
     }
 
     /**
@@ -24,66 +98,66 @@ public class Region extends Agent {
      */
     private void recalculateResourcesFromGodActions(GodInfluenceRegionAction[] actions) {
         for (GodInfluenceRegionAction action : actions) {
-            for (int j = 0; j < action.getElement().length; j++) {
+            for (int j = 0; j < action.getElements().size(); j++) {
                 int value;
-                switch (action.getElement()[j]) {
+                switch (action.getElements().get(j)) {
                     case AIR:
                         value = settings.getAirResource();
-                        value += action.getValue()[j];
+                        value += applyOppositeElementModifier(ElementType.AIR, action.getValues().get(j));
                         value = Common.clamp(value, 0, 1000);
                         settings.setAirResource(value);
                         break;
                     case FIRE:
                         value = settings.getHeatResource();
-                        value += action.getValue()[j];
+                        value += applyOppositeElementModifier(ElementType.FIRE, action.getValues().get(j));
                         value = Common.clamp(value, 0, 1000);
                         settings.setHeatResource(value);
                         break;
                     case LOVE:
                         value = settings.getLoveResource();
-                        value += action.getValue()[j];
+                        value += applyOppositeElementModifier(ElementType.LOVE, action.getValues().get(j));
                         value = Common.clamp(value, 0, 1000);
                         settings.setLoveResource(value);
                         break;
                     case EARTH:
                         value = settings.getEarthResource();
-                        value += action.getValue()[j];
+                        value += applyOppositeElementModifier(ElementType.EARTH, action.getValues().get(j));
                         value = Common.clamp(value, 0, 1000);
                         settings.setEarthResource(value);
                         break;
                     case LIGHT:
                         value = settings.getLightResource();
-                        value += action.getValue()[j];
+                        value += applyOppositeElementModifier(ElementType.LIGHT, action.getValues().get(j));
                         value = Common.clamp(value, 0, 1000);
                         settings.setLightResource(value);
                         break;
                     case WATER:
                         value = settings.getWaterResource();
-                        value += action.getValue()[j];
+                        value += applyOppositeElementModifier(ElementType.WATER, action.getValues().get(j));
                         value = Common.clamp(value, 0, 1000);
                         settings.setWaterResource(value);
                         break;
                     case DARKNESS:
                         value = settings.getDarknessResource();
-                        value += action.getValue()[j];
+                        value += applyOppositeElementModifier(ElementType.DARKNESS, action.getValues().get(j));
                         value = Common.clamp(value, 0, 1000);
                         settings.setDarknessResource(value);
                         break;
                     case AMUSEMENT:
                         value = settings.getAmusementResource();
-                        value += action.getValue()[j];
+                        value += applyOppositeElementModifier(ElementType.AMUSEMENT, action.getValues().get(j));
                         value = Common.clamp(value, 0, 1000);
                         settings.setAmusementResource(value);
                         break;
                     case KNOWLEDGE:
                         value = settings.getKnowledgeResource();
-                        value += action.getValue()[j];
+                        value += applyOppositeElementModifier(ElementType.KNOWLEDGE, action.getValues().get(j));
                         value = Common.clamp(value, 0, 1000);
                         settings.setKnowledgeResource(value);
                         break;
                     case RESTRAINT:
                         value = settings.getRestraintResource();
-                        value += action.getValue()[j];
+                        value += applyOppositeElementModifier(ElementType.RESTRAINT, action.getValues().get(j));
                         value = Common.clamp(value, 0, 1000);
                         settings.setRestraintResource(value);
                         break;
@@ -172,7 +246,7 @@ public class Region extends Agent {
                 switch(msg.getPerformative()) {
                     case ACLMessage.REQUEST:
                         if(msg.getOntology().equals("Initial Information"))
-                            Common.ResponseWithInformationAbout(getAgent(), settings, msg);
+                            Common.responseWithInformationAbout(getAgent(), settings, msg);
                         break;
                     case ACLMessage.INFORM:
                         if(msg.getOntology().equals("Recalculate"))

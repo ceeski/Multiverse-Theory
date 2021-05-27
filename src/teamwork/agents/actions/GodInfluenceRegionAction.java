@@ -2,22 +2,24 @@ package teamwork.agents.actions;
 
 import teamwork.agents.enums.ElementType;
 
+import java.util.List;
+
 /**
  * God's action representing influencing a region
  */
 public class GodInfluenceRegionAction extends GodAction {
     protected String regionName;
-    protected ElementType[] element;
-    protected int[] value;
+    protected List<ElementType> elements;
+    protected List<Integer> values;
 
     public GodInfluenceRegionAction() {
     }
 
-    public GodInfluenceRegionAction(String godName, String regionName, ElementType[] element, int[] value) {
+    public GodInfluenceRegionAction(String godName, String regionName, List<ElementType> element, List<Integer> value) {
         super(godName);
         this.regionName = regionName;
-        this.element = element;
-        this.value = value;
+        this.elements = element;
+        this.values = value;
     }
 
     public String getRegionName() {
@@ -28,27 +30,27 @@ public class GodInfluenceRegionAction extends GodAction {
         this.regionName = regionName;
     }
 
-    public ElementType[] getElement() {
-        return element;
+    public List<ElementType> getElements() {
+        return elements;
     }
 
-    public void setElement(ElementType[] element) {
-        this.element = element;
+    public void setElements(List<ElementType> elements) {
+        this.elements = elements;
     }
 
-    public int[] getValue() {
-        return value;
+    public List<Integer> getValues() {
+        return values;
     }
 
-    public void setValue(int[] value) {
-        this.value = value;
+    public void setValues(List<Integer> values) {
+        this.values = values;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < element.length; i++) {
-            sb.append(String.format("Action: [%s] applies [%s] on region [%s] with value [%+d]\n", godName, element[i].getType(), regionName, value[i]));
+        for(int i = 0; i < elements.size(); i++) {
+            sb.append(String.format("Action: [%s] applies [%s] on region [%s] with value [%+d]\n", godName, elements.get(i).getType(), regionName, values.get(i)));
         }
         return sb.toString();
     }
@@ -60,5 +62,13 @@ public class GodInfluenceRegionAction extends GodAction {
 
     public static String getActionType() {
         return GodInfluenceRegionAction.class.getCanonicalName();
+    }
+
+    /**
+     * Adds another influence to the action
+     */
+    public void AddAction(ElementType element, int value) {
+        elements.add(element);
+        values.add(value);
     }
 }
