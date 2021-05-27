@@ -13,3 +13,5 @@ Used libraries:
 
 Similar projects:
 - https://github.com/Greg3380/Holonic-System (holonic with jade, but in eclipse with sarl)
+- https://github.com/nejatafshar/Holonic-Simulation/blob/develop/Holonic_Simulation/Simulation
+- https://github.com/kuberlog/holonJava
