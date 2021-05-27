@@ -8,6 +8,7 @@ import jade.lang.acl.ACLMessage;
 import org.javatuples.Pair;
 import org.javatuples.Triplet;
 import teamwork.agents.enums.ElementType;
+import teamwork.agents.enums.GodType;
 import teamwork.agents.utility.GodHelper;
 import teamwork.agents.wrappers.GodWrapper;
 import teamwork.agents.wrappers.RegionWrapper;
@@ -36,6 +37,29 @@ public class God extends Agent {
      * Processes turn of god that knows their regions state from the beginning of the turn (creator, Destructor, neutral)
      */
     GodAction ProcessGodTurn(RegionWrapper[] knownRegions) {
+        if(settings.getType().equals(GodType.CREATOR)){
+            int numRegions = knownRegions.length;
+            ArrayList<Integer>[] scores = new ArrayList[numRegions];
+            //sort the scores(|value - 500|) of all regions in all elements in ascending order(with keys, so we know which entry is which region and element)
+            //i = 0
+
+            //loop
+            //take the ith entry
+            //precalculate if the God can help it reach 500.
+            //if yes - go for it. otherwise ++i
+        }
+        else if(settings.getType().equals(GodType.DESTRUCTOR)){
+            //sort the scores(|value - 500|) of all regions in all elements in descending order(with keys, so we know which entry is which region and element)
+            //i = 0
+
+            //loop
+            //take the ith entry
+            //precalculate if the God can help it reach either 0 or 1000.
+            //if yes - go for it. otherwise ++i
+        }
+        else if(settings.getType().equals(GodType.NEUTRAL)){
+
+        }
         return new GodDoNothingAction(getLocalName());
     }
 
