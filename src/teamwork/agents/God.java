@@ -18,13 +18,13 @@ import teamwork.agents.actions.GodInfluenceRegionAction;
 import teamwork.agents.wrappers.ProtectorTurnInfoWrapper;
 import teamwork.agents.utility.Common;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class God extends Agent {
     private GodWrapper settings;
+    private static final int BALANCE = 500;
+    private static final int MAX = 1000;
+    private static final int MIN = 0;
 
     @Override
     protected void setup() {
@@ -37,28 +37,169 @@ public class God extends Agent {
      * Processes turn of god that knows their regions state from the beginning of the turn (creator, Destructor, neutral)
      */
     GodAction ProcessGodTurn(RegionWrapper[] knownRegions) {
-        if(settings.getType().equals(GodType.CREATOR)){
-            int numRegions = knownRegions.length;
-            ArrayList<Integer>[] scores = new ArrayList[numRegions];
-            //sort the scores(|value - 500|) of all regions in all elements in ascending order(with keys, so we know which entry is which region and element)
-            //i = 0
+        int numRegions = knownRegions.length;
+        //CREATOR wants to bring the most needy resource to BALANCE
 
-            //loop
-            //take the ith entry
-            //precalculate if the God can help it reach 500.
-            //if yes - go for it. otherwise ++i
+
+        var possibilities = GodHelper.getPossibleElementChanges(settings);
+        System.out.println(settings.getName() + ", " + settings.getType());
+        if(settings.getType().equals(GodType.CREATOR)){
+            //CREATOR wants to bring the most needy resource to BALANCE
+
+            //sort all regions' resource scores in descending order (resource's score is the distance between the resource's value and the BALANCE value, 500)
+            List<Triplet<String, ElementType, Integer>> regionsElementsScores = new ArrayList<>();
+            for(int i = 0; i < numRegions; i++){
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.FIRE,knownRegions[i].getHeatResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.WATER,knownRegions[i].getWaterResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.LIGHT,knownRegions[i].getLightResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.DARKNESS,knownRegions[i].getDarknessResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.EARTH,knownRegions[i].getEarthResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.AIR,knownRegions[i].getAirResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.KNOWLEDGE,knownRegions[i].getKnowledgeResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.AMUSEMENT,knownRegions[i].getAmusementResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.LOVE,knownRegions[i].getLoveResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.RESTRAINT,knownRegions[i].getRestraintResource()));
+            }
+
+            //sort all regions' resource scores in descending order (resource's score is the distance between the resource's value and the BALANCE value, 500)
+            Collections.sort(regionsElementsScores, new Comparator<Triplet<String, ElementType, Integer>>() {
+                @Override
+                public int compare(Triplet<String, ElementType, Integer> o1, Triplet<String, ElementType, Integer> o2) {
+                    return ((Integer)Math.abs(o2.getValue2() - BALANCE)).compareTo((Integer)Math.abs(o1.getValue2() - BALANCE));
+                }
+            });
+
+//            for(var t: regionsElementsScores){
+//                System.out.println(t.getValue0()+" - " + t.getValue1() + " - " + t.getValue2());
+//            }
+
+
+
+            //now let's see if the God is capable of bringing that value to BALANCE
+
+            for(var entry: regionsElementsScores){
+                var possibleChange = possibilities.get(entry.getValue1());
+                System.out.println(entry.getValue1() + ", possible change: [" + possibleChange.getValue0() + ", " + possibleChange.getValue1() + "]");
+                //if the God is capable to do so, and if the resource is not balanced already, the god applies the necessary change
+                if(entry.getValue2() + possibleChange.getValue0() <= BALANCE && entry.getValue2() + possibleChange.getValue1() >= BALANCE && entry.getValue2() != BALANCE){
+                    if(entry.getValue2() < BALANCE){
+                        var element = entry.getValue1();
+                        int finalValue = GodHelper.finalElementChange(BALANCE - entry.getValue2(), element, settings);
+                        return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
+                    }
+                    else {
+                        var element = entry.getValue1();
+                        int finalValue = GodHelper.finalElementChange(entry.getValue2() - BALANCE, element, settings);
+                        return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
+                    }
+                }
+//                if(possibleChange.getValue0() <= 0 && possibleChange.getValue1() >= 0 && entry.getValue2() != 0){
+//                    var element = entry.getValue1();
+//                    int finalValue = GodHelper.finalElementChange(BALANCE, element, settings);
+//                    return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
+//                }
+                //otherwise, god looks at the next needy resource
+            }
+
+            //otherwise, the god does nothing. It means that either god is not capable of balancing the resource, or all resources in all regions are balanced already
         }
         else if(settings.getType().equals(GodType.DESTRUCTOR)){
-            //sort the scores(|value - 500|) of all regions in all elements in descending order(with keys, so we know which entry is which region and element)
-            //i = 0
+            //DESTRUCTOR wants to unbalance the most balanced resource
 
-            //loop
-            //take the ith entry
-            //precalculate if the God can help it reach either 0 or 1000.
-            //if yes - go for it. otherwise ++i
+            List<Triplet<String, ElementType, Integer>> regionsElementsScores = new ArrayList<>();
+            for(int i = 0; i < numRegions; i++){
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.FIRE,knownRegions[i].getHeatResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.WATER,knownRegions[i].getWaterResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.LIGHT,knownRegions[i].getLightResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.DARKNESS,knownRegions[i].getDarknessResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.EARTH,knownRegions[i].getEarthResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.AIR,knownRegions[i].getAirResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.KNOWLEDGE,knownRegions[i].getKnowledgeResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.AMUSEMENT,knownRegions[i].getAmusementResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.LOVE,knownRegions[i].getLoveResource()));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.RESTRAINT,knownRegions[i].getRestraintResource()));
+            }
+
+            //sort all regions' resource scores in ascending order (resource's score is the distance between the resource's value and the BALANCE value, 500)
+            Collections.sort(regionsElementsScores, new Comparator<Triplet<String, ElementType, Integer>>() {
+                @Override
+                public int compare(Triplet<String, ElementType, Integer> o1, Triplet<String, ElementType, Integer> o2) {
+                    return ((Integer)Math.abs(o1.getValue2() - BALANCE)).compareTo((Integer)Math.abs(o2.getValue2() - BALANCE));
+                }
+            });
+
+//            for(var t: regionsElementsScores){
+//                System.out.println(t.getValue0()+" - " + t.getValue1() + " - " + t.getValue2());
+//            }
+
+            for(var entry: regionsElementsScores){
+                var possibleChange = possibilities.get(entry.getValue1());
+                System.out.println(entry.getValue1() + ", possible change: [" + possibleChange.getValue0() + ", " + possibleChange.getValue1() + "]");
+                //if the resource is to the right of BALANCE (larger than BALANCE), and god is capable to increase it even more
+                if(entry.getValue2() >= BALANCE && possibleChange.getValue1() > 0){
+                    var element = entry.getValue1();
+                    int finalValue = GodHelper.finalElementChange(possibleChange.getValue1(), element, settings);
+                    return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
+                }
+                //if the resource is to the left of BALANCE (smaller than BALANCE), and god is capable to reduce it even more
+                else if(entry.getValue2() < BALANCE && possibleChange.getValue0() < 0){
+                    var element = entry.getValue1();
+                    int finalValue = GodHelper.finalElementChange(possibleChange.getValue0(), element, settings);
+                    return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
+                }
+                //if he cannot unbalance the resource, the god looks at the next resource
+            }
         }
         else if(settings.getType().equals(GodType.NEUTRAL)){
+            //NEUTRAL wants to bring the least needy resource to BALANCE
 
+            //sort all regions' resource scores in ascending order (resource's score is the distance between the resource's value and the BALANCE value, 500)
+            List<Triplet<String, ElementType, Integer>> regionsElementsScores = new ArrayList<>();
+            for(int i = 0; i < numRegions; i++){
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.FIRE,Math.abs(knownRegions[i].getHeatResource() - BALANCE)));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.WATER,Math.abs(knownRegions[i].getWaterResource() - BALANCE)));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.LIGHT,Math.abs(knownRegions[i].getLightResource() - BALANCE)));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.DARKNESS,Math.abs(knownRegions[i].getDarknessResource() - BALANCE)));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.EARTH,Math.abs(knownRegions[i].getEarthResource() - BALANCE)));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.AIR,Math.abs(knownRegions[i].getAirResource() - BALANCE)));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.KNOWLEDGE,Math.abs(knownRegions[i].getKnowledgeResource() - BALANCE)));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.AMUSEMENT,Math.abs(knownRegions[i].getAmusementResource() - BALANCE)));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.LOVE,Math.abs(knownRegions[i].getLoveResource() - BALANCE)));
+                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.RESTRAINT,Math.abs(knownRegions[i].getRestraintResource() - BALANCE)));
+            }
+
+            //sort all regions' resource scores in ascending order (resource's score is the distance between the resource's value and the BALANCE value, 500)
+            Collections.sort(regionsElementsScores, new Comparator<Triplet<String, ElementType, Integer>>() {
+                @Override
+                public int compare(Triplet<String, ElementType, Integer> o1, Triplet<String, ElementType, Integer> o2) {
+                    return o2.getValue2().compareTo(o1.getValue2());
+                }
+            });
+
+//            for(var t: regionsElementsScores){
+//                System.out.println(t.getValue0()+" - " + t.getValue1() + " - " + t.getValue2());
+//            }
+            //now let's see if the God is capable of bringing that value to BALANCE
+
+            for(var entry: regionsElementsScores){
+                var possibleChange = possibilities.get(entry.getValue1());
+                //System.out.println(entry.getValue1() + ", possible change: [" + possibleChange.getValue0() + ", " + possibleChange.getValue1() + "]");
+
+                //if the God is capable to do so, and if the resource is not balanced already, the god applies the necessary change
+                if(entry.getValue2() + possibleChange.getValue0() <= BALANCE && entry.getValue2() + possibleChange.getValue1() >= BALANCE && entry.getValue2() != BALANCE){
+                    if(entry.getValue2() < BALANCE){
+                        var element = entry.getValue1();
+                        int finalValue = GodHelper.finalElementChange(BALANCE - entry.getValue2(), element, settings);
+                        return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
+                    }
+                    else {
+                        var element = entry.getValue1();
+                        int finalValue = GodHelper.finalElementChange(entry.getValue2() - BALANCE, element, settings);
+                        return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
+                    }
+                }
+                //otherwise, god looks at the next needy resource
+            }
         }
         return new GodDoNothingAction(getLocalName());
     }
