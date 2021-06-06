@@ -42,7 +42,6 @@ public class God extends Agent {
 
 
         var possibilities = GodHelper.getPossibleElementChanges(settings);
-        System.out.println(settings.getName() + ", " + settings.getType());
         if(settings.getType().equals(GodType.CREATOR)){
             //CREATOR wants to bring the most needy resource to BALANCE
 
@@ -69,12 +68,6 @@ public class God extends Agent {
                 }
             });
 
-//            for(var t: regionsElementsScores){
-//                System.out.println(t.getValue0()+" - " + t.getValue1() + " - " + t.getValue2());
-//            }
-
-
-
             //now let's see if the God is capable of bringing that value to BALANCE
 
             for(var entry: regionsElementsScores){
@@ -93,11 +86,6 @@ public class God extends Agent {
                         return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
                     }
                 }
-//                if(possibleChange.getValue0() <= 0 && possibleChange.getValue1() >= 0 && entry.getValue2() != 0){
-//                    var element = entry.getValue1();
-//                    int finalValue = GodHelper.finalElementChange(BALANCE, element, settings);
-//                    return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
-//                }
                 //otherwise, god looks at the next needy resource
             }
 
@@ -128,13 +116,9 @@ public class God extends Agent {
                 }
             });
 
-//            for(var t: regionsElementsScores){
-//                System.out.println(t.getValue0()+" - " + t.getValue1() + " - " + t.getValue2());
-//            }
 
             for(var entry: regionsElementsScores){
                 var possibleChange = possibilities.get(entry.getValue1());
-                System.out.println(entry.getValue1() + ", possible change: [" + possibleChange.getValue0() + ", " + possibleChange.getValue1() + "]");
                 //if the resource is to the right of BALANCE (larger than BALANCE), and god is capable to increase it even more
                 if(entry.getValue2() >= BALANCE && possibleChange.getValue1() > 0){
                     var element = entry.getValue1();
@@ -176,15 +160,10 @@ public class God extends Agent {
                 }
             });
 
-//            for(var t: regionsElementsScores){
-//                System.out.println(t.getValue0()+" - " + t.getValue1() + " - " + t.getValue2());
-//            }
             //now let's see if the God is capable of bringing that value to BALANCE
 
             for(var entry: regionsElementsScores){
                 var possibleChange = possibilities.get(entry.getValue1());
-                //System.out.println(entry.getValue1() + ", possible change: [" + possibleChange.getValue0() + ", " + possibleChange.getValue1() + "]");
-
                 //if the God is capable to do so, and if the resource is not balanced already, the god applies the necessary change
                 if(entry.getValue2() + possibleChange.getValue0() <= BALANCE && entry.getValue2() + possibleChange.getValue1() >= BALANCE && entry.getValue2() != BALANCE){
                     if(entry.getValue2() < BALANCE){
