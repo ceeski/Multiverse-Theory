@@ -14,7 +14,7 @@ public enum GodType {
     CREATOR("Creator"),
     @SerializedName("Destructor")
     DESTRUCTOR("Destructor"),
-    @SerializedName("Destructor")
+    @SerializedName("Neutral")
     NEUTRAL("Neutral"),
     @SerializedName("Chaotic")
     CHAOTIC("Chaotic"),
