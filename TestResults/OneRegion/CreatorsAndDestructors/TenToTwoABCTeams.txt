@@ -1,0 +1,1005 @@
+ROUND NUMBER 1
+Region [Earth]:
+	Population: [1000]
+	Heat: [600]; Water: [600]; Light: [600]; Darkness: [600]; Earth: [600]
+	Air: [600]; Knowledge: [600]; Amusement: [600]; Love: [600]; Restraint: [600]
+----------
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+159]
+Action: [DestructorA] applies [Darkness] on region [Earth] with value [+17]
+Action: [Creator2C] applies [Water] on region [Earth] with value [-10]
+Action: [Creator4A] applies [Light] on region [Earth] with value [+5]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-9]
+Action: [Creator2A] applies [Light] on region [Earth] with value [-25]
+Action: [Creator2B] applies [Fire] on region [Earth] with value [+9]
+Action: [Creator1C] applies [Restraint] on region [Earth] with value [-17]
+Action: [Creator1B] applies [Fire] on region [Earth] with value [-25]
+Action: [Creator1A] applies [Air] on region [Earth] with value [-25]
+Action: [Creator3B] applies [Darkness] on region [Earth] with value [+44]
+Action: [Creator4B] applies [Fire] on region [Earth] with value [-4]
+
+
+ROUND NUMBER 2
+Region [Earth]:
+	Population: [1337]
+	Heat: [537]; Water: [547]; Light: [537]; Darkness: [618]; Earth: [707]
+	Air: [532]; Knowledge: [557]; Amusement: [557]; Love: [557]; Restraint: [540]
+----------
+Action: [Creator1C] applies [Earth] on region [Earth] with value [-116]
+Action: [DestructorB] applies [Darkness] on region [Earth] with value [+84]
+Action: [Creator2B] applies [Darkness] on region [Earth] with value [-43]
+Action: [Creator4B] applies [Darkness] on region [Earth] with value [-24]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-132]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [-111]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+213]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-107]
+Action: [Creator4A] applies [Darkness] on region [Earth] with value [-51]
+Action: [Creator2A] applies [Darkness] on region [Earth] with value [-43]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-132]
+Action: [Creator2C] applies [Earth] on region [Earth] with value [-109]
+
+
+ROUND NUMBER 3
+Region [Earth]:
+	Population: [1934]
+	Heat: [476]; Water: [486]; Light: [476]; Darkness: [480]; Earth: [152]
+	Air: [471]; Knowledge: [496]; Amusement: [496]; Love: [496]; Restraint: [479]
+----------
+Action: [DestructorA] applies [Water] on region [Earth] with value [-92]
+Action: [Creator2B] applies [Light] on region [Earth] with value [+99]
+Action: [Creator2C] applies [Earth] on region [Earth] with value [+91]
+Action: [Creator2A] applies [Light] on region [Earth] with value [+99]
+Action: [Creator4B] applies [Light] on region [Earth] with value [+92]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [+121]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [+97]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [+250]
+Action: [DestructorB] applies [Darkness] on region [Earth] with value [-114]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [+250]
+Action: [Creator4A] applies [Light] on region [Earth] with value [+22]
+Action: [Creator1C] applies [Earth] on region [Earth] with value [+80]
+
+
+ROUND NUMBER 4
+Region [Earth]:
+	Population: [262]
+	Heat: [467]; Water: [385]; Light: [779]; Darkness: [357]; Earth: [991]
+	Air: [462]; Knowledge: [487]; Amusement: [487]; Love: [487]; Restraint: [470]
+----------
+Action: [Creator2C] applies [Darkness] on region [Earth] with value [+211]
+Action: [DestructorB] applies [Light] on region [Earth] with value [+87]
+Action: [Creator2A] applies [Darkness] on region [Earth] with value [+218]
+Action: [Creator4A] applies [Water] on region [Earth] with value [+118]
+Action: [DestructorA] applies [Light] on region [Earth] with value [+103]
+Action: [Creator2B] applies [Darkness] on region [Earth] with value [+218]
+Action: [Creator3B] applies [Air] on region [Earth] with value [-53]
+Action: [Creator4B] applies [Water] on region [Earth] with value [+9]
+Action: [Creator1B] applies [Water] on region [Earth] with value [+190]
+Action: [Creator1A] applies [Water] on region [Earth] with value [+190]
+Action: [Creator3A] applies [Air] on region [Earth] with value [+118]
+Action: [Creator1C] applies [Water] on region [Earth] with value [+154]
+
+
+ROUND NUMBER 5
+Region [Earth]:
+	Population: [0]
+	Heat: [467]; Water: [1000]; Light: [969]; Darkness: [1000]; Earth: [991]
+	Air: [479]; Knowledge: [487]; Amusement: [487]; Love: [487]; Restraint: [470]
+----------
+Action: [Creator2B] applies [Light] on region [Earth] with value [-150]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-150]
+Action: [Creator2A] applies [Darkness] on region [Earth] with value [-150]
+Action: [Creator3A] applies [Restraint] on region [Earth] with value [+105]
+Action: [DestructorB] applies [Love] on region [Earth] with value [-37]
+Action: [Creator4A] applies [Fire] on region [Earth] with value [+89]
+Action: [Creator2C] applies [Fire] on region [Earth] with value [+35]
+Action: [Creator1C] applies [Fire] on region [Earth] with value [+44]
+Action: [Creator4B] applies [Fire] on region [Earth] with value [+22]
+Action: [DestructorA] applies [Restraint] on region [Earth] with value [-37]
+Action: [Creator3B] applies [Restraint] on region [Earth] with value [+105]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-150]
+
+
+ROUND NUMBER 6
+Region [Earth]:
+	Population: [0]
+	Heat: [657]; Water: [1000]; Light: [669]; Darkness: [850]; Earth: [691]
+	Air: [479]; Knowledge: [487]; Amusement: [487]; Love: [450]; Restraint: [643]
+----------
+Action: [DestructorA] applies [Light] on region [Earth] with value [+159]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [+36]
+Action: [Creator1A] applies [Water] on region [Earth] with value [-150]
+Action: [Creator2C] applies [Love] on region [Earth] with value [+126]
+Action: [Creator2B] applies [Darkness] on region [Earth] with value [-150]
+Action: [Creator3A] applies [Love] on region [Earth] with value [+125]
+Action: [DestructorB] applies [Fire] on region [Earth] with value [+196]
+Action: [Creator4B] applies [Light] on region [Earth] with value [-91]
+Action: [Creator1B] applies [Water] on region [Earth] with value [-150]
+Action: [Creator3B] applies [Love] on region [Earth] with value [+125]
+Action: [Creator2A] applies [Darkness] on region [Earth] with value [-150]
+Action: [Creator1C] applies [Love] on region [Earth] with value [+76]
+
+
+ROUND NUMBER 7
+Region [Earth]:
+	Population: [0]
+	Heat: [853]; Water: [700]; Light: [737]; Darkness: [550]; Earth: [691]
+	Air: [479]; Knowledge: [523]; Amusement: [487]; Love: [902]; Restraint: [643]
+----------
+Action: [Creator4A] applies [Amusement] on region [Earth] with value [-25]
+Action: [Creator1C] applies [Water] on region [Earth] with value [-128]
+Action: [Creator3A] applies [Love] on region [Earth] with value [-150]
+Action: [Creator2B] applies [Light] on region [Earth] with value [-150]
+Action: [Creator1A] applies [Fire] on region [Earth] with value [-150]
+Action: [Creator2A] applies [Light] on region [Earth] with value [-150]
+Action: [Creator4B] applies [Fire] on region [Earth] with value [-110]
+Action: [Creator3B] applies [Love] on region [Earth] with value [-150]
+Action: [DestructorA] applies [Light] on region [Earth] with value [+196]
+Action: [Creator1B] applies [Fire] on region [Earth] with value [-150]
+Action: [Creator2C] applies [Love] on region [Earth] with value [-94]
+Action: [DestructorB] applies [Restraint] on region [Earth] with value [+204]
+
+
+ROUND NUMBER 8
+Region [Earth]:
+	Population: [0]
+	Heat: [443]; Water: [572]; Light: [633]; Darkness: [550]; Earth: [691]
+	Air: [479]; Knowledge: [523]; Amusement: [462]; Love: [508]; Restraint: [847]
+----------
+Action: [DestructorA] applies [Light] on region [Earth] with value [+59]
+Action: [Creator3A] applies [Restraint] on region [Earth] with value [-150]
+Action: [Creator1B] applies [Fire] on region [Earth] with value [+132]
+Action: [Creator2A] applies [Amusement] on region [Earth] with value [+113]
+Action: [Creator2C] applies [Fire] on region [Earth] with value [+128]
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+197]
+Action: [Creator1A] applies [Fire] on region [Earth] with value [+132]
+Action: [Creator3B] applies [Restraint] on region [Earth] with value [-150]
+Action: [Creator1C] applies [Fire] on region [Earth] with value [+141]
+Action: [Creator2B] applies [Amusement] on region [Earth] with value [+113]
+Action: [Creator4A] applies [Fire] on region [Earth] with value [+160]
+Action: [Creator4B] applies [Fire] on region [Earth] with value [+55]
+
+
+ROUND NUMBER 9
+Region [Earth]:
+	Population: [0]
+	Heat: [1000]; Water: [572]; Light: [692]; Darkness: [550]; Earth: [888]
+	Air: [479]; Knowledge: [523]; Amusement: [688]; Love: [508]; Restraint: [547]
+----------
+Action: [Creator3A] applies [Air] on region [Earth] with value [+84]
+Action: [Creator2C] applies [Fire] on region [Earth] with value [-81]
+Action: [Creator1C] applies [Light] on region [Earth] with value [-96]
+Action: [Creator4B] applies [Fire] on region [Earth] with value [-113]
+Action: [DestructorA] applies [Amusement] on region [Earth] with value [+215]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-150]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-150]
+Action: [Creator3B] applies [Air] on region [Earth] with value [+132]
+Action: [Creator2A] applies [Light] on region [Earth] with value [-117]
+Action: [Creator4A] applies [Amusement] on region [Earth] with value [+8]
+Action: [DestructorB] applies [Amusement] on region [Earth] with value [+89]
+Action: [Creator2B] applies [Light] on region [Earth] with value [-117]
+
+
+ROUND NUMBER 10
+Region [Earth]:
+	Population: [0]
+	Heat: [806]; Water: [572]; Light: [362]; Darkness: [550]; Earth: [588]
+	Air: [695]; Knowledge: [523]; Amusement: [1000]; Love: [508]; Restraint: [547]
+----------
+Action: [Creator4B] applies [Light] on region [Earth] with value [+154]
+Action: [DestructorA] applies [Air] on region [Earth] with value [+49]
+Action: [Creator1A] applies [Fire] on region [Earth] with value [-150]
+Action: [Creator1C] applies [Light] on region [Earth] with value [+220]
+Action: [Creator2B] applies [Light] on region [Earth] with value [+213]
+Action: [DestructorB] applies [Air] on region [Earth] with value [+204]
+Action: [Creator4A] applies [Light] on region [Earth] with value [+21]
+Action: [Creator2A] applies [Light] on region [Earth] with value [+213]
+Action: [Creator1B] applies [Fire] on region [Earth] with value [-150]
+Action: [Creator3A] applies [Air] on region [Earth] with value [+29]
+Action: [Creator3B] applies [Light] on region [Earth] with value [+112]
+Action: [Creator2C] applies [Light] on region [Earth] with value [+222]
+
+
+ROUND NUMBER 11
+Region [Earth]:
+	Population: [0]
+	Heat: [506]; Water: [572]; Light: [1000]; Darkness: [550]; Earth: [588]
+	Air: [977]; Knowledge: [523]; Amusement: [1000]; Love: [508]; Restraint: [547]
+----------
+Action: [Creator1C] applies [Air] on region [Earth] with value [-61]
+Action: [Creator4A] applies [Light] on region [Earth] with value [-10]
+Action: [Creator2B] applies [Amusement] on region [Earth] with value [-150]
+Action: [Creator1B] applies [Air] on region [Earth] with value [-150]
+Action: [Creator3A] applies [Air] on region [Earth] with value [-78]
+Action: [Creator2C] applies [Light] on region [Earth] with value [-51]
+Action: [Creator1A] applies [Air] on region [Earth] with value [-150]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+168]
+Action: [Creator3B] applies [Air] on region [Earth] with value [-84]
+Action: [Creator4B] applies [Amusement] on region [Earth] with value [-123]
+Action: [Creator2A] applies [Light] on region [Earth] with value [-150]
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+134]
+
+
+ROUND NUMBER 12
+Region [Earth]:
+	Population: [0]
+	Heat: [506]; Water: [572]; Light: [789]; Darkness: [550]; Earth: [890]
+	Air: [454]; Knowledge: [523]; Amusement: [727]; Love: [508]; Restraint: [547]
+----------
+Action: [Creator4B] applies [Light] on region [Earth] with value [-112]
+Action: [Creator2C] applies [Air] on region [Earth] with value [+87]
+Action: [Creator4A] applies [Light] on region [Earth] with value [-83]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-150]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-150]
+Action: [DestructorA] applies [Light] on region [Earth] with value [+175]
+Action: [DestructorB] applies [Amusement] on region [Earth] with value [+55]
+Action: [Creator3B] applies [Air] on region [Earth] with value [+38]
+Action: [Creator3A] applies [Air] on region [Earth] with value [+104]
+Action: [Creator1C] applies [Air] on region [Earth] with value [+150]
+Action: [Creator2A] applies [Amusement] on region [Earth] with value [-150]
+Action: [Creator2B] applies [Light] on region [Earth] with value [-150]
+
+
+ROUND NUMBER 13
+Region [Earth]:
+	Population: [0]
+	Heat: [506]; Water: [572]; Light: [619]; Darkness: [550]; Earth: [590]
+	Air: [833]; Knowledge: [523]; Amusement: [632]; Love: [508]; Restraint: [547]
+----------
+Action: [Creator1B] applies [Air] on region [Earth] with value [-150]
+Action: [Creator1A] applies [Air] on region [Earth] with value [-150]
+Action: [Creator4A] applies [Fire] on region [Earth] with value [+35]
+Action: [Creator2C] applies [Air] on region [Earth] with value [-97]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+21]
+Action: [Creator1C] applies [Air] on region [Earth] with value [-59]
+Action: [Creator2A] applies [Amusement] on region [Earth] with value [-57]
+Action: [Creator2B] applies [Fire] on region [Earth] with value [-52]
+Action: [Creator3B] applies [Air] on region [Earth] with value [+35]
+Action: [DestructorB] applies [Light] on region [Earth] with value [+199]
+Action: [Creator4B] applies [Fire] on region [Earth] with value [+48]
+Action: [Creator3A] applies [Air] on region [Earth] with value [-5]
+
+
+ROUND NUMBER 14
+Region [Earth]:
+	Population: [0]
+	Heat: [537]; Water: [572]; Light: [818]; Darkness: [550]; Earth: [611]
+	Air: [407]; Knowledge: [523]; Amusement: [575]; Love: [508]; Restraint: [547]
+----------
+Action: [Creator1B] applies [Air] on region [Earth] with value [+168]
+Action: [Creator1A] applies [Air] on region [Earth] with value [+168]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+31]
+Action: [Creator1C] applies [Air] on region [Earth] with value [+52]
+Action: [Creator3A] applies [Air] on region [Earth] with value [+54]
+Action: [Creator2A] applies [Light] on region [Earth] with value [-150]
+Action: [Creator3B] applies [Air] on region [Earth] with value [+11]
+Action: [Creator4A] applies [Light] on region [Earth] with value [-41]
+Action: [Creator4B] applies [Light] on region [Earth] with value [-67]
+Action: [Creator2B] applies [Light] on region [Earth] with value [-150]
+Action: [DestructorB] applies [Light] on region [Earth] with value [+115]
+Action: [Creator2C] applies [Air] on region [Earth] with value [+159]
+
+
+ROUND NUMBER 15
+Region [Earth]:
+	Population: [0]
+	Heat: [537]; Water: [572]; Light: [525]; Darkness: [550]; Earth: [642]
+	Air: [1000]; Knowledge: [523]; Amusement: [575]; Love: [508]; Restraint: [547]
+----------
+Action: [Creator1A] applies [Air] on region [Earth] with value [-150]
+Action: [Creator1B] applies [Air] on region [Earth] with value [-150]
+Action: [Creator1C] applies [Air] on region [Earth] with value [-56]
+Action: [Creator3A] applies [Air] on region [Earth] with value [-60]
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+164]
+Action: [Creator3B] applies [Air] on region [Earth] with value [-53]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [+52]
+Action: [Creator2C] applies [Air] on region [Earth] with value [-66]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [+52]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-15]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+164]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [+22]
+
+
+ROUND NUMBER 16
+Region [Earth]:
+	Population: [0]
+	Heat: [537]; Water: [572]; Light: [525]; Darkness: [550]; Earth: [970]
+	Air: [465]; Knowledge: [634]; Amusement: [575]; Love: [508]; Restraint: [547]
+----------
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-59]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-150]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [+1]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-59]
+Action: [Creator1C] applies [Air] on region [Earth] with value [+34]
+Action: [Creator3A] applies [Air] on region [Earth] with value [+89]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-150]
+Action: [Creator2C] applies [Air] on region [Earth] with value [+19]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [-37]
+Action: [Creator3B] applies [Air] on region [Earth] with value [+12]
+Action: [DestructorA] applies [Knowledge] on region [Earth] with value [+131]
+Action: [DestructorB] applies [Knowledge] on region [Earth] with value [+182]
+
+
+ROUND NUMBER 17
+Region [Earth]:
+	Population: [0]
+	Heat: [537]; Water: [572]; Light: [525]; Darkness: [550]; Earth: [670]
+	Air: [619]; Knowledge: [793]; Amusement: [575]; Love: [508]; Restraint: [547]
+----------
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+36]
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [-121]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-95]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [-82]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-95]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [+32]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-77]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+76]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [+8]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [-83]
+
+
+ROUND NUMBER 18
+Region [Earth]:
+	Population: [0]
+	Heat: [537]; Water: [572]; Light: [525]; Darkness: [550]; Earth: [632]
+	Air: [619]; Knowledge: [130]; Amusement: [575]; Love: [508]; Restraint: [547]
+----------
+Action: [Creator1B] applies [Love] on region [Earth] with value [-9]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-57]
+Action: [DestructorA] applies [Air] on region [Earth] with value [+159]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [+250]
+Action: [DestructorB] applies [Air] on region [Earth] with value [+190]
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [+148]
+Action: [Creator3B] applies [Love] on region [Earth] with value [+67]
+Action: [Creator3A] applies [Love] on region [Earth] with value [+67]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [+33]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [+142]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [+21]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 19
+Region [Earth]:
+	Population: [0]
+	Heat: [537]; Water: [572]; Light: [525]; Darkness: [550]; Earth: [575]
+	Air: [968]; Knowledge: [974]; Amusement: [575]; Love: [633]; Restraint: [547]
+----------
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator1B] applies [Air] on region [Earth] with value [-150]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [-9]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [-112]
+Action: [Creator3B] applies [Air] on region [Earth] with value [-53]
+Action: [Creator3A] applies [Air] on region [Earth] with value [-90]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [-65]
+Action: [DestructorB] applies [Love] on region [Earth] with value [+122]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-9]
+Action: [Creator1A] applies [Air] on region [Earth] with value [-150]
+Action: [DestructorA] applies [Love] on region [Earth] with value [+224]
+
+
+ROUND NUMBER 20
+Region [Earth]:
+	Population: [0]
+	Heat: [537]; Water: [572]; Light: [525]; Darkness: [550]; Earth: [575]
+	Air: [525]; Knowledge: [479]; Amusement: [575]; Love: [979]; Restraint: [547]
+----------
+Action: [Creator3B] applies [Love] on region [Earth] with value [-150]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [+96]
+Action: [Creator1A] applies [Air] on region [Earth] with value [+50]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [+96]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-37]
+Action: [Creator2C] applies [Love] on region [Earth] with value [-46]
+Action: [DestructorA] applies [Knowledge] on region [Earth] with value [-64]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [+142]
+Action: [Creator1B] applies [Love] on region [Earth] with value [-36]
+Action: [DestructorB] applies [Water] on region [Earth] with value [-71]
+Action: [Creator3A] applies [Love] on region [Earth] with value [-150]
+Action: [Creator1C] applies [Love] on region [Earth] with value [-14]
+
+
+ROUND NUMBER 21
+Region [Earth]:
+	Population: [0]
+	Heat: [537]; Water: [501]; Light: [525]; Darkness: [550]; Earth: [575]
+	Air: [575]; Knowledge: [712]; Amusement: [575]; Love: [583]; Restraint: [547]
+----------
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [+9]
+Action: [DestructorB] applies [Love] on region [Earth] with value [+92]
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [-34]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [-127]
+Action: [DestructorA] applies [Knowledge] on region [Earth] with value [+91]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-137]
+Action: [Creator1B] applies [Water] on region [Earth] with value [+74]
+Action: [Creator3B] applies [Water] on region [Earth] with value [-32]
+Action: [Creator3A] applies [Restraint] on region [Earth] with value [+28]
+Action: [Creator1A] applies [Water] on region [Earth] with value [+74]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-137]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [+35]
+
+
+ROUND NUMBER 22
+Region [Earth]:
+	Population: [0]
+	Heat: [537]; Water: [617]; Light: [525]; Darkness: [550]; Earth: [575]
+	Air: [575]; Knowledge: [412]; Amusement: [575]; Love: [675]; Restraint: [575]
+----------
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [+39]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [+120]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [+74]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [+163]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [+163]
+Action: [Creator3B] applies [Love] on region [Earth] with value [-100]
+Action: [Creator3A] applies [Love] on region [Earth] with value [-100]
+Action: [DestructorA] applies [Love] on region [Earth] with value [+213]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [+18]
+Action: [DestructorB] applies [Love] on region [Earth] with value [+222]
+Action: [Creator1B] applies [Love] on region [Earth] with value [-2]
+Action: [Creator1A] applies [Water] on region [Earth] with value [-42]
+
+
+ROUND NUMBER 23
+Region [Earth]:
+	Population: [0]
+	Heat: [537]; Water: [575]; Light: [525]; Darkness: [550]; Earth: [575]
+	Air: [575]; Knowledge: [989]; Amusement: [575]; Love: [908]; Restraint: [575]
+----------
+Action: [Creator3A] applies [Love] on region [Earth] with value [-150]
+Action: [Creator1A] applies [Fire] on region [Earth] with value [+38]
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [-67]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [-55]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-150]
+Action: [DestructorB] applies [Water] on region [Earth] with value [-99]
+Action: [Creator3B] applies [Love] on region [Earth] with value [-150]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator1C] applies [Love] on region [Earth] with value [-97]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-105]
+Action: [Creator1B] applies [Love] on region [Earth] with value [-34]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [-39]
+
+
+ROUND NUMBER 24
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [476]; Light: [525]; Darkness: [550]; Earth: [536]
+	Air: [575]; Knowledge: [462]; Amusement: [575]; Love: [477]; Restraint: [575]
+----------
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [+71]
+Action: [Creator1B] applies [Water] on region [Earth] with value [+99]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [+113]
+Action: [Creator3B] applies [Water] on region [Earth] with value [+156]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [+113]
+Action: [DestructorB] applies [Light] on region [Earth] with value [-69]
+Action: [DestructorA] applies [Restraint] on region [Earth] with value [-67]
+Action: [Creator1A] applies [Water] on region [Earth] with value [+99]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [-45]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [+30]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [+15]
+Action: [Creator3A] applies [Love] on region [Earth] with value [+98]
+
+
+ROUND NUMBER 25
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [830]; Light: [456]; Darkness: [550]; Earth: [536]
+	Air: [575]; Knowledge: [759]; Amusement: [575]; Love: [575]; Restraint: [508]
+----------
+Action: [DestructorA] applies [Knowledge] on region [Earth] with value [+218]
+Action: [Creator4A] applies [Light] on region [Earth] with value [+1]
+Action: [Creator3B] applies [Light] on region [Earth] with value [+117]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator4B] applies [Light] on region [Earth] with value [+98]
+Action: [Creator2C] applies [Light] on region [Earth] with value [+85]
+Action: [Creator1B] applies [Water] on region [Earth] with value [-150]
+Action: [Creator1A] applies [Water] on region [Earth] with value [-150]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator3A] applies [Restraint] on region [Earth] with value [+67]
+Action: [DestructorB] applies [Knowledge] on region [Earth] with value [+196]
+Action: [Creator1C] applies [Light] on region [Earth] with value [+51]
+
+
+ROUND NUMBER 26
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [530]; Light: [808]; Darkness: [550]; Earth: [536]
+	Air: [575]; Knowledge: [873]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Creator4B] applies [Light] on region [Earth] with value [-23]
+Action: [Creator3B] applies [Light] on region [Earth] with value [-82]
+Action: [Creator2A] applies [Light] on region [Earth] with value [-150]
+Action: [DestructorB] applies [Light] on region [Earth] with value [+213]
+Action: [Creator1B] applies [Water] on region [Earth] with value [+45]
+Action: [Creator2C] applies [Light] on region [Earth] with value [-108]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [+13]
+Action: [Creator1A] applies [Water] on region [Earth] with value [+45]
+Action: [DestructorA] applies [Light] on region [Earth] with value [+204]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-33]
+Action: [Creator2B] applies [Light] on region [Earth] with value [-150]
+Action: [Creator1C] applies [Light] on region [Earth] with value [-85]
+
+
+ROUND NUMBER 27
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [620]; Light: [627]; Darkness: [550]; Earth: [549]
+	Air: [575]; Knowledge: [840]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [DestructorA] applies [Water] on region [Earth] with value [+140]
+Action: [Creator1A] applies [Water] on region [Earth] with value [-45]
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [-108]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-23]
+Action: [DestructorB] applies [Water] on region [Earth] with value [+140]
+Action: [Creator1B] applies [Water] on region [Earth] with value [-45]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [-12]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [+27]
+Action: [Creator3B] applies [Light] on region [Earth] with value [-10]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [-32]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-150]
+
+
+ROUND NUMBER 28
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [810]; Light: [617]; Darkness: [550]; Earth: [576]
+	Air: [575]; Knowledge: [365]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Creator3B] applies [Water] on region [Earth] with value [+44]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [+210]
+Action: [Creator1A] applies [Water] on region [Earth] with value [-150]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [+210]
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [+161]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+210]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [+5]
+Action: [Creator1B] applies [Water] on region [Earth] with value [-150]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [+129]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [+178]
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+19]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [+0]
+
+
+ROUND NUMBER 29
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [554]; Light: [617]; Darkness: [550]; Earth: [805]
+	Air: [575]; Knowledge: [1000]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Creator3B] applies [Earth] on region [Earth] with value [+22]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-34]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+89]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [-44]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-150]
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [-114]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-55]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [-24]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-150]
+Action: [DestructorB] applies [Light] on region [Earth] with value [+171]
+
+
+ROUND NUMBER 30
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [554]; Light: [788]; Darkness: [550]; Earth: [582]
+	Air: [575]; Knowledge: [463]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Creator3B] applies [Light] on region [Earth] with value [-88]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [+40]
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [+56]
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+45]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-6]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [+70]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+22]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [+128]
+Action: [Creator1B] applies [Light] on region [Earth] with value [-79]
+Action: [Creator1A] applies [Water] on region [Earth] with value [+21]
+Action: [Creator2B] applies [Light] on region [Earth] with value [-150]
+Action: [Creator2A] applies [Light] on region [Earth] with value [-150]
+
+
+ROUND NUMBER 31
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [321]; Darkness: [550]; Earth: [643]
+	Air: [575]; Knowledge: [757]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Creator3B] applies [Light] on region [Earth] with value [+109]
+Action: [Creator1C] applies [Light] on region [Earth] with value [+78]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-90]
+Action: [DestructorB] applies [Knowledge] on region [Earth] with value [+78]
+Action: [Creator4B] applies [Light] on region [Earth] with value [+110]
+Action: [Creator2C] applies [Light] on region [Earth] with value [+33]
+Action: [Creator4A] applies [Light] on region [Earth] with value [+66]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-68]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+208]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-68]
+Action: [Creator2A] applies [Light] on region [Earth] with value [+250]
+Action: [Creator2B] applies [Light] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 32
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [1000]; Darkness: [550]; Earth: [625]
+	Air: [575]; Knowledge: [835]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Creator3B] applies [Light] on region [Earth] with value [+6]
+Action: [Creator2C] applies [Light] on region [Earth] with value [-127]
+Action: [Creator1C] applies [Light] on region [Earth] with value [-131]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-21]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-48]
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+28]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-50]
+Action: [Creator4B] applies [Light] on region [Earth] with value [-96]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-150]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+183]
+Action: [Creator2A] applies [Light] on region [Earth] with value [-150]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-50]
+
+
+ROUND NUMBER 33
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [496]; Darkness: [550]; Earth: [688]
+	Air: [575]; Knowledge: [664]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-113]
+Action: [DestructorA] applies [Knowledge] on region [Earth] with value [+187]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-89]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-12]
+Action: [Creator3B] applies [Light] on region [Earth] with value [-53]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-89]
+Action: [Creator4B] applies [Light] on region [Earth] with value [+61]
+Action: [Creator2C] applies [Earth] on region [Earth] with value [-24]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-113]
+Action: [Creator1C] applies [Earth] on region [Earth] with value [-47]
+Action: [DestructorB] applies [Knowledge] on region [Earth] with value [+145]
+Action: [Creator4A] applies [Light] on region [Earth] with value [-32]
+
+
+ROUND NUMBER 34
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [472]; Darkness: [550]; Earth: [379]
+	Air: [575]; Knowledge: [818]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Creator4A] applies [Light] on region [Earth] with value [+75]
+Action: [Creator2C] applies [Earth] on region [Earth] with value [+217]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [+196]
+Action: [DestructorA] applies [Knowledge] on region [Earth] with value [+71]
+Action: [Creator1C] applies [Earth] on region [Earth] with value [+134]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-18]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [+169]
+Action: [Creator4B] applies [Light] on region [Earth] with value [+63]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [+196]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-150]
+Action: [DestructorB] applies [Knowledge] on region [Earth] with value [+19]
+
+
+ROUND NUMBER 35
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [610]; Darkness: [550]; Earth: [1000]
+	Air: [575]; Knowledge: [608]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-150]
+Action: [DestructorB] applies [Knowledge] on region [Earth] with value [+166]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-24]
+Action: [Creator4A] applies [Light] on region [Earth] with value [-36]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-150]
+Action: [Creator4B] applies [Light] on region [Earth] with value [-16]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [-26]
+Action: [DestructorA] applies [Light] on region [Earth] with value [+76]
+Action: [Creator1C] applies [Earth] on region [Earth] with value [-117]
+Action: [Creator2C] applies [Earth] on region [Earth] with value [-48]
+Action: [Creator2A] applies [Light] on region [Earth] with value [-35]
+Action: [Creator2B] applies [Light] on region [Earth] with value [-35]
+
+
+ROUND NUMBER 36
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [550]; Earth: [485]
+	Air: [575]; Knowledge: [774]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-89]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [+131]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [-124]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-13]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-150]
+Action: [DestructorA] applies [Knowledge] on region [Earth] with value [+66]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [-29]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [+90]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [+90]
+Action: [DestructorB] applies [Knowledge] on region [Earth] with value [+204]
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [-59]
+
+
+ROUND NUMBER 37
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [550]; Earth: [783]
+	Air: [575]; Knowledge: [443]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Creator3A] applies [Earth] on region [Earth] with value [+36]
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+84]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [+62]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-150]
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [+36]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [+163]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [+132]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+49]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [-108]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [+132]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-150]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [+168]
+
+
+ROUND NUMBER 38
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [550]; Earth: [544]
+	Air: [575]; Knowledge: [1000]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [-79]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [-69]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [+24]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [+31]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-150]
+Action: [DestructorA] applies [Darkness] on region [Earth] with value [-60]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [+31]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [+32]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-39]
+Action: [DestructorB] applies [Love] on region [Earth] with value [-130]
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [-113]
+
+
+ROUND NUMBER 39
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [490]; Earth: [662]
+	Air: [575]; Knowledge: [400]; Amusement: [575]; Love: [445]; Restraint: [575]
+----------
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [+40]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [+16]
+Action: [Creator3B] applies [Love] on region [Earth] with value [+130]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [+175]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [+175]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-87]
+Action: [Creator3A] applies [Love] on region [Earth] with value [+130]
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+211]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+206]
+Action: [Creator1B] applies [Love] on region [Earth] with value [+21]
+Action: [Creator2C] applies [Knowledge] on region [Earth] with value [+141]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-7]
+
+
+ROUND NUMBER 40
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [490]; Earth: [992]
+	Air: [575]; Knowledge: [940]; Amusement: [575]; Love: [726]; Restraint: [575]
+----------
+Action: [Creator3B] applies [Love] on region [Earth] with value [-150]
+Action: [Creator2C] applies [Earth] on region [Earth] with value [-86]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-150]
+Action: [DestructorA] applies [Love] on region [Earth] with value [+66]
+Action: [Creator3A] applies [Love] on region [Earth] with value [-150]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator4A] applies [Darkness] on region [Earth] with value [-41]
+Action: [Creator4B] applies [Darkness] on region [Earth] with value [-34]
+Action: [Creator1C] applies [Knowledge] on region [Earth] with value [-111]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-150]
+Action: [DestructorB] applies [Love] on region [Earth] with value [+52]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-150]
+
+
+ROUND NUMBER 41
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [415]; Earth: [606]
+	Air: [575]; Knowledge: [529]; Amusement: [575]; Love: [544]; Restraint: [575]
+----------
+Action: [Creator2A] applies [Darkness] on region [Earth] with value [+160]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-31]
+Action: [Creator4B] applies [Darkness] on region [Earth] with value [-48]
+Action: [Creator1C] applies [Darkness] on region [Earth] with value [+25]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-43]
+Action: [Creator2B] applies [Darkness] on region [Earth] with value [+160]
+Action: [Creator4A] applies [Darkness] on region [Earth] with value [+81]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [+3]
+Action: [Creator1B] applies [Darkness] on region [Earth] with value [+80]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+201]
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+94]
+Action: [Creator2C] applies [Darkness] on region [Earth] with value [+59]
+
+
+ROUND NUMBER 42
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [932]; Earth: [830]
+	Air: [575]; Knowledge: [529]; Amusement: [575]; Love: [544]; Restraint: [575]
+----------
+Action: [Creator2C] applies [Earth] on region [Earth] with value [-129]
+Action: [Creator2B] applies [Darkness] on region [Earth] with value [-150]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-150]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [+29]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-88]
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+39]
+Action: [DestructorA] applies [Earth] on region [Earth] with value [+93]
+Action: [Creator4B] applies [Darkness] on region [Earth] with value [-45]
+Action: [Creator4A] applies [Darkness] on region [Earth] with value [+18]
+Action: [Creator2A] applies [Darkness] on region [Earth] with value [-150]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-150]
+Action: [Creator1C] applies [Earth] on region [Earth] with value [-66]
+
+
+ROUND NUMBER 43
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [605]; Earth: [408]
+	Air: [575]; Knowledge: [529]; Amusement: [575]; Love: [544]; Restraint: [575]
+----------
+Action: [Creator3A] applies [Earth] on region [Earth] with value [+96]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [+53]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [+46]
+Action: [Creator2C] applies [Earth] on region [Earth] with value [+98]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [+167]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [-11]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [+167]
+Action: [DestructorB] applies [Darkness] on region [Earth] with value [+110]
+Action: [DestructorA] applies [Darkness] on region [Earth] with value [+131]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [+66]
+Action: [Creator1C] applies [Earth] on region [Earth] with value [+41]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [+46]
+
+
+ROUND NUMBER 44
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [846]; Earth: [1000]
+	Air: [575]; Knowledge: [676]; Amusement: [575]; Love: [544]; Restraint: [575]
+----------
+Action: [Creator2C] applies [Earth] on region [Earth] with value [-73]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [-44]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [-51]
+Action: [Creator2B] applies [Darkness] on region [Earth] with value [-150]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-49]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-150]
+Action: [DestructorA] applies [Knowledge] on region [Earth] with value [+103]
+Action: [Creator1C] applies [Darkness] on region [Earth] with value [-78]
+Action: [Creator2A] applies [Darkness] on region [Earth] with value [-150]
+Action: [DestructorB] applies [Knowledge] on region [Earth] with value [+22]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-74]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-150]
+
+
+ROUND NUMBER 45
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [468]; Earth: [509]
+	Air: [575]; Knowledge: [701]; Amusement: [575]; Love: [544]; Restraint: [575]
+----------
+Action: [Creator2C] applies [Darkness] on region [Earth] with value [+56]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [+44]
+Action: [Creator4B] applies [Darkness] on region [Earth] with value [-13]
+Action: [DestructorA] applies [Knowledge] on region [Earth] with value [+155]
+Action: [Creator4A] applies [Darkness] on region [Earth] with value [+28]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-126]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [+82]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-126]
+Action: [Creator1B] applies [Darkness] on region [Earth] with value [-1]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [+66]
+Action: [Creator1C] applies [Darkness] on region [Earth] with value [+35]
+Action: [DestructorB] applies [Knowledge] on region [Earth] with value [+38]
+
+
+ROUND NUMBER 46
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [573]; Earth: [701]
+	Air: [575]; Knowledge: [642]; Amusement: [575]; Love: [544]; Restraint: [575]
+----------
+Action: [Creator3B] applies [Earth] on region [Earth] with value [-28]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-67]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-20]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [-8]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-67]
+Action: [DestructorB] applies [Knowledge] on region [Earth] with value [+64]
+Action: [DestructorA] applies [Knowledge] on region [Earth] with value [+112]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-126]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-126]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [-101]
+Action: [Creator1C] applies [Earth] on region [Earth] with value [-80]
+Action: [Creator2C] applies [Earth] on region [Earth] with value [-39]
+
+
+ROUND NUMBER 47
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [573]; Earth: [201]
+	Air: [575]; Knowledge: [656]; Amusement: [575]; Love: [544]; Restraint: [575]
+----------
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-81]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [+108]
+Action: [DestructorB] applies [Knowledge] on region [Earth] with value [+192]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [+250]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-81]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [+250]
+Action: [DestructorA] applies [Knowledge] on region [Earth] with value [+17]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [-72]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [+127]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [-68]
+Action: [Creator1C] applies [Earth] on region [Earth] with value [+59]
+Action: [Creator2C] applies [Earth] on region [Earth] with value [+217]
+
+
+ROUND NUMBER 48
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [573]; Earth: [1000]
+	Air: [575]; Knowledge: [563]; Amusement: [575]; Love: [544]; Restraint: [575]
+----------
+Action: [Creator2B] applies [Earth] on region [Earth] with value [+25]
+Action: [Creator4B] applies [Knowledge] on region [Earth] with value [+13]
+Action: [DestructorB] applies [Amusement] on region [Earth] with value [-29]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [+4]
+Action: [Creator1C] applies [Earth] on region [Earth] with value [-49]
+Action: [Creator3A] applies [Earth] on region [Earth] with value [+36]
+Action: [Creator3B] applies [Earth] on region [Earth] with value [+4]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-150]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-150]
+Action: [DestructorA] applies [Restraint] on region [Earth] with value [-93]
+Action: [Creator2C] applies [Earth] on region [Earth] with value [-67]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [+12]
+
+
+ROUND NUMBER 49
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [573]; Earth: [624]
+	Air: [575]; Knowledge: [592]; Amusement: [546]; Love: [544]; Restraint: [482]
+----------
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+78]
+Action: [Creator1B] applies [Earth] on region [Earth] with value [-49]
+Action: [DestructorA] applies [Knowledge] on region [Earth] with value [+166]
+Action: [Creator4A] applies [Amusement] on region [Earth] with value [+40]
+Action: [Creator4B] applies [Restraint] on region [Earth] with value [+26]
+Action: [Creator3B] applies [Restraint] on region [Earth] with value [+93]
+Action: [Creator2A] applies [Amusement] on region [Earth] with value [+29]
+Action: [Creator3A] applies [Restraint] on region [Earth] with value [+93]
+Action: [Creator2C] applies [Restraint] on region [Earth] with value [+11]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-49]
+Action: [Creator1C] applies [Restraint] on region [Earth] with value [+46]
+Action: [Creator2B] applies [Amusement] on region [Earth] with value [+29]
+
+
+ROUND NUMBER 50
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [573]; Earth: [604]
+	Air: [575]; Knowledge: [758]; Amusement: [644]; Love: [544]; Restraint: [751]
+----------
+Action: [Creator4B] applies [Restraint] on region [Earth] with value [-121]
+Action: [Creator1B] applies [Restraint] on region [Earth] with value [-7]
+Action: [Creator3A] applies [Restraint] on region [Earth] with value [-150]
+Action: [Creator2A] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator1A] applies [Earth] on region [Earth] with value [-29]
+Action: [Creator2B] applies [Knowledge] on region [Earth] with value [-150]
+Action: [Creator1C] applies [Restraint] on region [Earth] with value [-52]
+Action: [Creator4A] applies [Knowledge] on region [Earth] with value [+33]
+Action: [Creator3B] applies [Restraint] on region [Earth] with value [-150]
+Action: [DestructorB] applies [Earth] on region [Earth] with value [+140]
+Action: [Creator2C] applies [Restraint] on region [Earth] with value [-12]
+Action: [DestructorA] applies [Amusement] on region [Earth] with value [+38]
+
+
+SIMULATION FINISHED AFTER 50 ROUNDS
+Region [Earth]:
+	Population: [0]
+	Heat: [575]; Water: [575]; Light: [564]; Darkness: [573]; Earth: [715]
+	Air: [575]; Knowledge: [491]; Amusement: [682]; Love: [544]; Restraint: [259]

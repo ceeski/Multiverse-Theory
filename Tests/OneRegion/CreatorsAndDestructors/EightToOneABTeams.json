@@ -1,0 +1,281 @@
+{
+  "time": {
+    "numberOfTurns": 50,
+    "pathToLogFile": "./TestResults/OneRegion/CreatorsAndDestructors/EightToOneABTeams.txt"
+  },
+  "regions": [
+    {
+      "name":  "Earth",
+      "population": 1000,
+
+      "heatResource":  600,
+      "waterResource": 600,
+
+      "lightResource":  600,
+      "darknessResource": 600,
+
+      "earthResource":  600,
+      "airResource": 600,
+
+      "knowledgeResource":  600,
+      "amusementResource": 600,
+
+      "loveResource":  600,
+      "restraintResource": 600
+    }
+  ],
+  "gods": [
+    {
+      "name": "Creator1A",
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 20,
+      "chanceToCooperatePercent":   50,
+
+      "knownGods": ["Creator2A", "Creator4A", "Creator3A"],
+      "knownRegions":  ["Earth"],
+
+      "maxSkillPoints": 100,
+
+      "fireSkill":  10,
+      "waterSkill": 10,
+
+      "lightSkill":  0,
+      "darknessSkill": 0,
+
+      "earthSkill":  10,
+      "airSkill": 10,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+	{
+      "name": "Creator2A",
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 20,
+      "chanceToCooperatePercent":   50,
+
+      "knownGods": ["Creator1A", "Creator4A", "Creator3A"],
+      "knownRegions":  ["Earth"],
+
+      "maxSkillPoints": 100,
+
+      "fireSkill":  0,
+      "waterSkill": 0,
+
+      "lightSkill":  10,
+      "darknessSkill": 10,
+
+      "earthSkill":  0,
+      "airSkill": 0,
+
+      "knowledgeSkill":  10,
+      "amusementSkill": 10,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+	{
+      "name": "Creator3A",
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 20,
+      "chanceToCooperatePercent":   50,
+
+      "knownGods": ["Creator1A", "Creator2A", "Creator4A"],
+      "knownRegions":  ["Earth"],
+
+      "maxSkillPoints": 100,
+
+      "fireSkill":  0,
+      "waterSkill": 0,
+
+      "lightSkill":  0,
+      "darknessSkill": 0,
+
+      "earthSkill":  5,
+      "airSkill": 5,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  10,
+      "restraintSkill": 10
+    },
+	{
+      "name": "Creator4A",
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 20,
+      "chanceToCooperatePercent":   50,
+
+      "knownGods": ["Creator1A", "Creator2A", "Creator3A"],
+      "knownRegions":  ["Earth"],
+
+      "maxSkillPoints": 100,
+
+      "fireSkill":  5,
+      "waterSkill": 5,
+
+      "lightSkill":  5,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 0,
+
+      "knowledgeSkill":  5,
+      "amusementSkill": 5,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+	{
+      "name": "DestructorA",
+      "type": "Destructor",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 75,
+      "chanceToCooperatePercent":   75,
+
+      "knownGods": [],
+      "knownRegions":  ["Earth"],
+
+      "maxSkillPoints": 100,
+
+      "fireSkill":  7,
+      "waterSkill": 7,
+
+      "lightSkill":  7,
+      "darknessSkill": 7,
+
+      "earthSkill":  7,
+      "airSkill": 7,
+
+      "knowledgeSkill":  7,
+      "amusementSkill": 7,
+
+      "loveSkill":  7,
+      "restraintSkill": 7
+    },
+	{
+      "name": "Creator1B",
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 20,
+      "chanceToCooperatePercent":   50,
+
+      "knownGods": ["Creator1B", "Creator4B", "Creator3B"],
+      "knownRegions":  ["Earth"],
+
+      "maxSkillPoints": 100,
+
+      "fireSkill":  10,
+      "waterSkill": 10,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  10,
+      "airSkill": 10,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  5,
+      "restraintSkill": 0
+    },
+	{
+      "name": "Creator2B",
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 20,
+      "chanceToCooperatePercent":   50,
+
+      "knownGods": ["Creator1B", "Creator4B", "Creator3B"],
+      "knownRegions":  ["Earth"],
+
+      "maxSkillPoints": 100,
+
+      "fireSkill":  3,
+      "waterSkill": 3,
+
+      "lightSkill":  10,
+      "darknessSkill": 10,
+
+      "earthSkill":  0,
+      "airSkill": 2,
+
+      "knowledgeSkill":  10,
+      "amusementSkill": 10,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+	{
+      "name": "Creator3B",
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 20,
+      "chanceToCooperatePercent":   50,
+
+      "knownGods": ["Creator1B", "Creator2B", "Creator4B"],
+      "knownRegions":  ["Earth"],
+
+      "maxSkillPoints": 100,
+
+      "fireSkill":  0,
+      "waterSkill": 4,
+
+      "lightSkill":  4,
+      "darknessSkill": 0,
+
+      "earthSkill":  5,
+      "airSkill": 5,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  10,
+      "restraintSkill": 10
+    },
+	{
+      "name": "Creator4B",
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 20,
+      "chanceToCooperatePercent":   50,
+
+      "knownGods": ["Creator1B", "Creator2B", "Creator3B"],
+      "knownRegions":  ["Earth"],
+
+      "maxSkillPoints": 100,
+
+      "fireSkill":  7,
+      "waterSkill": 5,
+
+      "lightSkill":  7,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 0,
+
+      "knowledgeSkill":  5,
+      "amusementSkill": 7,
+
+      "loveSkill":  0,
+      "restraintSkill": 7
+    }
+  ]
+}
