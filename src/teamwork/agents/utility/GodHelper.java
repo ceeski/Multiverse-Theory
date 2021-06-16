@@ -84,7 +84,7 @@ public class GodHelper {
                 plannedValue = (int)((double)plannedValue * (1.0 + (double)precision/100.0));
                 break;
             case KNOWLEDGE:
-                maxAbsPrecision = 100 - 10 * god.getAmusementSkill();
+                maxAbsPrecision = 100 - 10 * god.getKnowledgeSkill();
                 precision = rnd.nextInt() % (2 * maxAbsPrecision + 1) - maxAbsPrecision;
                 plannedValue = (int)((double)plannedValue * (1.0 + (double)precision/100.0));
                 break;
