@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.lang.acl.ACLMessage;
 import jade.wrapper.StaleProxyException;
 import org.javatuples.Pair;
@@ -21,7 +22,10 @@ import teamwork.agents.wrappers.GodWrapper;
 import teamwork.agents.wrappers.ProtectorTurnInfoWrapper;
 import teamwork.agents.wrappers.RegionWrapper;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 
@@ -31,6 +35,7 @@ public class God extends Agent {
     private static final int BALANCE = 575; //Balance is slightly higher to represent the fact that people will use resources
     private static final int MAX = 1000;
     private static final int MIN = 0;
+    public boolean active = true;
 
     @Override
     protected void setup() {
@@ -275,13 +280,16 @@ public class God extends Agent {
             response.setOntology(settings.getType().toString());
             response.addReceiver(msg.getSender());
             response.setContent(_gson.toJson(new GodRegionWrapper(settings, knownRegions)));
+            Common.removeAgentFromDf(this);
             send(response);
         }
     }
 
     GodAction ProcessReplyTurn(ACLMessage msg) throws StaleProxyException {
+        Common.removeAgentFromDf(this);
         Gson _gson = new GsonBuilder().create();
         GodRegionWrapper tmp = (_gson.fromJson(msg.getContent(), GodRegionWrapper.class));
+        System.console().printf(this.settings.toString());
         this.getContainerController().createNewAgent(settings.getName()+tmp.getGod().getName(), "teamwork.agents.SuperGod", new Object[] {tmp, new AID[]{this.getAID(), msg.getSender()}});
         return new GodDoNothingAction(getLocalName());
     }
@@ -321,39 +329,49 @@ public class God extends Agent {
         @Override
         public void action() {
             ACLMessage msg = receive();
+            Random rnd = new Random();
 
             if(msg != null) {
                 //If message is not from time and god don't know the sender, add sender to known gods
-                if(!msg.getSender().getLocalName().equals("Time")) {
-                    if(settings.getKnownGods().stream().noneMatch(name -> name.equals(msg.getSender().getLocalName()))) {
+                if (!msg.getSender().getLocalName().equals("Time")) {
+                    if (settings.getKnownGods().stream().noneMatch(name -> name.equals(msg.getSender().getLocalName()))) {
                         settings.getKnownGods().add(msg.getSender().getLocalName());
                     }
                 }
 
-                switch(msg.getPerformative()) {
+                switch (msg.getPerformative()) {
                     case ACLMessage.REQUEST:
-                        if(msg.getOntology().equals("Initial Information"))
+                        if (msg.getOntology().equals("Initial Information"))
                             Common.responseWithInformationAbout(getAgent(), settings, msg);
                         break;
                     case ACLMessage.INFORM:
-                        if(msg.getOntology().startsWith("Your Turn"))
+                        if (msg.getOntology().startsWith("Your Turn"))
                             processTurn(msg);
                         break;
+
                     case ACLMessage.QUERY_IF:
                         ProcessQuery(msg);
+                    default:
                         break;
-                    case ACLMessage.ACCEPT_PROPOSAL:
+                }
+
+
+                if (settings != null && settings.getChanceToCooperatePercent() < 50) {
+                    ACLMessage message = new ACLMessage();
+                    message.setPerformative(ACLMessage.QUERY_IF);
+                    message.setOntology("good");
+                    DFAgentDescription[] godDescriptors = Common.findAgentsInDf(this.getAgent(), God.class);//(DFAgentDescription[]) Arrays.stream(Common.findAgentsInDf(this.getAgent(), God.class)).filter(i -> settings.getKnownGods().contains(i.getName())).toArray();
+                    message.addReceiver(godDescriptors[rnd.nextInt(godDescriptors.length)].getName());
+                    send(message);
+                    ACLMessage msg3 = receive();
+                    if (msg3 != null && msg3.getPerformative() == ACLMessage.ACCEPT_PROPOSAL)
                         try {
                             ProcessReplyTurn(msg);
                         } catch (StaleProxyException e) {
                             e.printStackTrace();
                         }
-                        break;
-                    default:
-                        break;
                 }
             }
-
             block();
         }
     };

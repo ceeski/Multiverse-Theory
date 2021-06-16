@@ -189,6 +189,7 @@ public class Time extends Agent {
             say("----------\n");
 
             //Step 2: Get gods order
+            getGodsAndRegionsInfo();
             var godsOrder = getGodsTurnOrder();
             System.out.println("Gods order:");
             StringBuilder list = new StringBuilder("\t");
@@ -197,6 +198,7 @@ public class Time extends Agent {
             System.out.println(list.toString());
 
             //Step 3: Ask each god to perform action
+            getGodsAndRegionsInfo();
             for(var god : godsOrder) {
                 //3.1: Build a message based on god's type
                 ACLMessage message = new ACLMessage(ACLMessage.INFORM);

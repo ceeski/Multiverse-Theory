@@ -10,7 +10,9 @@ public class GodRegionWrapper extends GodWrapper {
     }
     public GodRegionWrapper(GodWrapper gd, RegionWrapper[] regions) {
         this.god = gd;
-        this.regions = Arrays.asList(regions.clone());
+        if (regions != null) {
+            this.regions = Arrays.asList(regions.clone());
+        }
     }
 
     public GodWrapper getGod() {

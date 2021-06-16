@@ -7,6 +7,7 @@ import teamwork.agents.actions.GodInfluenceRegionAction;
 import teamwork.agents.enums.ElementType;
 import teamwork.agents.utility.Common;
 import teamwork.agents.wrappers.GodRegionWrapper;
+import teamwork.agents.wrappers.GodWrapper;
 import teamwork.agents.wrappers.RegionWrapper;
 
 import java.util.Collections;
@@ -14,15 +15,30 @@ import java.util.List;
 import java.util.Random;
 
 public class SuperGod extends God {
-    private GodRegionWrapper[] settings;
+    private GodWrapper settings;
+    private GodRegionWrapper[] holonSettings;
     private AID[] gods;
     private List<RegionWrapper> regions;
 
     @Override
     protected void setup() {
-        settings = (GodRegionWrapper[])getArguments()[0];
+        settings = holonSettings[0].getGod();
+        for(var element : holonSettings) {
+            settings.updateFireSkill(element.getFireSkill());
+            settings.updateWaterSkill(element.getWaterSkill());
+            settings.updateLightSkill(element.getLightSkill());
+            settings.updateDarknessSkill(element.getDarknessSkill());
+            settings.updateEarthSkill(element.getEarthSkill());
+            settings.updateAirSkill(element.getAirSkill());
+            settings.updateKnowledgeSkill(element.getKnowledgeSkill());
+            settings.updateAmusementSkill(element.getAmusementSkill());
+            settings.updateLoveSkill(element.getLoveSkill());
+            settings.updateRestraintSkill(element.getRestraintSkill());
+        }
+        settings.setName("Holon|"+this.getName());
+        holonSettings = (GodRegionWrapper[])getArguments()[0];
         gods = (AID[])getArguments()[1];
-        for (var s : settings) {
+        for (var s : holonSettings) {
             for (var r : s.getRegions()) {
                 regions.add(r);
             }
@@ -45,20 +61,8 @@ public class SuperGod extends God {
         Random rnd = new Random();
         if (min_population == 10000) //if all regions don't have any knownRegions
         {
-            //int regionIndex = rnd.nextInt(settings[godIndex].getKnownRegions().size());
+            //int regionIndex = rnd.nextInt(holonSettings[godIndex].getKnownRegions().size());
             regionName = regions.get(rnd.nextInt(regions.size()));
-        }
-        for(var element : settings) {
-            fire += element.getFireSkill();
-            water += element.getWaterSkill();
-            light += element.getLightSkill();
-            darkness += element.getDarknessSkill();
-            earth += element.getEarthSkill();
-            air += element.getAirSkill();
-            knowledge += element.getKnowledgeSkill();
-            amusement += element.getAmusementSkill();
-            love += element.getLoveSkill();
-            restraint += element.getRestraintSkill();
         }
         Pair<ElementType, Integer> pair = new Pair<>(ElementType.FIRE, fire);
 

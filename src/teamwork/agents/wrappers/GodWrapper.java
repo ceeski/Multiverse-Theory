@@ -5,6 +5,7 @@ import teamwork.agents.enums.GodType;
 import java.util.List;
 
 public class GodWrapper {
+    private Boolean separate;
     private String name;
     private GodType type;
 
@@ -35,7 +36,7 @@ public class GodWrapper {
     public GodWrapper() {
     }
 
-    public GodWrapper(String name, GodType type, int speed, int chanceToShareKnowledgePercent, int chanceToCooperatePercent, List<String> knownGods, List<String> knownRegions, int maxSkillPoints, int fireSkill, int waterSkill, int lightSkill, int darknessSkill, int earthSkill, int airSkill, int knowledgeSkill, int amusementSkill, int loveSkill, int restraintSkill) {
+    public GodWrapper(String name, GodType type, int speed, int chanceToShareKnowledgePercent, int chanceToCooperatePercent, List<String> knownGods, List<String> knownRegions, int maxSkillPoints, int fireSkill, int waterSkill, int lightSkill, int darknessSkill, int earthSkill, int airSkill, int knowledgeSkill, int amusementSkill, int loveSkill, int restraintSkill, boolean separate) {
         this.name = name;
         this.type = type;
         this.speed = speed;
@@ -54,6 +55,15 @@ public class GodWrapper {
         this.amusementSkill = amusementSkill;
         this.loveSkill = loveSkill;
         this.restraintSkill = restraintSkill;
+        this.separate = separate;
+    }
+
+    public Boolean getSeparate() {
+        return separate;
+    }
+
+    public void setSeparate(Boolean separate) {
+        this.separate = separate;
     }
 
     public String getName() {
@@ -128,12 +138,20 @@ public class GodWrapper {
         this.fireSkill = fireSkill;
     }
 
+    public void updateFireSkill(int fireSkill) {
+        this.fireSkill += fireSkill;
+    }
+
     public int getWaterSkill() {
         return waterSkill;
     }
 
     public void setWaterSkill(int waterSkill) {
         this.waterSkill = waterSkill;
+    }
+
+    public void updateWaterSkill(int waterSkill) {
+        this.waterSkill += waterSkill;
     }
 
     public int getLightSkill() {
@@ -144,12 +162,20 @@ public class GodWrapper {
         this.lightSkill = lightSkill;
     }
 
+    public void updateLightSkill(int lightSkill) {
+        this.lightSkill += lightSkill;
+    }
+
     public int getDarknessSkill() {
         return darknessSkill;
     }
 
     public void setDarknessSkill(int darknessSkill) {
         this.darknessSkill = darknessSkill;
+    }
+
+    public void updateDarknessSkill(int darknessSkill) {
+        this.darknessSkill += darknessSkill;
     }
 
     public int getEarthSkill() {
@@ -160,12 +186,20 @@ public class GodWrapper {
         this.earthSkill = earthSkill;
     }
 
+    public void updateEarthSkill(int earthSkill) {
+        this.earthSkill += earthSkill;
+    }
+
     public int getAirSkill() {
         return airSkill;
     }
 
     public void setAirSkill(int airSkill) {
         this.airSkill = airSkill;
+    }
+
+    public void updateAirSkill(int airSkill) {
+        this.airSkill += airSkill;
     }
 
     public int getKnowledgeSkill() {
@@ -176,12 +210,20 @@ public class GodWrapper {
         this.knowledgeSkill = knowledgeSkill;
     }
 
+    public void updateKnowledgeSkill(int knowledgeSkill) {
+        this.knowledgeSkill += knowledgeSkill;
+    }
+
     public int getAmusementSkill() {
         return amusementSkill;
     }
 
     public void setAmusementSkill(int amusementSkill) {
         this.amusementSkill = amusementSkill;
+    }
+
+    public void updateAmusementSkill(int amusementSkill) {
+        this.amusementSkill += amusementSkill;
     }
 
     public int getLoveSkill() {
@@ -192,11 +234,19 @@ public class GodWrapper {
         this.loveSkill = loveSkill;
     }
 
+    public void updateLoveSkill(int loveSkill) {
+        this.loveSkill += loveSkill;
+    }
+
     public int getRestraintSkill() {
         return restraintSkill;
     }
 
     public void setRestraintSkill(int restraintSkill) {
         this.restraintSkill = restraintSkill;
+    }
+
+    public void updateRestraintSkill(int restraintSkill) {
+        this.restraintSkill += restraintSkill;
     }
 }

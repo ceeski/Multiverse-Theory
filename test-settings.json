@@ -45,6 +45,7 @@
   ],
   "gods": [
     {
+      "separate": true,
       "name": "Poseidon",
       "type": "Creator",
 
@@ -73,6 +74,7 @@
       "restraintSkill": 0
     },
     {
+      "separate": true,
       "name": "Athena",
       "type": "Creator",
 
@@ -101,6 +103,7 @@
       "restraintSkill": 0
     },
     {
+      "separate": true,
       "name": "Hades",
       "type": "Destructor",
 
@@ -129,6 +132,7 @@
       "restraintSkill": 7
     },
     {
+      "separate": true,
       "name": "Hermes",
       "type": "Chaotic",
 

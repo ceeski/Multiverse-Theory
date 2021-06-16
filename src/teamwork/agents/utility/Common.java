@@ -34,6 +34,14 @@ public class Common {
      * Removes agent from DF
      * @param agent Agent to be removed
      */
+    /*public static void removeAgentFromDf(AID aid) {
+        try {
+            DFService.derer;
+        } catch(FIPAException e) {
+            e.printStackTrace();
+        }
+    }*/
+
     public static void removeAgentFromDf(Agent agent) {
         try {
             DFService.deregister(agent);
