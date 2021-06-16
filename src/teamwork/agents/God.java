@@ -217,7 +217,49 @@ public class God extends Agent {
      * Process turn of god that knows their regions state from the beginning of the turn and all previous gods influences in those regions in this turn (protector)
      */
     GodAction ProcessProtectorTurn(ProtectorTurnInfoWrapper info) {
-        return new GodDoNothingAction(getLocalName());
+        //Basically we look at all previous actions and calculate how much can we block each one of them - and block the one that will be blocked the most
+        var possibilities = GodHelper.getPossibleElementChanges(settings);
+
+        //Get list of all regions and resources that can be influenced in a way
+        //Triplet: (region name, element, actual resource value)
+        List< Triplet<String, ElementType, Integer> > changes = new ArrayList<>();
+        for(var change : info.getPreviousActions())
+            for(int i = 0; i < change.getElements().size(); i++)
+                changes.add(new Triplet<>(change.getRegionName(), change.getElements().get(i), change.getValues().get(i)));
+
+        if(changes.size() == 0)
+            return new GodDoNothingAction();
+
+        //Triplet: (region name, element, change) - sorted by change with higher change at the beginning
+        List< Triplet<String, ElementType, Integer> > possibleActions = changes.stream().map(entry -> {
+            ElementType element = entry.getValue1();
+            int resourceChange = entry.getValue2();
+            int change = 0;
+
+            if(resourceChange <= 0)  { //Negative change, so we want to add
+                if(possibilities.get(element).getValue1() + resourceChange < 0)
+                    change = possibilities.get(element).getValue1();
+                else
+                    change = -resourceChange;
+            } else { //Positive value, so we want to subtract
+                if(possibilities.get(element).getValue0() + resourceChange > 0)
+                    change = possibilities.get(element).getValue0();
+                else
+                    change = -resourceChange;
+            }
+            return new Triplet<>(entry.getValue0(), element, change);
+        }).sorted((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2()))).collect(Collectors.toList());
+
+        int maxPossibleChange = Math.abs(possibleActions.get(0).getValue2());
+
+        //We want to limit possible actions to only the ones with maximal (the same) change:
+        possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
+
+        //Now we will take random one of proposed ones
+        Random rand = new Random();
+        Triplet<String, ElementType, Integer> action = possibleActions.get(rand.nextInt(possibleActions.size()));
+        int finalChange = GodHelper.finalElementChange(action.getValue2(), action.getValue1(), settings);
+        return new GodInfluenceRegionAction(getLocalName(), action.getValue0(), Collections.singletonList(action.getValue1()), Collections.singletonList(finalChange));
     }
 
     /**

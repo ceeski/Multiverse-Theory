@@ -1,0 +1,555 @@
+ROUND NUMBER 1
+Region [Earth]:
+	Population: [1000]
+	Heat: [600]; Water: [600]; Light: [600]; Darkness: [600]; Earth: [600]
+	Air: [600]; Knowledge: [600]; Amusement: [600]; Love: [600]; Restraint: [600]
+----------
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [-25]
+Action: [Almighty2] applies [Air] on region [Earth] with value [-25]
+Action: [Almighty1] applies [Darkness] on region [Earth] with value [+19]
+
+
+ROUND NUMBER 2
+Region [Earth]:
+	Population: [1652]
+	Heat: [547]; Water: [547]; Light: [547]; Darkness: [566]; Earth: [547]
+	Air: [522]; Knowledge: [547]; Amusement: [547]; Love: [547]; Restraint: [522]
+----------
+Action: [Almighty1] applies [Water] on region [Earth] with value [+28]
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+53]
+Action: [Almighty2] applies [Air] on region [Earth] with value [+53]
+
+
+ROUND NUMBER 3
+Region [Earth]:
+	Population: [3290]
+	Heat: [449]; Water: [477]; Light: [449]; Darkness: [468]; Earth: [449]
+	Air: [477]; Knowledge: [449]; Amusement: [449]; Love: [449]; Restraint: [477]
+----------
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+126]
+Action: [Almighty2] applies [Earth] on region [Earth] with value [+126]
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+126]
+
+
+ROUND NUMBER 4
+Region [Earth]:
+	Population: [6844]
+	Heat: [402]; Water: [304]; Light: [276]; Darkness: [295]; Earth: [402]
+	Air: [304]; Knowledge: [276]; Amusement: [402]; Love: [276]; Restraint: [304]
+----------
+Action: [Almighty1] applies [Light] on region [Earth] with value [+250]
+Action: [Almighty2] applies [Knowledge] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 5
+Region [Earth]:
+	Population: [9244]
+	Heat: [191]; Water: [93]; Light: [315]; Darkness: [84]; Earth: [191]
+	Air: [93]; Knowledge: [315]; Amusement: [191]; Love: [65]; Restraint: [343]
+----------
+Action: [Almighty3] applies [Love] on region [Earth] with value [+250]
+Action: [Almighty2] applies [Air] on region [Earth] with value [+250]
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 6
+Region [Earth]:
+	Population: [643]
+	Heat: [437]; Water: [72]; Light: [294]; Darkness: [63]; Earth: [170]
+	Air: [322]; Knowledge: [294]; Amusement: [170]; Love: [294]; Restraint: [322]
+----------
+Action: [Almighty2] applies [Knowledge] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Love] on region [Earth] with value [+250]
+Action: [Almighty1] applies [Light] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 7
+Region [Earth]:
+	Population: [28]
+	Heat: [437]; Water: [72]; Light: [636]; Darkness: [63]; Earth: [170]
+	Air: [322]; Knowledge: [544]; Amusement: [170]; Love: [544]; Restraint: [322]
+----------
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+250]
+Action: [Almighty2] applies [Air] on region [Earth] with value [+250]
+Action: [Almighty1] applies [Water] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 8
+Region [Earth]:
+	Population: [4]
+	Heat: [437]; Water: [322]; Light: [636]; Darkness: [63]; Earth: [170]
+	Air: [572]; Knowledge: [544]; Amusement: [170]; Love: [544]; Restraint: [572]
+----------
+Action: [Almighty2] applies [Earth] on region [Earth] with value [+250]
+Action: [Almighty1] applies [Water] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 9
+Region [Earth]:
+	Population: [2]
+	Heat: [437]; Water: [572]; Light: [636]; Darkness: [63]; Earth: [420]
+	Air: [572]; Knowledge: [544]; Amusement: [420]; Love: [544]; Restraint: [572]
+----------
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+155]
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+138]
+Action: [Almighty2] applies [Darkness] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 10
+Region [Earth]:
+	Population: [3]
+	Heat: [575]; Water: [572]; Light: [636]; Darkness: [313]; Earth: [420]
+	Air: [572]; Knowledge: [544]; Amusement: [575]; Love: [544]; Restraint: [572]
+----------
+Action: [Almighty1] applies [Light] on region [Earth] with value [-61]
+Action: [Almighty3] applies [Love] on region [Earth] with value [+31]
+Action: [Almighty2] applies [Darkness] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 11
+Region [Earth]:
+	Population: [5]
+	Heat: [575]; Water: [572]; Light: [575]; Darkness: [563]; Earth: [420]
+	Air: [572]; Knowledge: [544]; Amusement: [575]; Love: [575]; Restraint: [572]
+----------
+Action: [Almighty2] applies [Earth] on region [Earth] with value [+155]
+Action: [Almighty1] applies [Water] on region [Earth] with value [+3]
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+3]
+
+
+ROUND NUMBER 12
+Region [Earth]:
+	Population: [9]
+	Heat: [575]; Water: [575]; Light: [575]; Darkness: [563]; Earth: [575]
+	Air: [572]; Knowledge: [544]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+0]
+Action: [Almighty2] applies [Knowledge] on region [Earth] with value [+31]
+Action: [Almighty3] applies [Fire] on region [Earth] with value [+0]
+
+
+ROUND NUMBER 13
+Region [Earth]:
+	Population: [16]
+	Heat: [575]; Water: [575]; Light: [575]; Darkness: [563]; Earth: [575]
+	Air: [572]; Knowledge: [575]; Amusement: [575]; Love: [575]; Restraint: [575]
+----------
+Action: [Almighty3] applies [Darkness] on region [Earth] with value [+0]
+Action: [Almighty2] applies [Darkness] on region [Earth] with value [+12]
+Action: [Almighty1] applies [Knowledge] on region [Earth] with value [+0]
+
+
+ROUND NUMBER 14
+Region [Earth]:
+	Population: [29]
+	Heat: [574]; Water: [574]; Light: [574]; Darkness: [574]; Earth: [574]
+	Air: [571]; Knowledge: [574]; Amusement: [574]; Love: [574]; Restraint: [574]
+----------
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+1]
+Action: [Almighty2] applies [Air] on region [Earth] with value [+4]
+Action: [Almighty3] applies [Love] on region [Earth] with value [+1]
+
+
+ROUND NUMBER 15
+Region [Earth]:
+	Population: [53]
+	Heat: [574]; Water: [573]; Light: [573]; Darkness: [573]; Earth: [573]
+	Air: [574]; Knowledge: [573]; Amusement: [573]; Love: [574]; Restraint: [573]
+----------
+Action: [Almighty2] applies [Earth] on region [Earth] with value [+2]
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+2]
+Action: [Almighty1] applies [Light] on region [Earth] with value [+2]
+
+
+ROUND NUMBER 16
+Region [Earth]:
+	Population: [97]
+	Heat: [571]; Water: [570]; Light: [572]; Darkness: [570]; Earth: [572]
+	Air: [571]; Knowledge: [570]; Amusement: [572]; Love: [571]; Restraint: [570]
+----------
+Action: [Almighty2] applies [Knowledge] on region [Earth] with value [+5]
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+5]
+Action: [Almighty1] applies [Water] on region [Earth] with value [+5]
+
+
+ROUND NUMBER 17
+Region [Earth]:
+	Population: [180]
+	Heat: [565]; Water: [569]; Light: [566]; Darkness: [564]; Earth: [566]
+	Air: [565]; Knowledge: [569]; Amusement: [566]; Love: [565]; Restraint: [569]
+----------
+Action: [Almighty3] applies [Love] on region [Earth] with value [+10]
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+10]
+Action: [Almighty2] applies [Darkness] on region [Earth] with value [+11]
+
+
+ROUND NUMBER 18
+Region [Earth]:
+	Population: [338]
+	Heat: [564]; Water: [558]; Light: [555]; Darkness: [564]; Earth: [555]
+	Air: [554]; Knowledge: [558]; Amusement: [555]; Love: [564]; Restraint: [558]
+----------
+Action: [Almighty1] applies [Light] on region [Earth] with value [+20]
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+20]
+Action: [Almighty2] applies [Air] on region [Earth] with value [+21]
+
+
+ROUND NUMBER 19
+Region [Earth]:
+	Population: [650]
+	Heat: [542]; Water: [536]; Light: [553]; Darkness: [542]; Earth: [533]
+	Air: [553]; Knowledge: [536]; Amusement: [553]; Love: [542]; Restraint: [536]
+----------
+Action: [Almighty1] applies [Water] on region [Earth] with value [+39]
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+39]
+Action: [Almighty2] applies [Earth] on region [Earth] with value [+42]
+
+
+ROUND NUMBER 20
+Region [Earth]:
+	Population: [1310]
+	Heat: [500]; Water: [533]; Light: [511]; Darkness: [500]; Earth: [533]
+	Air: [511]; Knowledge: [494]; Amusement: [511]; Love: [500]; Restraint: [533]
+----------
+Action: [Almighty3] applies [Love] on region [Earth] with value [+75]
+Action: [Almighty2] applies [Knowledge] on region [Earth] with value [+81]
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+75]
+
+
+ROUND NUMBER 21
+Region [Earth]:
+	Population: [2882]
+	Heat: [488]; Water: [446]; Light: [424]; Darkness: [413]; Earth: [446]
+	Air: [424]; Knowledge: [488]; Amusement: [424]; Love: [488]; Restraint: [446]
+----------
+Action: [Almighty2] applies [Darkness] on region [Earth] with value [+162]
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+151]
+Action: [Almighty1] applies [Light] on region [Earth] with value [+151]
+
+
+ROUND NUMBER 22
+Region [Earth]:
+	Population: [5938]
+	Heat: [332]; Water: [290]; Light: [419]; Darkness: [419]; Earth: [290]
+	Air: [268]; Knowledge: [332]; Amusement: [419]; Love: [332]; Restraint: [290]
+----------
+Action: [Almighty2] applies [Air] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+250]
+Action: [Almighty1] applies [Water] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 23
+Region [Earth]:
+	Population: [9142]
+	Heat: [123]; Water: [331]; Light: [210]; Darkness: [210]; Earth: [81]
+	Air: [309]; Knowledge: [123]; Amusement: [210]; Love: [123]; Restraint: [331]
+----------
+Action: [Almighty2] applies [Darkness] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+250]
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 24
+Region [Earth]:
+	Population: [630]
+	Heat: [352]; Water: [310]; Light: [189]; Darkness: [439]; Earth: [60]
+	Air: [288]; Knowledge: [102]; Amusement: [439]; Love: [102]; Restraint: [310]
+----------
+Action: [Almighty1] applies [Light] on region [Earth] with value [+250]
+Action: [Almighty2] applies [Air] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Love] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 25
+Region [Earth]:
+	Population: [96]
+	Heat: [349]; Water: [307]; Light: [436]; Darkness: [436]; Earth: [57]
+	Air: [635]; Knowledge: [99]; Amusement: [436]; Love: [349]; Restraint: [307]
+----------
+Action: [Almighty1] applies [Water] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+250]
+Action: [Almighty2] applies [Earth] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 26
+Region [Earth]:
+	Population: [57]
+	Heat: [348]; Water: [556]; Light: [435]; Darkness: [435]; Earth: [306]
+	Air: [634]; Knowledge: [98]; Amusement: [435]; Love: [348]; Restraint: [556]
+----------
+Action: [Almighty2] applies [Knowledge] on region [Earth] with value [+250]
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+227]
+Action: [Almighty3] applies [Love] on region [Earth] with value [+227]
+
+
+ROUND NUMBER 27
+Region [Earth]:
+	Population: [95]
+	Heat: [572]; Water: [553]; Light: [432]; Darkness: [432]; Earth: [303]
+	Air: [631]; Knowledge: [345]; Amusement: [432]; Love: [572]; Restraint: [553]
+----------
+Action: [Almighty2] applies [Earth] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+143]
+Action: [Almighty1] applies [Light] on region [Earth] with value [+143]
+
+
+ROUND NUMBER 28
+Region [Earth]:
+	Population: [169]
+	Heat: [567]; Water: [548]; Light: [570]; Darkness: [427]; Earth: [548]
+	Air: [626]; Knowledge: [340]; Amusement: [570]; Love: [567]; Restraint: [548]
+----------
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+27]
+Action: [Almighty1] applies [Water] on region [Earth] with value [+27]
+Action: [Almighty2] applies [Knowledge] on region [Earth] with value [+235]
+
+
+ROUND NUMBER 29
+Region [Earth]:
+	Population: [310]
+	Heat: [557]; Water: [565]; Light: [560]; Darkness: [417]; Earth: [538]
+	Air: [616]; Knowledge: [565]; Amusement: [560]; Love: [557]; Restraint: [565]
+----------
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+18]
+Action: [Almighty3] applies [Love] on region [Earth] with value [+18]
+Action: [Almighty2] applies [Darkness] on region [Earth] with value [+158]
+
+
+ROUND NUMBER 30
+Region [Earth]:
+	Population: [583]
+	Heat: [556]; Water: [546]; Light: [541]; Darkness: [556]; Earth: [519]
+	Air: [597]; Knowledge: [546]; Amusement: [541]; Love: [556]; Restraint: [546]
+----------
+Action: [Almighty2] applies [Earth] on region [Earth] with value [+56]
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+34]
+Action: [Almighty1] applies [Light] on region [Earth] with value [+34]
+
+
+ROUND NUMBER 31
+Region [Earth]:
+	Population: [1131]
+	Heat: [519]; Water: [509]; Light: [538]; Darkness: [519]; Earth: [538]
+	Air: [560]; Knowledge: [509]; Amusement: [538]; Love: [519]; Restraint: [509]
+----------
+Action: [Almighty1] applies [Water] on region [Earth] with value [+66]
+Action: [Almighty2] applies [Knowledge] on region [Earth] with value [+66]
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+66]
+
+
+ROUND NUMBER 32
+Region [Earth]:
+	Population: [2377]
+	Heat: [445]; Water: [501]; Light: [464]; Darkness: [445]; Earth: [464]
+	Air: [486]; Knowledge: [501]; Amusement: [464]; Love: [445]; Restraint: [501]
+----------
+Action: [Almighty2] applies [Darkness] on region [Earth] with value [+130]
+Action: [Almighty3] applies [Love] on region [Earth] with value [+130]
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+130]
+
+
+ROUND NUMBER 33
+Region [Earth]:
+	Population: [5246]
+	Heat: [433]; Water: [359]; Light: [322]; Darkness: [433]; Earth: [322]
+	Air: [344]; Knowledge: [359]; Amusement: [322]; Love: [433]; Restraint: [359]
+----------
+Action: [Almighty1] applies [Light] on region [Earth] with value [+250]
+Action: [Almighty2] applies [Earth] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 34
+Region [Earth]:
+	Population: [8548]
+	Heat: [232]; Water: [158]; Light: [371]; Darkness: [232]; Earth: [371]
+	Air: [143]; Knowledge: [158]; Amusement: [371]; Love: [232]; Restraint: [158]
+----------
+Action: [Almighty1] applies [Water] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+250]
+Action: [Almighty2] applies [Darkness] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 35
+Region [Earth]:
+	Population: [2213]
+	Heat: [163]; Water: [339]; Light: [302]; Darkness: [413]; Earth: [302]
+	Air: [74]; Knowledge: [89]; Amusement: [302]; Love: [163]; Restraint: [339]
+----------
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Love] on region [Earth] with value [+250]
+Action: [Almighty2] applies [Earth] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 36
+Region [Earth]:
+	Population: [334]
+	Heat: [402]; Water: [328]; Light: [291]; Darkness: [402]; Earth: [606]
+	Air: [63]; Knowledge: [78]; Amusement: [291]; Love: [402]; Restraint: [328]
+----------
+Action: [Almighty2] applies [Air] on region [Earth] with value [+250]
+Action: [Almighty1] applies [Light] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 37
+Region [Earth]:
+	Population: [159]
+	Heat: [397]; Water: [323]; Light: [536]; Darkness: [397]; Earth: [601]
+	Air: [308]; Knowledge: [73]; Amusement: [591]; Love: [397]; Restraint: [323]
+----------
+Action: [Almighty2] applies [Knowledge] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+250]
+Action: [Almighty1] applies [Water] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 38
+Region [Earth]:
+	Population: [252]
+	Heat: [389]; Water: [565]; Light: [528]; Darkness: [389]; Earth: [593]
+	Air: [300]; Knowledge: [315]; Amusement: [583]; Love: [389]; Restraint: [565]
+----------
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+186]
+Action: [Almighty3] applies [Love] on region [Earth] with value [+186]
+Action: [Almighty2] applies [Knowledge] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 39
+Region [Earth]:
+	Population: [437]
+	Heat: [561]; Water: [551]; Light: [514]; Darkness: [375]; Earth: [579]
+	Air: [286]; Knowledge: [551]; Amusement: [569]; Love: [561]; Restraint: [551]
+----------
+Action: [Almighty2] applies [Air] on region [Earth] with value [+250]
+Action: [Almighty1] applies [Light] on region [Earth] with value [+61]
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+24]
+
+
+ROUND NUMBER 40
+Region [Earth]:
+	Population: [826]
+	Heat: [534]; Water: [524]; Light: [548]; Darkness: [348]; Earth: [552]
+	Air: [509]; Knowledge: [524]; Amusement: [542]; Love: [534]; Restraint: [548]
+----------
+Action: [Almighty2] applies [Darkness] on region [Earth] with value [+227]
+Action: [Almighty3] applies [Love] on region [Earth] with value [+41]
+Action: [Almighty1] applies [Water] on region [Earth] with value [+51]
+
+
+ROUND NUMBER 41
+Region [Earth]:
+	Population: [1715]
+	Heat: [479]; Water: [520]; Light: [493]; Darkness: [520]; Earth: [497]
+	Air: [454]; Knowledge: [469]; Amusement: [487]; Love: [520]; Restraint: [493]
+----------
+Action: [Almighty2] applies [Air] on region [Earth] with value [+121]
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+96]
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+88]
+
+
+ROUND NUMBER 42
+Region [Earth]:
+	Population: [3815]
+	Heat: [464]; Water: [409]; Light: [382]; Darkness: [409]; Earth: [386]
+	Air: [464]; Knowledge: [358]; Amusement: [464]; Love: [409]; Restraint: [382]
+----------
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+193]
+Action: [Almighty1] applies [Light] on region [Earth] with value [+193]
+Action: [Almighty2] applies [Knowledge] on region [Earth] with value [+217]
+
+
+ROUND NUMBER 43
+Region [Earth]:
+	Population: [7089]
+	Heat: [287]; Water: [232]; Light: [398]; Darkness: [232]; Earth: [209]
+	Air: [287]; Knowledge: [398]; Amusement: [287]; Love: [232]; Restraint: [398]
+----------
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+250]
+Action: [Almighty2] applies [Earth] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 44
+Region [Earth]:
+	Population: [5007]
+	Heat: [400]; Water: [95]; Light: [261]; Darkness: [95]; Earth: [322]
+	Air: [150]; Knowledge: [261]; Amusement: [400]; Love: [95]; Restraint: [261]
+----------
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+250]
+Action: [Almighty2] applies [Darkness] on region [Earth] with value [+250]
+Action: [Almighty1] applies [Light] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 45
+Region [Earth]:
+	Population: [489]
+	Heat: [384]; Water: [79]; Light: [495]; Darkness: [329]; Earth: [306]
+	Air: [134]; Knowledge: [245]; Amusement: [384]; Love: [79]; Restraint: [507]
+----------
+Action: [Almighty3] applies [Love] on region [Earth] with value [+250]
+Action: [Almighty1] applies [Water] on region [Earth] with value [+250]
+Action: [Almighty2] applies [Knowledge] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 46
+Region [Earth]:
+	Population: [368]
+	Heat: [372]; Water: [317]; Light: [483]; Darkness: [317]; Earth: [294]
+	Air: [122]; Knowledge: [483]; Amusement: [372]; Love: [317]; Restraint: [495]
+----------
+Action: [Almighty1] applies [Water] on region [Earth] with value [+250]
+Action: [Almighty2] applies [Air] on region [Earth] with value [+250]
+Action: [Almighty3] applies [Love] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 47
+Region [Earth]:
+	Population: [602]
+	Heat: [352]; Water: [547]; Light: [463]; Darkness: [297]; Earth: [274]
+	Air: [352]; Knowledge: [463]; Amusement: [352]; Love: [547]; Restraint: [475]
+----------
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+223]
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+223]
+Action: [Almighty2] applies [Darkness] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 48
+Region [Earth]:
+	Population: [1020]
+	Heat: [542]; Water: [514]; Light: [430]; Darkness: [514]; Earth: [241]
+	Air: [319]; Knowledge: [430]; Amusement: [542]; Love: [514]; Restraint: [442]
+----------
+Action: [Almighty3] applies [Restraint] on region [Earth] with value [+133]
+Action: [Almighty1] applies [Light] on region [Earth] with value [+145]
+Action: [Almighty2] applies [Earth] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 49
+Region [Earth]:
+	Population: [2061]
+	Heat: [477]; Water: [449]; Light: [510]; Darkness: [449]; Earth: [426]
+	Air: [254]; Knowledge: [365]; Amusement: [477]; Love: [449]; Restraint: [510]
+----------
+Action: [Almighty1] applies [Water] on region [Earth] with value [+126]
+Action: [Almighty3] applies [Love] on region [Earth] with value [+126]
+Action: [Almighty2] applies [Air] on region [Earth] with value [+250]
+
+
+ROUND NUMBER 50
+Region [Earth]:
+	Population: [4280]
+	Heat: [356]; Water: [454]; Light: [389]; Darkness: [328]; Earth: [305]
+	Air: [383]; Knowledge: [244]; Amusement: [356]; Love: [454]; Restraint: [389]
+----------
+Action: [Almighty3] applies [Amusement] on region [Earth] with value [+219]
+Action: [Almighty1] applies [Fire] on region [Earth] with value [+219]
+Action: [Almighty2] applies [Knowledge] on region [Earth] with value [+250]
+
+
+SIMULATION FINISHED AFTER 50 ROUNDS
+Region [Earth]:
+	Population: [7101]
+	Heat: [398]; Water: [277]; Light: [212]; Darkness: [151]; Earth: [128]
+	Air: [206]; Knowledge: [317]; Amusement: [398]; Love: [277]; Restraint: [212]
