@@ -1,0 +1,85 @@
+{
+  "time": {
+    "numberOfTurns": 50,
+    "pathToLogFile": "./TestResults/OneRegion/CreatorsCooperating/two.txt"
+  },
+  "regions": [
+    {
+      "name":  "Earth",
+      "population": 1000,
+
+      "heatResource":  600,
+      "waterResource": 600,
+
+      "lightResource":  600,
+      "darknessResource": 600,
+
+      "earthResource":  600,
+      "airResource": 600,
+
+      "knowledgeResource":  600,
+      "amusementResource": 600,
+
+      "loveResource":  600,
+      "restraintResource": 600
+    }
+  ],
+  "gods": [
+    {
+      "name": "Almighty1",
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 0,
+      "chanceToCooperatePercent":   0,
+
+      "knownGods": ["Almighty2"],
+      "knownRegions":  ["Earth"],
+
+      "maxSkillPoints": 100,
+
+      "fireSkill":  10,
+      "waterSkill": 10,
+
+      "lightSkill":  10,
+      "darknessSkill": 10,
+
+      "earthSkill":  10,
+      "airSkill": 0,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+	{
+      "name": "Almighty2",
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 0,
+      "chanceToCooperatePercent":   0,
+
+      "knownGods": ["Almighty1"],
+      "knownRegions":  ["Earth"],
+
+      "maxSkillPoints": 100,
+
+      "fireSkill":  0,
+      "waterSkill": 0,
+
+      "lightSkill":  0,
+      "darknessSkill": 0,
+
+      "earthSkill":  0,
+      "airSkill": 10,
+
+      "knowledgeSkill":  10,
+      "amusementSkill": 10,
+
+      "loveSkill":  10,
+      "restraintSkill": 10
+    }
+  ]
+}
