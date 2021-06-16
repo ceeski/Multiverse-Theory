@@ -22,12 +22,13 @@ import teamwork.agents.wrappers.ProtectorTurnInfoWrapper;
 import teamwork.agents.wrappers.RegionWrapper;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class God extends Agent {
     private GodWrapper settings;
     RegionWrapper[] knownRegions;
-    private static final int BALANCE = 500;
+    private static final int BALANCE = 575; //Balance is slightly higher to represent the fact that people will use resources
     private static final int MAX = 1000;
     private static final int MIN = 0;
 
@@ -42,148 +43,141 @@ public class God extends Agent {
      * Processes turn of god that knows their regions state from the beginning of the turn (creator, Destructor, neutral)
      */
     GodAction ProcessGodTurn(RegionWrapper[] knownRegions) {
-        int numRegions = knownRegions.length;
-        //CREATOR wants to bring the most needy resource to BALANCE
-
-
         var possibilities = GodHelper.getPossibleElementChanges(settings);
+
+        //Get list of all regions and resources that can be influenced in a way
+        //Triplet: (region name, element, actual resource value)
+        List< Triplet<String, ElementType, Integer> > regionsElementsScores = new ArrayList<>();
+
+        for(var region : knownRegions) {
+            regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.FIRE, region.getHeatResource()));
+            regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.WATER, region.getWaterResource()));
+            regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.LIGHT, region.getLightResource()));
+            regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.DARKNESS, region.getDarknessResource()));
+            regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.EARTH, region.getEarthResource()));
+            regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.AIR, region.getAirResource()));
+            regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.KNOWLEDGE, region.getKnowledgeResource()));
+            regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.AMUSEMENT, region.getAmusementResource()));
+            regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.LOVE, region.getLoveResource()));
+            regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.RESTRAINT, region.getRestraintResource()));
+        }
+
         if(settings.getType().equals(GodType.CREATOR)){
-            //CREATOR wants to bring the most needy resource to BALANCE
+            //Creator calculates all possible positive changes: if value < balance it tries to add as much as they can to reach balance
+            // if value > balance, it tries to subtract
 
-            //sort all regions' resource scores in descending order (resource's score is the distance between the resource's value and the BALANCE value, 500)
-            List<Triplet<String, ElementType, Integer>> regionsElementsScores = new ArrayList<>();
-            for(int i = 0; i < numRegions; i++){
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.FIRE,knownRegions[i].getHeatResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.WATER,knownRegions[i].getWaterResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.LIGHT,knownRegions[i].getLightResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.DARKNESS,knownRegions[i].getDarknessResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.EARTH,knownRegions[i].getEarthResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.AIR,knownRegions[i].getAirResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.KNOWLEDGE,knownRegions[i].getKnowledgeResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.AMUSEMENT,knownRegions[i].getAmusementResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.LOVE,knownRegions[i].getLoveResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.RESTRAINT,knownRegions[i].getRestraintResource()));
-            }
+            //Triplet: (region name, element, change) - sorted by change with higher change at the beginning
+            List< Triplet<String, ElementType, Integer> > possibleActions = regionsElementsScores.stream().map(entry -> {
+                ElementType element = entry.getValue1();
+                int resourceValue = entry.getValue2();
+                int change = 0;
 
-            //sort all regions' resource scores in descending order (resource's score is the distance between the resource's value and the BALANCE value, 500)
-            Collections.sort(regionsElementsScores, new Comparator<Triplet<String, ElementType, Integer>>() {
-                @Override
-                public int compare(Triplet<String, ElementType, Integer> o1, Triplet<String, ElementType, Integer> o2) {
-                    return ((Integer)Math.abs(o2.getValue2() - BALANCE)).compareTo((Integer)Math.abs(o1.getValue2() - BALANCE));
+                if (resourceValue <= BALANCE) { //Actual value <= balance, we want to add
+                    int maxChange = resourceValue + possibilities.get(element).getValue1();
+                    if (maxChange > BALANCE)
+                        change = BALANCE - resourceValue;
+                    else
+                        change = possibilities.get(element).getValue1();
+                } else { //Actual value > balance, we want to subtract
+                    int maxChange = resourceValue + possibilities.get(element).getValue0(); //Note - this number will be negative
+                    if (maxChange < BALANCE)
+                        change = BALANCE - resourceValue;
+                    else
+                        change = possibilities.get(element).getValue0();
                 }
-            });
+                return new Triplet<>(entry.getValue0(), element, change);
+            }).sorted((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2()))).collect(Collectors.toList());
 
-            //now let's see if the God is capable of bringing that value to BALANCE
+            int maxPossibleChange = Math.abs(possibleActions.get(0).getValue2());
 
-            for(var entry: regionsElementsScores){
-                var possibleChange = possibilities.get(entry.getValue1());
-                System.out.println(entry.getValue1() + ", possible change: [" + possibleChange.getValue0() + ", " + possibleChange.getValue1() + "]");
-                //if the God is capable to do so, and if the resource is not balanced already, the god applies the necessary change
-                if(entry.getValue2() + possibleChange.getValue0() <= BALANCE && entry.getValue2() + possibleChange.getValue1() >= BALANCE && entry.getValue2() != BALANCE){
-                    if(entry.getValue2() < BALANCE){
-                        var element = entry.getValue1();
-                        int finalValue = GodHelper.finalElementChange(BALANCE - entry.getValue2(), element, settings);
-                        return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
-                    }
-                    else {
-                        var element = entry.getValue1();
-                        int finalValue = GodHelper.finalElementChange(entry.getValue2() - BALANCE, element, settings);
-                        return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
-                    }
-                }
-                //otherwise, god looks at the next needy resource
-            }
+            //We want to limit possible actions to only the ones with maximal (the same) change:
+            possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
 
-            //otherwise, the god does nothing. It means that either god is not capable of balancing the resource, or all resources in all regions are balanced already
+            //Now we will take random one of proposed ones
+            Random rand = new Random();
+            Triplet<String, ElementType, Integer> action = possibleActions.get(rand.nextInt(possibleActions.size()));
+            int finalChange = GodHelper.finalElementChange(action.getValue2(), action.getValue1(), settings);
+            return new GodInfluenceRegionAction(getLocalName(), action.getValue0(), Collections.singletonList(action.getValue1()), Collections.singletonList(finalChange));
         }
         else if(settings.getType().equals(GodType.DESTRUCTOR)){
-            //DESTRUCTOR wants to unbalance the most balanced resource
+            //Destructor calculates all possible negative changes: if value > balance it tries to add as much as they can to reach balance
+            // if value < balance, it tries to subtract
 
-            List<Triplet<String, ElementType, Integer>> regionsElementsScores = new ArrayList<>();
-            for(int i = 0; i < numRegions; i++){
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.FIRE,knownRegions[i].getHeatResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.WATER,knownRegions[i].getWaterResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.LIGHT,knownRegions[i].getLightResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.DARKNESS,knownRegions[i].getDarknessResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.EARTH,knownRegions[i].getEarthResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.AIR,knownRegions[i].getAirResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.KNOWLEDGE,knownRegions[i].getKnowledgeResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.AMUSEMENT,knownRegions[i].getAmusementResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.LOVE,knownRegions[i].getLoveResource()));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.RESTRAINT,knownRegions[i].getRestraintResource()));
-            }
+            //Triplet: (region name, element, change) - sorted by change with higher change at the beginning
+            List< Triplet<String, ElementType, Integer> > possibleActions = regionsElementsScores.stream().map(entry -> {
+                ElementType element = entry.getValue1();
+                int resourceValue = entry.getValue2();
+                int change = 0;
 
-            //sort all regions' resource scores in ascending order (resource's score is the distance between the resource's value and the BALANCE value, 500)
-            Collections.sort(regionsElementsScores, new Comparator<Triplet<String, ElementType, Integer>>() {
-                @Override
-                public int compare(Triplet<String, ElementType, Integer> o1, Triplet<String, ElementType, Integer> o2) {
-                    return ((Integer)Math.abs(o1.getValue2() - BALANCE)).compareTo((Integer)Math.abs(o2.getValue2() - BALANCE));
+                if(resourceValue <= BALANCE) { //Actual value <= balance, we want to subtract
+                    int maxChange = resourceValue + possibilities.get(element).getValue0(); //Note - this number will be negative
+                    if(maxChange < MIN)
+                        change = MIN - resourceValue;
+                    else
+                        change = possibilities.get(element).getValue0();
+                } else { //Actual value > balance, we want to add
+                    int maxChange = resourceValue + possibilities.get(element).getValue1();
+                    if(maxChange > MAX)
+                        change = MAX - resourceValue;
+                    else
+                        change = possibilities.get(element).getValue1();
                 }
-            });
+                return new Triplet<>(entry.getValue0(), element, change);
+            }).sorted((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2()))).collect(Collectors.toList());
 
+            int maxPossibleChange = Math.abs(possibleActions.get(0).getValue2());
 
-            for(var entry: regionsElementsScores){
-                var possibleChange = possibilities.get(entry.getValue1());
-                //if the resource is to the right of BALANCE (larger than BALANCE), and god is capable to increase it even more
-                if(entry.getValue2() >= BALANCE && possibleChange.getValue1() > 0){
-                    var element = entry.getValue1();
-                    int finalValue = GodHelper.finalElementChange(possibleChange.getValue1(), element, settings);
-                    return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
-                }
-                //if the resource is to the left of BALANCE (smaller than BALANCE), and god is capable to reduce it even more
-                else if(entry.getValue2() < BALANCE && possibleChange.getValue0() < 0){
-                    var element = entry.getValue1();
-                    int finalValue = GodHelper.finalElementChange(possibleChange.getValue0(), element, settings);
-                    return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
-                }
-                //if he cannot unbalance the resource, the god looks at the next resource
-            }
+            //We want to limit possible actions to only the ones with maximal (the same) change:
+            possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
+
+            //Now we will take random one of proposed ones
+            Random rand = new Random();
+            Triplet<String, ElementType, Integer> action = possibleActions.get(rand.nextInt(possibleActions.size()));
+            int finalChange = GodHelper.finalElementChange(action.getValue2(), action.getValue1(), settings);
+            return new GodInfluenceRegionAction(getLocalName(), action.getValue0(), Collections.singletonList(action.getValue1()), Collections.singletonList(finalChange));
         }
-        else if(settings.getType().equals(GodType.NEUTRAL)){
-            //NEUTRAL wants to bring the least needy resource to BALANCE
-
-            //sort all regions' resource scores in ascending order (resource's score is the distance between the resource's value and the BALANCE value, 500)
-            List<Triplet<String, ElementType, Integer>> regionsElementsScores = new ArrayList<>();
-            for(int i = 0; i < numRegions; i++){
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.FIRE,Math.abs(knownRegions[i].getHeatResource() - BALANCE)));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.WATER,Math.abs(knownRegions[i].getWaterResource() - BALANCE)));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.LIGHT,Math.abs(knownRegions[i].getLightResource() - BALANCE)));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.DARKNESS,Math.abs(knownRegions[i].getDarknessResource() - BALANCE)));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.EARTH,Math.abs(knownRegions[i].getEarthResource() - BALANCE)));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.AIR,Math.abs(knownRegions[i].getAirResource() - BALANCE)));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.KNOWLEDGE,Math.abs(knownRegions[i].getKnowledgeResource() - BALANCE)));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.AMUSEMENT,Math.abs(knownRegions[i].getAmusementResource() - BALANCE)));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.LOVE,Math.abs(knownRegions[i].getLoveResource() - BALANCE)));
-                regionsElementsScores.add(new Triplet<>(knownRegions[i].getName(),ElementType.RESTRAINT,Math.abs(knownRegions[i].getRestraintResource() - BALANCE)));
+        else if(settings.getType().equals(GodType.NEUTRAL)) {
+            //NEUTRAL works exactly the same way as creator (code is repeated so it can be easier to change separately), but all possibilities of change are divided by 2, so instead of [-180, 250] it would be [-90, 125]
+            for(var element : (ElementType[])possibilities.keySet().toArray()) {
+                possibilities.get(element).setAt0(possibilities.get(element).getValue0()/2);
+                possibilities.get(element).setAt1(possibilities.get(element).getValue1()/2);
             }
 
-            //sort all regions' resource scores in ascending order (resource's score is the distance between the resource's value and the BALANCE value, 500)
-            Collections.sort(regionsElementsScores, new Comparator<Triplet<String, ElementType, Integer>>() {
-                @Override
-                public int compare(Triplet<String, ElementType, Integer> o1, Triplet<String, ElementType, Integer> o2) {
-                    return o2.getValue2().compareTo(o1.getValue2());
-                }
-            });
+            //Creator calculates all possible positive changes: if value < balance it tries to add as much as they can to reach balance
+            // if value > balance, it tries to subtract
 
-            //now let's see if the God is capable of bringing that value to BALANCE
+            //Triplet: (region name, element, change) - sorted by change with higher change at the beginning
+            List< Triplet<String, ElementType, Integer> > possibleActions = regionsElementsScores.stream().map(entry -> {
+                ElementType element = entry.getValue1();
+                int resourceValue = entry.getValue2();
+                int change = 0;
 
-            for(var entry: regionsElementsScores){
-                var possibleChange = possibilities.get(entry.getValue1());
-                //if the God is capable to do so, and if the resource is not balanced already, the god applies the necessary change
-                if(entry.getValue2() + possibleChange.getValue0() <= BALANCE && entry.getValue2() + possibleChange.getValue1() >= BALANCE && entry.getValue2() != BALANCE){
-                    if(entry.getValue2() < BALANCE){
-                        var element = entry.getValue1();
-                        int finalValue = GodHelper.finalElementChange(BALANCE - entry.getValue2(), element, settings);
-                        return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
-                    }
-                    else {
-                        var element = entry.getValue1();
-                        int finalValue = GodHelper.finalElementChange(entry.getValue2() - BALANCE, element, settings);
-                        return new GodInfluenceRegionAction(getLocalName(), entry.getValue0(), Collections.singletonList(element), Collections.singletonList(finalValue));
-                    }
+                if(resourceValue <= BALANCE) { //Actual value <= balance, we want to add
+                    int maxChange = resourceValue + possibilities.get(element).getValue1();
+                    if(maxChange > BALANCE)
+                        change = BALANCE - resourceValue;
+                    else
+                        change = possibilities.get(element).getValue1();
+                } else { //Actual value > balance, we want to subtract
+                    int maxChange = resourceValue + possibilities.get(element).getValue0(); //Note - this number will be negative
+                    if(maxChange < BALANCE)
+                        change = BALANCE - resourceValue;
+                    else
+                        change = possibilities.get(element).getValue0();
                 }
-                //otherwise, god looks at the next needy resource
-            }
+                return new Triplet<>(entry.getValue0(), element, change);
+            }).sorted((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2()))).collect(Collectors.toList());
+
+            int maxPossibleChange = Math.abs(possibleActions.get(0).getValue2());
+
+            //We want to limit possible actions to only the ones with maximal (the same) change:
+            possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
+
+            //Now we will take random one of proposed ones
+            Random rand = new Random();
+            Triplet<String, ElementType, Integer> action = possibleActions.get(rand.nextInt(possibleActions.size()));
+            int finalChange = GodHelper.finalElementChange(action.getValue2(), action.getValue1(), settings);
+            return new GodInfluenceRegionAction(getLocalName(), action.getValue0(), Collections.singletonList(action.getValue1()), Collections.singletonList(finalChange));
         }
         return new GodDoNothingAction(getLocalName());
     }
@@ -228,7 +222,49 @@ public class God extends Agent {
      * Process turn of god that knows their regions state from the beginning of the turn and all previous gods influences in those regions in this turn (protector)
      */
     GodAction ProcessProtectorTurn(ProtectorTurnInfoWrapper info) {
-        return new GodDoNothingAction(getLocalName());
+        //Basically we look at all previous actions and calculate how much can we block each one of them - and block the one that will be blocked the most
+        var possibilities = GodHelper.getPossibleElementChanges(settings);
+
+        //Get list of all regions and resources that can be influenced in a way
+        //Triplet: (region name, element, actual resource value)
+        List< Triplet<String, ElementType, Integer> > changes = new ArrayList<>();
+        for(var change : info.getPreviousActions())
+            for(int i = 0; i < change.getElements().size(); i++)
+                changes.add(new Triplet<>(change.getRegionName(), change.getElements().get(i), change.getValues().get(i)));
+
+        if(changes.size() == 0)
+            return new GodDoNothingAction();
+
+        //Triplet: (region name, element, change) - sorted by change with higher change at the beginning
+        List< Triplet<String, ElementType, Integer> > possibleActions = changes.stream().map(entry -> {
+            ElementType element = entry.getValue1();
+            int resourceChange = entry.getValue2();
+            int change = 0;
+
+            if(resourceChange <= 0)  { //Negative change, so we want to add
+                if(possibilities.get(element).getValue1() + resourceChange < 0)
+                    change = possibilities.get(element).getValue1();
+                else
+                    change = -resourceChange;
+            } else { //Positive value, so we want to subtract
+                if(possibilities.get(element).getValue0() + resourceChange > 0)
+                    change = possibilities.get(element).getValue0();
+                else
+                    change = -resourceChange;
+            }
+            return new Triplet<>(entry.getValue0(), element, change);
+        }).sorted((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2()))).collect(Collectors.toList());
+
+        int maxPossibleChange = Math.abs(possibleActions.get(0).getValue2());
+
+        //We want to limit possible actions to only the ones with maximal (the same) change:
+        possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
+
+        //Now we will take random one of proposed ones
+        Random rand = new Random();
+        Triplet<String, ElementType, Integer> action = possibleActions.get(rand.nextInt(possibleActions.size()));
+        int finalChange = GodHelper.finalElementChange(action.getValue2(), action.getValue1(), settings);
+        return new GodInfluenceRegionAction(getLocalName(), action.getValue0(), Collections.singletonList(action.getValue1()), Collections.singletonList(finalChange));
     }
 
     void ProcessQuery(ACLMessage msg) {
