@@ -227,6 +227,9 @@ public class God extends Agent {
             for(int i = 0; i < change.getElements().size(); i++)
                 changes.add(new Triplet<>(change.getRegionName(), change.getElements().get(i), change.getValues().get(i)));
 
+        if(changes.size() == 0)
+            return new GodDoNothingAction();
+
         //Triplet: (region name, element, change) - sorted by change with higher change at the beginning
         List< Triplet<String, ElementType, Integer> > possibleActions = changes.stream().map(entry -> {
             ElementType element = entry.getValue1();
