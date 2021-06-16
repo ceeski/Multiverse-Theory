@@ -248,6 +248,34 @@
 
       "loveSkill":  10,
       "restraintSkill": 10
+    },
+	{
+      "name": "Creator4B",
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 20,
+      "chanceToCooperatePercent":   50,
+
+      "knownGods": ["Creator1B", "Creator2B", "Creator3B"],
+      "knownRegions":  ["Earth"],
+
+      "maxSkillPoints": 100,
+
+      "fireSkill":  7,
+      "waterSkill": 5,
+
+      "lightSkill":  7,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 0,
+
+      "knowledgeSkill":  5,
+      "amusementSkill": 7,
+
+      "loveSkill":  0,
+      "restraintSkill": 7
     }
   ]
 }
