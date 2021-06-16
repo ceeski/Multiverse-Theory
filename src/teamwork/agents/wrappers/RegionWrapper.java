@@ -1,7 +1,11 @@
 package teamwork.agents.wrappers;
 
+import org.javatuples.Pair;
+
 public class RegionWrapper {
     private String name;
+    private Pair<String, Integer> mostUnbalancedResource;
+
     private int population;
 
     private int heatResource;
@@ -26,6 +30,7 @@ public class RegionWrapper {
         this.name = name;
         this.population = population;
         this.heatResource = heatResource;
+        //this.mostUnbalancedResource = new Pair<>("heatResource", heatResource);
         this.waterResource = waterResource;
         this.lightResource = lightResource;
         this.darknessResource = darknessResource;
@@ -134,6 +139,10 @@ public class RegionWrapper {
     public int getRestraintResource() {
         return restraintResource;
     }
+
+    /**
+     * Get the lowest value of one of the resources
+     */
 
     public void setRestraintResource(int restraintResource) {
         this.restraintResource = restraintResource;

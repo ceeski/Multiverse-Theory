@@ -1,36 +1,53 @@
 package teamwork.agents;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import jade.core.AID;
-import jade.lang.acl.ACLMessage;
+import org.javatuples.Pair;
 import teamwork.agents.actions.GodAction;
-import teamwork.agents.actions.GodDoNothingAction;
+import teamwork.agents.actions.GodInfluenceRegionAction;
+import teamwork.agents.enums.ElementType;
 import teamwork.agents.utility.Common;
-import teamwork.agents.wrappers.GodWrapper;
-import teamwork.agents.wrappers.ProtectorTurnInfoWrapper;
+import teamwork.agents.wrappers.GodRegionWrapper;
 import teamwork.agents.wrappers.RegionWrapper;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class SuperGod extends God {
-    private GodWrapper[] settings;
+    private GodRegionWrapper[] settings;
     private AID[] gods;
-    private RegionWrapper[] regions;
+    private List<RegionWrapper> regions;
 
     @Override
     protected void setup() {
-        settings = (GodWrapper[])getArguments()[0];
+        settings = (GodRegionWrapper[])getArguments()[0];
         gods = (AID[])getArguments()[1];
-        if (getArguments().length > 1){
-            regions = (RegionWrapper[])getArguments()[2];
+        for (var s : settings) {
+            for (var r : s.getRegions()) {
+                regions.add(r);
+            }
         }
         Common.registerAgentInDf(this);
         addBehaviour(processMessage);
     }
-    int fire = 0, water = 0, light = 0, darkness = 0, earth = 0,
-            air = 9, knowledge = 0, amusement =0, love = 0, restraint = 0;
+    int fire = 0, water = 0, light = 0, darkness = 0, earth = 0, air = 0,
+            knowledge = 0, amusement =0, love = 0, restraint = 0;
+
     GodAction ProcessSuperGodTurn() {
+        int min_population = 10000;
+        RegionWrapper regionName = new RegionWrapper();
+        for (var element : regions){
+            if (element.getPopulation() < min_population){
+                regionName = element;
+                min_population = element.getPopulation();
+            }
+        }
+        Random rnd = new Random();
+        if (min_population == 10000) //if all regions don't have any knownRegions
+        {
+            //int regionIndex = rnd.nextInt(settings[godIndex].getKnownRegions().size());
+            regionName = regions.get(rnd.nextInt(regions.size()));
+        }
         for(var element : settings) {
             fire += element.getFireSkill();
             water += element.getWaterSkill();
@@ -43,24 +60,12 @@ public class SuperGod extends God {
             love += element.getLoveSkill();
             restraint += element.getRestraintSkill();
         }
-        int min_population = 10000;
-        String regionName = "";
-        for (var element : regions){
-            if (element.getPopulation() < min_population){
-                regionName = element.getName();
-                min_population = element.getPopulation();
-            }
-        }
-        Random rnd = new Random();
-        if (regionName == "") //if all regions don't have any knownRegions
-        {
-                int godIndex = rnd.nextInt(settings.length);
-                int regionIndex = rnd.nextInt(settings[godIndex].getKnownRegions().size());
-                regionName = settings[godIndex].getKnownRegions().get(regionIndex);
-        }
-        return new GodDoNothingAction(getLocalName());
+        Pair<ElementType, Integer> pair = new Pair<>(ElementType.FIRE, fire);
+
+        return new GodInfluenceRegionAction(getLocalName(), regionName.getName(), Collections.singletonList(pair.getValue0()), Collections.singletonList(pair.getValue1()));
     }
 
+    /*@Override
     private void processTurn(ACLMessage message) {
         Gson _gson = new GsonBuilder().create();
         GodAction action;
@@ -69,13 +74,6 @@ public class SuperGod extends God {
             case "Your Turn (God)":
                 RegionWrapper[] knownRegions = _gson.fromJson(message.getContent(), RegionWrapper[].class);
                 action = ProcessGodTurn(knownRegions);
-                break;
-            case "Your Turn (Chaotic)":
-                action = ProcessChaoticTurn();
-                break;
-            case "Your Turn (Protector)":
-                ProtectorTurnInfoWrapper protectorInfo = _gson.fromJson(message.getContent(), ProtectorTurnInfoWrapper.class);
-                action = ProcessProtectorTurn(protectorInfo);
                 break;
             case "Your Turn (Ask to Join)":
                 action = ProcessAskTurn();
@@ -93,5 +91,5 @@ public class SuperGod extends God {
         response.setOntology(action.actionType());
         response.setContent(_gson.toJson(action));
         send(response);
-    }
+    }*/
 }
