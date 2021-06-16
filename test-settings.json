@@ -73,6 +73,34 @@
       "restraintSkill": 0
     },
     {
+      "name": "Athena",
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 90,
+      "chanceToCooperatePercent":   75,
+
+      "knownGods": ["Hades"],
+      "knownRegions":  ["Average", "Low"],
+
+      "maxSkillPoints": 30,
+
+      "fireSkill":  1,
+      "waterSkill": 7,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 4,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+    {
       "name": "Hades",
       "type": "Chaotic",
 

@@ -30,6 +30,8 @@ public class Time extends Agent {
     List<GodWrapper> gods = new ArrayList<>();
     List<RegionWrapper> regions = new ArrayList<>();
     List<GodAction> turnActions = new ArrayList<>();
+    List<AID> godsAsked = new ArrayList<>();
+    List<AID> godsAsking = new ArrayList<>();
     int round = 0;
     boolean endMessageShown = false;
 
@@ -93,6 +95,8 @@ public class Time extends Agent {
         gods = new ArrayList<>();
         regions = new ArrayList<>();
         turnActions = new ArrayList<>();
+        godsAsked = new ArrayList<>();
+        godsAsking = new ArrayList<>();
 
         Gson _gson = new GsonBuilder().create();
         DFAgentDescription[] godDescriptors = Common.findAgentsInDf(this, God.class);

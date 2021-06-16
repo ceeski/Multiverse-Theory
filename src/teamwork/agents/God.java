@@ -22,6 +22,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+
 public class God extends Agent {
     private GodWrapper settings;
 
@@ -82,6 +83,14 @@ public class God extends Agent {
         return new GodDoNothingAction(getLocalName());
     }
 
+    GodAction ProcessAskTurn() {
+        return new GodDoNothingAction(getLocalName());
+    }
+
+    GodAction ProcessReplyTurn() {
+        return new GodDoNothingAction(getLocalName());
+    }
+
     /**
      * Interprets what kind of information god got, calls appropriate function and responds
      */
@@ -100,6 +109,12 @@ public class God extends Agent {
             case "Your Turn (Protector)":
                 ProtectorTurnInfoWrapper protectorInfo = _gson.fromJson(message.getContent(), ProtectorTurnInfoWrapper.class);
                 action = ProcessProtectorTurn(protectorInfo);
+                break;
+            case "Your Turn (Ask to Join)":
+                action = ProcessAskTurn();
+                break;
+            case "Your Turn (Reply to Join Request)":
+                action = ProcessReplyTurn();
                 break;
             default:
                 action = new GodDoNothingAction(getLocalName());
