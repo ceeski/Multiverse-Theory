@@ -2,6 +2,7 @@ package teamwork.agents;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -9,18 +10,16 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import org.javatuples.Pair;
 import org.javatuples.Triplet;
-import teamwork.agents.actions.GodLearnAction;
+import teamwork.agents.actions.*;
 import teamwork.agents.enums.ElementType;
 import teamwork.agents.enums.GodType;
 import teamwork.agents.utility.GodHelper;
 import teamwork.agents.wrappers.GodWrapper;
 import teamwork.agents.wrappers.RegionWrapper;
-import teamwork.agents.actions.GodAction;
-import teamwork.agents.actions.GodDoNothingAction;
-import teamwork.agents.actions.GodInfluenceRegionAction;
 import teamwork.agents.wrappers.ProtectorTurnInfoWrapper;
 import teamwork.agents.utility.Common;
 
+import java.lang.reflect.Type;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -31,6 +30,11 @@ public class God extends Agent {
     private static final int MAX = 1000;
     private static final int MIN = 0;
 
+    //Those are meeting states
+    private ArrayList<String> meetingAttendants;
+    private int meetingResponses;
+    private String meetingOriginator;
+
     @Override
     protected void setup() {
         settings = (GodWrapper)getArguments()[0];
@@ -39,34 +43,75 @@ public class God extends Agent {
     }
 
     /**
-     * Function that checks all requirements for learning (free skillpoint slots, have friends) and checking chance for learning action and eventually, learns something
-     * @return GodLearnAction if learning was successful, null otherwise,
+     * If God has a spare time, they will prefer meeting over doing something. If no one would come to the meeting - they ask about learning (if they can - they have free skill points).
+     * @return GodAction if action was performed, null otherwise
      */
-    GodLearnAction ConsiderLearningSomething() {
-        if(!GodHelper.hasFreeSkillpoints(settings))
-            return null;
+    GodAction ConsiderLearningAndMeeting() {
+        Random rnd = new Random();
+        Gson _gson = new GsonBuilder().create();
+
+        ACLMessage message;
+        MessageTemplate performative;
+        MessageTemplate ontology;
+        MessageTemplate template;
+        ACLMessage response;
+
+        GodAction finalAction = null;
+
         if(settings.getKnownGods().isEmpty())
             return null;
 
-        Random rnd = new Random();
-        if(rnd.nextInt() % 100 >= settings.getChanceToShareKnowledgePercent())
+        if(settings.getKnownGods().size() == 1 && settings.getKnownGods().get(0).equals(settings.getName()))
             return null;
 
-        //At this point we want to learn something, we start with picking a teacher
-        String teacherName = settings.getKnownGods().get(rnd.nextInt(settings.getKnownGods().size()));
+        String usedFriend;
+        do {
+            usedFriend = settings.getKnownGods().get(rnd.nextInt(settings.getKnownGods().size()));
+        } while(usedFriend.equals(settings.getName()));
 
-        Gson _gson = new GsonBuilder().create();
+        //At first we ask about meeting - it is preferred over learning
+        message = new ACLMessage(ACLMessage.REQUEST);
+        message.addReceiver(new AID(usedFriend, AID.ISLOCALNAME));
+        message.setOntology("Organize Meeting");
 
-        ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
-        message.addReceiver(new AID(teacherName, AID.ISLOCALNAME));
+        send(message);
+
+        performative = MessageTemplate.MatchPerformative(ACLMessage.CONFIRM);
+        ontology = MessageTemplate.MatchOntology("Organize Meeting");
+        template = MessageTemplate.and(performative, ontology);
+        response = blockingReceive(template);
+        if(response == null)
+            return null;
+
+        Type listType = new TypeToken<ArrayList<String>>() {}.getType();
+        List<String> attendants = _gson.fromJson(response.getContent(), listType);
+
+        if(attendants == null)
+            return null;
+
+        finalAction = new GodMeetOthersAction(settings.getName(), usedFriend, attendants);
+
+        if(attendants.size() > 0)
+            return finalAction;
+
+        //If no other god came - we can ask about learning in private (from the same god!)
+        if(rnd.nextInt() % 100 <= settings.getChanceToShareKnowledgePercent())
+            return finalAction; //If we do not learn - we return meeting
+
+        if(!GodHelper.hasFreeSkillpoints(settings))
+            return finalAction; //If we cannot learn - we also return a meeting
+
+        //At this point we want to learn something
+        message = new ACLMessage(ACLMessage.REQUEST);
+        message.addReceiver(new AID(usedFriend, AID.ISLOCALNAME));
         message.setOntology("Teach");
 
         send(message);
 
-        MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.CONFIRM);
-        MessageTemplate ontology = MessageTemplate.MatchOntology("Teach");
-        MessageTemplate template = MessageTemplate.and(performative, ontology);
-        ACLMessage response = blockingReceive(template);
+        performative = MessageTemplate.MatchPerformative(ACLMessage.CONFIRM);
+        ontology = MessageTemplate.MatchOntology("Teach");
+        template = MessageTemplate.and(performative, ontology);
+        response = blockingReceive(template);
         if(response == null)
             return null;
 
@@ -86,6 +131,67 @@ public class God extends Agent {
         response.setPerformative(ACLMessage.CONFIRM);
         response.setOntology("Teach");
         response.setContent(_gson.toJson(settings.getElementToTeach()));
+        send(response);
+    }
+
+    /**
+     * When god is asked to organize the meeting - this function sends invitations
+     */
+    void OrganizeMeeting(ACLMessage message) {
+        meetingAttendants = new ArrayList<String>();
+        meetingResponses = 0;
+        meetingOriginator = message.getSender().getLocalName();
+
+
+        ACLMessage proposeMessage = new ACLMessage(ACLMessage.PROPOSE);
+        proposeMessage.setOntology("Attend Meeting");
+        proposeMessage.setContent(meetingOriginator);
+        for(var godName : settings.getKnownGods()) {
+            if(godName.equals(meetingOriginator))
+                continue; //We do not ask the originator
+            proposeMessage.addReceiver(new AID(godName, AID.ISLOCALNAME));
+        }
+        send(proposeMessage);
+    }
+
+    /**
+     * This functions handles responses for meeting invitations and eventually send response to God that asked to organize meeting
+     */
+    void meetingAttendanceResponse(ACLMessage message, boolean willCome) {
+        meetingResponses++;
+
+        if(willCome)
+            meetingAttendants.add(message.getSender().getLocalName());
+
+        if(meetingResponses == settings.getKnownGods().size() - 1) { //we exclude the originator hence - 1
+            Gson _gson = new GsonBuilder().create();
+            ACLMessage originatorResponse = new ACLMessage(ACLMessage.CONFIRM);
+            originatorResponse.addReceiver(new AID(meetingOriginator, AID.ISLOCALNAME));
+            originatorResponse.setOntology("Organize Meeting");
+            originatorResponse.setContent(_gson.toJson(meetingAttendants));
+            send(originatorResponse);
+        }
+    }
+
+    /**
+     * Function that responds when God is asked about attending a meeting
+     */
+    void AttendMeetingResponse(ACLMessage message) {
+        String originator = message.getContent();
+
+        ACLMessage response = message.createReply();
+        response.setOntology("Attend Meeting");
+
+        Random rnd = new Random();
+        if(rnd.nextInt() % 100 <= settings.getChanceToShareKnowledgePercent()) {
+            response.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
+            //If we accept the meeting and we do not know the originator, we will know them
+            if(settings.getKnownGods().stream().noneMatch(godName -> godName.equals(originator)))
+                settings.getKnownGods().add(originator);
+        }
+        else
+            response.setPerformative(ACLMessage.REJECT_PROPOSAL);
+
         send(response);
     }
 
@@ -142,7 +248,7 @@ public class God extends Agent {
 
             //Consider learning something instead of taking small action
             if(maxPossibleChange <= SMALL_CHANGE) {
-                var learningAction = ConsiderLearningSomething();
+                var learningAction = ConsiderLearningAndMeeting();
                 if(learningAction != null)
                     return learningAction;
             }
@@ -186,7 +292,7 @@ public class God extends Agent {
 
             //Consider learning something instead of taking small action
             if(maxPossibleChange <= SMALL_CHANGE) {
-                var learningAction = ConsiderLearningSomething();
+                var learningAction = ConsiderLearningAndMeeting();
                 if(learningAction != null)
                     return learningAction;
             }
@@ -236,7 +342,7 @@ public class God extends Agent {
 
             //Consider learning something instead of taking small action
             if(maxPossibleChange <= SMALL_CHANGE) {
-                var learningAction = ConsiderLearningSomething();
+                var learningAction = ConsiderLearningAndMeeting();
                 if(learningAction != null)
                     return learningAction;
             }
@@ -266,7 +372,7 @@ public class God extends Agent {
 
         //50% (out of remaining 66, so 33 overall) that god will attempt to learn something
         if(rnd.nextInt() % 100 < 50) {
-            var learningAction = ConsiderLearningSomething();
+            var learningAction = ConsiderLearningAndMeeting();
             if(learningAction != null)
                 return learningAction;
         }
@@ -340,7 +446,7 @@ public class God extends Agent {
 
         //Consider learning something instead of taking small action, but he is less likely to do it
         if(maxPossibleChange <= SMALL_CHANGE / 2) {
-            var learningAction = ConsiderLearningSomething();
+            var learningAction = ConsiderLearningAndMeeting();
             if(learningAction != null)
                 return learningAction;
         }
@@ -398,21 +504,36 @@ public class God extends Agent {
 
                 switch(msg.getPerformative()) {
                     case ACLMessage.REQUEST:
-                        if(msg.getOntology().equals("Initial Information"))
-                            Common.responseWithInformationAbout(getAgent(), settings, msg);
-                        else if(msg.getOntology().equals("Teach"))
-                            Teach(msg);
+                        switch (msg.getOntology()) {
+                            case "Initial Information":
+                                Common.responseWithInformationAbout(getAgent(), settings, msg);
+                                break;
+                            case "Teach":
+                                Teach(msg);
+                                break;
+                            case "Organize Meeting":
+                                OrganizeMeeting(msg);
+                                break;
+                        }
                         break;
                     case ACLMessage.INFORM:
                         if(msg.getOntology().startsWith("Your Turn"))
                             processTurn(msg);
+                        break;
+                    case ACLMessage.PROPOSE:
+                        if(msg.getOntology().startsWith("Attend Meeting"))
+                            AttendMeetingResponse(msg);
+                        break;
+                    case ACLMessage.ACCEPT_PROPOSAL:
+                    case ACLMessage.REJECT_PROPOSAL:
+                        if(msg.getOntology().startsWith("Attend Meeting"))
+                            meetingAttendanceResponse(msg, msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL);
                         break;
                     default:
                         break;
                 }
             }
 
-            block();
         }
     };
 
