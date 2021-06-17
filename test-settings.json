@@ -1,9 +1,47 @@
 {
   "time": {
-    "numberOfTurns": 10,
+    "numberOfTurns": 300,
     "pathToLogFile": "./testlog.txt"
   },
   "regions": [
+      {
+        "name":  "The Best",
+        "population": 10000,
+
+        "heatResource":  500,
+        "waterResource": 500,
+
+        "lightResource":  500,
+        "darknessResource": 500,
+
+        "earthResource":  500,
+        "airResource": 500,
+
+        "knowledgeResource":  500,
+        "amusementResource": 500,
+
+        "loveResource":  500,
+        "restraintResource": 500
+      },
+    {
+      "name":  "High",
+      "population": 10000,
+
+      "heatResource":  500,
+      "waterResource": 500,
+
+      "lightResource":  500,
+      "darknessResource": 500,
+
+      "earthResource":  500,
+      "airResource": 500,
+
+      "knowledgeResource":  500,
+      "amusementResource": 500,
+
+      "loveResource":  500,
+      "restraintResource": 500
+    },
     {
       "name":  "Average",
       "population": 10,
@@ -54,24 +92,24 @@
       "chanceToCooperatePercent":   60,
 
       "knownGods": ["Apollo"],
-      "knownRegions":  ["Average", "Low"],
+      "knownRegions":  ["The Best"],
 
       "maxSkillPoints": 30,
 
-      "fireSkill":  1,
-      "waterSkill": 7,
+      "fireSkill":  5,
+      "waterSkill": 5,
 
-      "lightSkill":  10,
-      "darknessSkill": 0,
+      "lightSkill":  5,
+      "darknessSkill": 5,
 
-      "earthSkill":  0,
-      "airSkill": 4,
+      "earthSkill":  5,
+      "airSkill": 5,
 
-      "knowledgeSkill":  0,
-      "amusementSkill": 0,
+      "knowledgeSkill":  5,
+      "amusementSkill": 5,
 
-      "loveSkill":  0,
-      "restraintSkill": 0
+      "loveSkill":  5,
+      "restraintSkill": 5
     },
     {
       "name": "Apollo",
@@ -80,9 +118,9 @@
 
       "speed":  100,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   0,
+      "chanceToCooperatePercent":   68,
 
-      "knownGods": ["Poseidon"],
+      "knownGods": ["Poseidon", "Hefajstos"],
       "knownRegions":  ["Average", "Low"],
 
       "maxSkillPoints": 30,
@@ -105,11 +143,11 @@
     {
       "name": "Nimfa",
       "separate": true,
-      "type": "Creator",
+      "type": "Destructor",
 
       "speed":  20,
-      "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   100,
+      "chanceToShareKnowledgePercent": 10,
+      "chanceToCooperatePercent":   80,
 
       "knownGods": ["Hefajstos"],
       "knownRegions":  ["Average", "Low"],
@@ -117,7 +155,7 @@
       "maxSkillPoints": 30,
 
       "fireSkill":  1,
-      "waterSkill": 7,
+      "waterSkill": 5,
 
       "lightSkill":  0,
       "darknessSkill": 5,
@@ -138,14 +176,43 @@
 
       "speed":  20,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   0,
+      "chanceToCooperatePercent":   60,
 
       "knownGods": ["Nimfa"],
       "knownRegions":  ["Average", "Low"],
 
       "maxSkillPoints": 30,
 
-      "fireSkill":  1,
+      "fireSkill":  5,
+      "waterSkill": 0,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 4,
+
+      "knowledgeSkill":  5,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+    {
+      "name": "Luna",
+      "separate": true,
+      "type": "Protector",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 90,
+      "chanceToCooperatePercent":   50,
+
+      "knownGods": ["Hera"],
+      "knownRegions":  ["Average", "High"],
+
+      "maxSkillPoints": 30,
+
+      "fireSkill": 5,
       "waterSkill": 7,
 
       "lightSkill":  0,
@@ -156,6 +223,35 @@
 
       "knowledgeSkill":  0,
       "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+    {
+      "name": "Hera",
+      "separate": true,
+      "type": "Protector",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 90,
+      "chanceToCooperatePercent":   50,
+
+      "knownGods": ["Ala"],
+      "knownRegions":  ["Average", "High"],
+
+      "maxSkillPoints": 30,
+
+      "fireSkill": 5,
+      "waterSkill": 2,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  6,
+      "airSkill": 4,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 2,
 
       "loveSkill":  0,
       "restraintSkill": 0
@@ -167,7 +263,7 @@
 
       "speed":  20,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   0,
+      "chanceToCooperatePercent":   30,
 
       "knownGods": ["Zeus"],
       "knownRegions":  ["Average", "Low"],
@@ -175,18 +271,18 @@
       "maxSkillPoints": 30,
 
       "fireSkill":  1,
-      "waterSkill": 7,
+      "waterSkill": 1,
 
       "lightSkill":  0,
       "darknessSkill": 5,
 
-      "earthSkill":  0,
+      "earthSkill":  3,
       "airSkill": 4,
 
-      "knowledgeSkill":  0,
+      "knowledgeSkill":  2,
       "amusementSkill": 0,
 
-      "loveSkill":  0,
+      "loveSkill":  3,
       "restraintSkill": 0
     },
     {
@@ -196,7 +292,7 @@
 
       "speed":  20,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   0,
+      "chanceToCooperatePercent":   40,
 
       "knownGods": ["Aurora"],
       "knownRegions":  ["Average", "Low"],
@@ -206,14 +302,14 @@
       "fireSkill":  1,
       "waterSkill": 7,
 
-      "lightSkill":  0,
+      "lightSkill":  3,
       "darknessSkill": 5,
 
-      "earthSkill":  0,
+      "earthSkill":  3,
       "airSkill": 4,
 
       "knowledgeSkill":  0,
-      "amusementSkill": 0,
+      "amusementSkill": 1,
 
       "loveSkill":  0,
       "restraintSkill": 0
@@ -225,7 +321,7 @@
 
       "speed":  20,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   0,
+      "chanceToCooperatePercent":   50,
 
       "knownGods": ["Hades"],
       "knownRegions":  ["Average", "Low"],
@@ -254,7 +350,7 @@
 
       "speed":  15,
       "chanceToShareKnowledgePercent": 20,
-      "chanceToCooperatePercent":   0,
+      "chanceToCooperatePercent":   60,
 
       "knownGods": ["Hermes", "Poseidon"],
       "knownRegions":  ["Low"],
@@ -283,7 +379,7 @@
 
       "speed":  40,
       "chanceToShareKnowledgePercent": 50,
-      "chanceToCooperatePercent":   0,
+      "chanceToCooperatePercent":   30,
 
       "knownGods": ["Apollo"],
       "knownRegions":  ["Average"],

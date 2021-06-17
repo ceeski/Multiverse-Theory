@@ -42,6 +42,26 @@ public class RegionWrapper {
         return String.format("Region [%s]:\n\tPopulation: [%d]\n\tHeat: [%d]; Water: [%d]; Light: [%d]; Darkness: [%d]; Earth: [%d]\n\tAir: [%d]; Knowledge: [%d]; Amusement: [%d]; Love: [%d]; Restraint: [%d]\n",
                 name, population, heatResource, waterResource, lightResource, darknessResource, earthResource, airResource, knowledgeResource, amusementResource, loveResource, restraintResource);
     }
+    //575
+    public String colorElement(int el){
+        String before = "033[38;5;", middle="m", end="\033[0m";
+        int bad = 196, good = 154, perfect = 27;
+        if (isPerfect(el)){
+            good = perfect;
+        }
+        else if (isNotBalance(el)){
+            good = bad;
+        }
+        return before + good + middle + el + end;
+    }
+
+    public boolean isNotBalance(int el){
+        return el < 300 && el > 700;
+    }
+
+    public boolean isPerfect(int el){
+        return el == 575;
+    }
 
     public String getName() {
         return name;

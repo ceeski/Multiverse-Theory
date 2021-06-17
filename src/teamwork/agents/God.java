@@ -43,19 +43,21 @@ public class God extends Agent {
 
     @Override
     protected void setup() {
-        if (getArguments().length > 3){
-            boolean isHeadOfHolon = (boolean)getArguments()[0];
-            List<GodRegionWrapper> gods = (List<GodRegionWrapper> )getArguments()[1];
+        if (getArguments().length > 3) {
+            boolean isHeadOfHolon = (boolean) getArguments()[0];
+            List<GodRegionWrapper> gods = (List<GodRegionWrapper>) getArguments()[1];
             List<RegionWrapper> regionsFromCreatorOrDestroyer = new ArrayList<>();
-            for (var p : gods)
-            { for (var l : p.getRegions()){
-                regionsFromCreatorOrDestroyer.add((RegionWrapper)l );}}
-            List<AID> godSubHolons = Arrays.asList((AID[])getArguments()[2]);
+            for (var p : gods) {
+                for (var l : p.getRegions()) {
+                    regionsFromCreatorOrDestroyer.add((RegionWrapper) l);
+                }
+            }
+            List<AID> godSubHolons = Arrays.asList((AID[]) getArguments()[2]);
             settings = CalculateTheBestOption(gods);
             settings.setName(this.getLocalName());
             settings.setSeparate(false);
             //ACLMessage msg = (ACLMessage) getArguments()[3];
-            Location location = (Location)getArguments()[3];
+            Location location = (Location) getArguments()[3];
             Common.registerAgentInDf(this, "2");
             /*try {
                 location = (Location)msg.getContentObject();
@@ -64,14 +66,13 @@ public class God extends Agent {
             }*/
             /*if(location != null)
                 this.myAgent.doMove(location);*/
-        }
-        else if (getArguments().length == 1){
+        } else if (getArguments().length == 1) {
             settings = (GodWrapper) getArguments()[0];
             settings.setSeparate(true);
             isHeadOfHolon = false;
             gods = new ArrayList<>();
             regionsFromCreatorOrDestroyer = new ArrayList<>();
-            godSubHolons =  new ArrayList<>();
+            godSubHolons = new ArrayList<>();
             Common.registerAgentInDf(this, "1");
         }
 
@@ -81,17 +82,15 @@ public class God extends Agent {
     private GodWrapper CalculateTheBestOption(List<GodRegionWrapper> gods) {
         int index = 0;
         List<Quartet<ElementType, Integer, Integer, Integer>> possibleChanges = new ArrayList<>();
-        for (var g : gods){
-            if(g.getGod().getType().equals(GodType.PROTECTOR)) {
-                Triplet<ElementType, Integer, Integer> c = CalculateTheBestProtector((GodWrapper)g.getGod());
+        for (var g : gods) {
+            if (g.getGod().getType().equals(GodType.PROTECTOR)) {
+                Triplet<ElementType, Integer, Integer> c = CalculateTheBestProtector((GodWrapper) g.getGod());
                 possibleChanges.add(new Quartet<>(c.getValue0(), c.getValue1(), c.getValue2(), index));
-            }
-            else if(g.getGod().getType().equals(GodType.CHAOTIC)) {
-                Triplet<ElementType, Integer, Integer> c = CalculateTheBestChaotic((GodWrapper)g.getGod());
+            } else if (g.getGod().getType().equals(GodType.CHAOTIC)) {
+                Triplet<ElementType, Integer, Integer> c = CalculateTheBestChaotic((GodWrapper) g.getGod());
                 possibleChanges.add(new Quartet<>(c.getValue0(), c.getValue1(), c.getValue2(), index));
-            }
-            else{
-                Triplet<ElementType, Integer, Integer> c = CalculateTheBestCreatorDestructor((GodWrapper)g.getGod());
+            } else {
+                Triplet<ElementType, Integer, Integer> c = CalculateTheBestCreatorDestructor((GodWrapper) g.getGod());
                 possibleChanges.add(new Quartet<>(c.getValue0(), c.getValue1(), c.getValue2(), index));
             }
             index++;
@@ -99,26 +98,26 @@ public class God extends Agent {
         return gods.get(index % gods.size()).getGod();
     }
 
-    private Triplet<ElementType, Integer, Integer>  CalculateTheBestProtector(GodWrapper god) {
+    private Triplet<ElementType, Integer, Integer> CalculateTheBestProtector(GodWrapper god) {
         var possibilities = GodHelper.getPossibleElementChanges(god);
         List<Triplet<ElementType, Integer, Integer>> possibleChanges = new ArrayList<>();
 
-        for(var element : ElementType.AllTypes()) {
+        for (var element : ElementType.AllTypes()) {
             Pair<Integer, Integer> bounds = possibilities.get(element);
-            if(bounds.getValue0().equals(bounds.getValue1()) && bounds.getValue0() == 0)
+            if (bounds.getValue0().equals(bounds.getValue1()) && bounds.getValue0() == 0)
                 continue;
             possibleChanges.add(new Triplet<>(element, bounds.getValue0(), bounds.getValue1()));
         }
         return possibleChanges.get(0);
     }
 
-    private Triplet<ElementType, Integer, Integer>  CalculateTheBestChaotic(GodWrapper god) {
+    private Triplet<ElementType, Integer, Integer> CalculateTheBestChaotic(GodWrapper god) {
         var possibilities = GodHelper.getPossibleElementChanges(god);
         List<Triplet<ElementType, Integer, Integer>> possibleChanges = new ArrayList<>();
 
-        for(var element : ElementType.AllTypes()) {
+        for (var element : ElementType.AllTypes()) {
             Pair<Integer, Integer> bounds = possibilities.get(element);
-            if(bounds.getValue0().equals(bounds.getValue1()) && bounds.getValue0() == 0)
+            if (bounds.getValue0().equals(bounds.getValue1()) && bounds.getValue0() == 0)
                 continue;
             possibleChanges.add(new Triplet<>(element, bounds.getValue0(), bounds.getValue1()));
         }
@@ -130,66 +129,87 @@ public class God extends Agent {
         var possibilities = GodHelper.getPossibleElementChanges(god);
         List<Triplet<ElementType, Integer, Integer>> possibleChanges = new ArrayList<>();
 
-        for(var element : ElementType.AllTypes()) {
+        for (var element : ElementType.AllTypes()) {
             Pair<Integer, Integer> bounds = possibilities.get(element);
-            if(bounds.getValue0().equals(bounds.getValue1()) && bounds.getValue0() == 0)
+            if (bounds.getValue0().equals(bounds.getValue1()) && bounds.getValue0() == 0)
                 continue;
             possibleChanges.add(new Triplet<>(element, bounds.getValue0(), bounds.getValue1()));
         }
-       possibleChanges.sort((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2())));
+        possibleChanges.sort((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2())));
         return possibleChanges.get(0);
     }
 
 
     /**
      * Function that checks all requirements for learning (free skillpoint slots, have friends) and checking chance for learning action and eventually, learns something
+     *
      * @return GodLearnAction if learning was successful, null otherwise,
      */
     GodLearnAction ConsiderLearningSomething() {
-        if(!GodHelper.hasFreeSkillpoints(settings))
+        if (!GodHelper.hasFreeSkillpoints(settings))
             return null;
-        if(settings.getKnownGods().isEmpty())
+        if (settings.getKnownGods().isEmpty())
             return null;
 
         Random rnd = new Random();
-        if(rnd.nextInt() % 100 >= settings.getChanceToShareKnowledgePercent())
+        if (rnd.nextInt() % 100 >= settings.getChanceToShareKnowledgePercent())
             return null;
 
         //At this point we want to learn something, we start with picking a teacher
-        String teacherName = settings.getKnownGods().get(rnd.nextInt(settings.getKnownGods().size()));
+        List<DFAgentDescription> godDescriptors2 = Arrays.asList(Common.findAgentsInDf(this, God.class));
+        int i = 0;
+        List<DFAgentDescription> godDescriptors = new ArrayList<>();
+        for (var d : godDescriptors2) {
+            if (d.getAllLanguages().hasNext()) {
+                if (settings.getKnownGods().contains(d.getName().getLocalName()) && d.getAllLanguages().next().toString().equals("1")) {
+                    System.out.println(d.getName().getLocalName());
+                    godDescriptors.add(d);
+                }
+            }
 
-        Gson _gson = new GsonBuilder().create();
+        }
 
-        ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
-        message.addReceiver(new AID(teacherName, AID.ISLOCALNAME));
-        message.setOntology("Teach");
 
-        send(message);
+        if (godDescriptors.size() > 0) {
+            DFAgentDescription teacherName = godDescriptors.get(rnd.nextInt(godDescriptors.size()));
 
-        MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.CONFIRM);
-        MessageTemplate ontology = MessageTemplate.MatchOntology("Teach");
-        MessageTemplate template = MessageTemplate.and(performative, ontology);
-        ACLMessage response = blockingReceive(template);
-        if(response == null)
+
+            Gson _gson = new GsonBuilder().create();
+
+            ACLMessage message = new ACLMessage(ACLMessage.INFORM_REF);
+            message.setLanguage("Cyclic");
+            message.addReceiver(teacherName.getName());
+            message.setOntology("Teach");
+
+            send(message);
+
+            MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.SUBSCRIBE);
+            MessageTemplate ontology = MessageTemplate.MatchOntology("Teach");
+            MessageTemplate template = MessageTemplate.and(performative, ontology);
+            ACLMessage response = blockingReceive(template);
+            if (response == null)
+                return null;
+
+            ElementType learnedElement = _gson.fromJson(response.getContent(), ElementType.class);
+            settings.learnAbout(learnedElement);
+
+            return new GodLearnAction(settings.getName(), learnedElement);
+        } else {
             return null;
-
-        ElementType learnedElement = _gson.fromJson(response.getContent(), ElementType.class);
-        settings.learnAbout(learnedElement);
-
-        return new GodLearnAction(settings.getName(), learnedElement);
+        }
     }
 
     /**
      * Function that responds when God is asked about teaching
      */
     void Teach(ACLMessage message) {
+        if (message != null){
         Gson _gson = new GsonBuilder().create();
-
         ACLMessage response = message.createReply();
-        response.setPerformative(ACLMessage.CONFIRM);
+        response.setPerformative(ACLMessage.SUBSCRIBE);
         response.setOntology("Teach");
         response.setContent(_gson.toJson(settings.getElementToTeach()));
-        send(response);
+        send(response);}
     }
 
     /**
@@ -200,9 +220,9 @@ public class God extends Agent {
 
         //Get list of all regions and resources that can be influenced in a way
         //Triplet: (region name, element, actual resource value)
-        List< Triplet<String, ElementType, Integer> > regionsElementsScores = new ArrayList<>();
+        List<Triplet<String, ElementType, Integer>> regionsElementsScores = new ArrayList<>();
 
-        for(var region : knownRegions) {
+        for (var region : knownRegions) {
             regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.FIRE, region.getHeatResource()));
             regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.WATER, region.getWaterResource()));
             regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.LIGHT, region.getLightResource()));
@@ -215,12 +235,109 @@ public class God extends Agent {
             regionsElementsScores.add(new Triplet<>(region.getName(), ElementType.RESTRAINT, region.getRestraintResource()));
         }
 
-        if(settings.getType().equals(GodType.CREATOR)){
+        if (settings.getType().equals(GodType.CREATOR)) {
             //Creator calculates all possible positive changes: if value < balance it tries to add as much as they can to reach balance
             // if value > balance, it tries to subtract
 
             //Triplet: (region name, element, change) - sorted by change with higher change at the beginning
-            List< Triplet<String, ElementType, Integer> > possibleActions = regionsElementsScores.stream().map(entry -> {
+            List<Triplet<String, ElementType, Integer>> possibleActions = regionsElementsScores.stream().map(entry -> {
+                ElementType element = entry.getValue1();
+                int resourceValue = entry.getValue2();
+                int change = 0;
+
+                //System.out.println(resourceValue+" <- rsrcs ");
+                if (resourceValue <= BALANCE) { //Actual value <= balance, we want to add
+                    int maxChange = resourceValue + possibilities.get(element).getValue1();
+                    //System.out.println(change+" <- max change ");
+                    if (maxChange >= BALANCE)
+                        change = BALANCE - resourceValue;
+                    else
+                        change = possibilities.get(element).getValue1();
+
+                } else { //Actual value > balance, we want to subtract
+                    int maxChange = resourceValue + possibilities.get(element).getValue0(); //Note - this number will be negative
+                    //System.out.println(change+" <- max change ");
+                    if (maxChange <= BALANCE)
+                        change = BALANCE - resourceValue;
+                    else
+                        change = possibilities.get(element).getValue0();
+                }
+                //System.out.println(change+" <- change ");
+                return new Triplet<>(entry.getValue0(), element, change);
+            }).sorted((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2()))).collect(Collectors.toList());
+
+            int maxPossibleChange = Math.abs(possibleActions.get(0).getValue2());
+
+            //Consider learning something instead of taking small action
+            if (maxPossibleChange <= SMALL_CHANGE) {
+                var learningAction = ConsiderLearningSomething();
+                if (learningAction != null)
+                    return learningAction;
+            }
+
+            //We want to limit possible actions to only the ones with maximal (the same) change:
+            possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
+
+            //Now we will take random one of proposed ones
+            Random rand = new Random();
+            Triplet<String, ElementType, Integer> action = possibleActions.get(rand.nextInt(possibleActions.size()));
+            int finalChange = GodHelper.finalElementChange(action.getValue2(), action.getValue1(), settings);
+            return new GodInfluenceRegionAction(getLocalName(), action.getValue0(), Collections.singletonList(action.getValue1()), Collections.singletonList(finalChange));
+        } else if (settings.getType().equals(GodType.DESTRUCTOR)) {
+            //Destructor calculates all possible negative changes: if value > balance it tries to add as much as they can to reach balance
+            // if value < balance, it tries to subtract
+
+            //Triplet: (region name, element, change) - sorted by change with higher change at the beginning
+            List<Triplet<String, ElementType, Integer>> possibleActions = regionsElementsScores.stream().map(entry -> {
+                ElementType element = entry.getValue1();
+                int resourceValue = entry.getValue2();
+                int change = 0;
+
+                if (resourceValue <= BALANCE) { //Actual value <= balance, we want to subtract
+                    int maxChange = resourceValue + possibilities.get(element).getValue0(); //Note - this number will be negative
+                    if (maxChange < MIN)
+                        change = MIN - resourceValue;
+                    else
+                        change = possibilities.get(element).getValue0();
+                } else { //Actual value > balance, we want to add
+                    int maxChange = resourceValue + possibilities.get(element).getValue1();
+                    if (maxChange > MAX)
+                        change = MAX - resourceValue;
+                    else
+                        change = possibilities.get(element).getValue1();
+                }
+                return new Triplet<>(entry.getValue0(), element, change);
+            }).sorted((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2()))).collect(Collectors.toList());
+
+            int maxPossibleChange = Math.abs(possibleActions.get(0).getValue2());
+
+            //Consider learning something instead of taking small action
+            if (maxPossibleChange <= SMALL_CHANGE) {
+                var learningAction = ConsiderLearningSomething();
+                if (learningAction != null)
+                    return learningAction;
+            }
+
+            //We want to limit possible actions to only the ones with maximal (the same) change:
+            possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
+
+            //Now we will take random one of proposed ones
+            Random rand = new Random();
+            Triplet<String, ElementType, Integer> action = possibleActions.get(rand.nextInt(possibleActions.size()));
+            int finalChange = GodHelper.finalElementChange(action.getValue2(), action.getValue1(), settings);
+            return new GodInfluenceRegionAction(getLocalName(), action.getValue0(), Collections.singletonList(action.getValue1()), Collections.singletonList(finalChange));
+        } else if (settings.getType().equals(GodType.NEUTRAL)) {
+            //NEUTRAL works exactly the same way as creator (code is repeated so it can be easier to change separately), but all possibilities of change are divided by 2, so instead of [-180, 250] it would be [-90, 125]
+            for (var element : (ElementType[]) possibilities.keySet().toArray()) {
+                possibilities.get(element).setAt0(possibilities.get(element).getValue0() / 2);
+                possibilities.get(element).setAt1(possibilities.get(element).getValue1() / 2);
+            }
+
+            //Creator calculates all possible positive changes: if value < balance it tries to add as much as they can to reach balance
+            // if value > balance, it tries to subtract
+
+            //Triplet: (region name, element, change) - sorted by change with higher change at the beginning
+            List<Triplet<String, ElementType, Integer>> possibleActions = regionsElementsScores.stream().map(entry -> {
                 ElementType element = entry.getValue1();
                 int resourceValue = entry.getValue2();
                 int change = 0;
@@ -244,103 +361,9 @@ public class God extends Agent {
             int maxPossibleChange = Math.abs(possibleActions.get(0).getValue2());
 
             //Consider learning something instead of taking small action
-            if(maxPossibleChange <= SMALL_CHANGE) {
+            if (maxPossibleChange <= SMALL_CHANGE) {
                 var learningAction = ConsiderLearningSomething();
-                if(learningAction != null)
-                    return learningAction;
-            }
-
-            //We want to limit possible actions to only the ones with maximal (the same) change:
-            possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
-
-            //Now we will take random one of proposed ones
-            Random rand = new Random();
-            Triplet<String, ElementType, Integer> action = possibleActions.get(rand.nextInt(possibleActions.size()));
-            int finalChange = GodHelper.finalElementChange(action.getValue2(), action.getValue1(), settings);
-            return new GodInfluenceRegionAction(getLocalName(), action.getValue0(), Collections.singletonList(action.getValue1()), Collections.singletonList(finalChange));
-        }
-        else if(settings.getType().equals(GodType.DESTRUCTOR)){
-            //Destructor calculates all possible negative changes: if value > balance it tries to add as much as they can to reach balance
-            // if value < balance, it tries to subtract
-
-            //Triplet: (region name, element, change) - sorted by change with higher change at the beginning
-            List< Triplet<String, ElementType, Integer> > possibleActions = regionsElementsScores.stream().map(entry -> {
-                ElementType element = entry.getValue1();
-                int resourceValue = entry.getValue2();
-                int change = 0;
-
-                if(resourceValue <= BALANCE) { //Actual value <= balance, we want to subtract
-                    int maxChange = resourceValue + possibilities.get(element).getValue0(); //Note - this number will be negative
-                    if(maxChange < MIN)
-                        change = MIN - resourceValue;
-                    else
-                        change = possibilities.get(element).getValue0();
-                } else { //Actual value > balance, we want to add
-                    int maxChange = resourceValue + possibilities.get(element).getValue1();
-                    if(maxChange > MAX)
-                        change = MAX - resourceValue;
-                    else
-                        change = possibilities.get(element).getValue1();
-                }
-                return new Triplet<>(entry.getValue0(), element, change);
-            }).sorted((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2()))).collect(Collectors.toList());
-
-            int maxPossibleChange = Math.abs(possibleActions.get(0).getValue2());
-
-            //Consider learning something instead of taking small action
-            if(maxPossibleChange <= SMALL_CHANGE) {
-                var learningAction = ConsiderLearningSomething();
-                if(learningAction != null)
-                    return learningAction;
-            }
-
-            //We want to limit possible actions to only the ones with maximal (the same) change:
-            possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
-
-            //Now we will take random one of proposed ones
-            Random rand = new Random();
-            Triplet<String, ElementType, Integer> action = possibleActions.get(rand.nextInt(possibleActions.size()));
-            int finalChange = GodHelper.finalElementChange(action.getValue2(), action.getValue1(), settings);
-            return new GodInfluenceRegionAction(getLocalName(), action.getValue0(), Collections.singletonList(action.getValue1()), Collections.singletonList(finalChange));
-        }
-        else if(settings.getType().equals(GodType.NEUTRAL)) {
-            //NEUTRAL works exactly the same way as creator (code is repeated so it can be easier to change separately), but all possibilities of change are divided by 2, so instead of [-180, 250] it would be [-90, 125]
-            for(var element : (ElementType[])possibilities.keySet().toArray()) {
-                possibilities.get(element).setAt0(possibilities.get(element).getValue0()/2);
-                possibilities.get(element).setAt1(possibilities.get(element).getValue1()/2);
-            }
-
-            //Creator calculates all possible positive changes: if value < balance it tries to add as much as they can to reach balance
-            // if value > balance, it tries to subtract
-
-            //Triplet: (region name, element, change) - sorted by change with higher change at the beginning
-            List< Triplet<String, ElementType, Integer> > possibleActions = regionsElementsScores.stream().map(entry -> {
-                ElementType element = entry.getValue1();
-                int resourceValue = entry.getValue2();
-                int change = 0;
-
-                if(resourceValue <= BALANCE) { //Actual value <= balance, we want to add
-                    int maxChange = resourceValue + possibilities.get(element).getValue1();
-                    if(maxChange > BALANCE)
-                        change = BALANCE - resourceValue;
-                    else
-                        change = possibilities.get(element).getValue1();
-                } else { //Actual value > balance, we want to subtract
-                    int maxChange = resourceValue + possibilities.get(element).getValue0(); //Note - this number will be negative
-                    if(maxChange < BALANCE)
-                        change = BALANCE - resourceValue;
-                    else
-                        change = possibilities.get(element).getValue0();
-                }
-                return new Triplet<>(entry.getValue0(), element, change);
-            }).sorted((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2()))).collect(Collectors.toList());
-
-            int maxPossibleChange = Math.abs(possibleActions.get(0).getValue2());
-
-            //Consider learning something instead of taking small action
-            if(maxPossibleChange <= SMALL_CHANGE) {
-                var learningAction = ConsiderLearningSomething();
-                if(learningAction != null)
+                if (learningAction != null)
                     return learningAction;
             }
 
@@ -364,13 +387,13 @@ public class God extends Agent {
 
         //Simply 33% chance to skip turn
         boolean willSkipTurn = rnd.nextInt() % 100 < 33;
-        if(willSkipTurn)
+        if (willSkipTurn)
             return new GodDoNothingAction(getLocalName());
 
         //50% (out of remaining 66, so 33 overall) that god will attempt to learn something
-        if(rnd.nextInt() % 100 < 50) {
+        if (rnd.nextInt() % 100 < 50) {
             var learningAction = ConsiderLearningSomething();
-            if(learningAction != null)
+            if (learningAction != null)
                 return learningAction;
         }
 
@@ -378,14 +401,14 @@ public class God extends Agent {
         var possibilities = GodHelper.getPossibleElementChanges(settings);
         List<Triplet<ElementType, Integer, Integer>> possibleChanges = new ArrayList<>();
 
-        for(var element : ElementType.AllTypes()) {
+        for (var element : ElementType.AllTypes()) {
             Pair<Integer, Integer> bounds = possibilities.get(element);
-            if(bounds.getValue0().equals(bounds.getValue1()) && bounds.getValue0() == 0)
+            if (bounds.getValue0().equals(bounds.getValue1()) && bounds.getValue0() == 0)
                 continue;
             possibleChanges.add(new Triplet<>(element, bounds.getValue0(), bounds.getValue1()));
         }
 
-        if(possibleChanges.size() == 0)
+        if (possibleChanges.size() == 0)
             return new GodDoNothingAction(getLocalName());
 
         int changeIndex = rnd.nextInt(possibleChanges.size());
@@ -408,27 +431,27 @@ public class God extends Agent {
 
         //Get list of all regions and resources that can be influenced in a way
         //Triplet: (region name, element, actual resource value)
-        List< Triplet<String, ElementType, Integer> > changes = new ArrayList<>();
-        for(var change : info.getPreviousActions())
-            for(int i = 0; i < change.getElements().size(); i++)
+        List<Triplet<String, ElementType, Integer>> changes = new ArrayList<>();
+        for (var change : info.getPreviousActions())
+            for (int i = 0; i < change.getElements().size(); i++)
                 changes.add(new Triplet<>(change.getRegionName(), change.getElements().get(i), change.getValues().get(i)));
 
-        if(changes.size() == 0)
+        if (changes.size() == 0)
             return new GodDoNothingAction();
 
         //Triplet: (region name, element, change) - sorted by change with higher change at the beginning
-        List< Triplet<String, ElementType, Integer> > possibleActions = changes.stream().map(entry -> {
+        List<Triplet<String, ElementType, Integer>> possibleActions = changes.stream().map(entry -> {
             ElementType element = entry.getValue1();
             int resourceChange = entry.getValue2();
             int change = 0;
 
-            if(resourceChange <= 0)  { //Negative change, so we want to add
-                if(possibilities.get(element).getValue1() + resourceChange < 0)
+            if (resourceChange <= 0) { //Negative change, so we want to add
+                if (possibilities.get(element).getValue1() + resourceChange < 0)
                     change = possibilities.get(element).getValue1();
                 else
                     change = -resourceChange;
             } else { //Positive value, so we want to subtract
-                if(possibilities.get(element).getValue0() + resourceChange > 0)
+                if (possibilities.get(element).getValue0() + resourceChange > 0)
                     change = possibilities.get(element).getValue0();
                 else
                     change = -resourceChange;
@@ -442,9 +465,9 @@ public class God extends Agent {
         possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
 
         //Consider learning something instead of taking small action, but he is less likely to do it
-        if(maxPossibleChange <= SMALL_CHANGE / 2) {
+        if (maxPossibleChange <= SMALL_CHANGE / 2) {
             var learningAction = ConsiderLearningSomething();
-            if(learningAction != null)
+            if (learningAction != null)
                 return learningAction;
         }
 
@@ -464,7 +487,7 @@ public class God extends Agent {
             ACLMessage response = msg.createReply();
             response.addReceiver(msg.getSender());
             response.setSender(this.getAID());
-            if(!turned && msg.getOntology().contains(settings.getType().toString()) || msg.getOntology().contains("Protector")|| msg.getOntology().contains("Chaotic")) {
+            if (!turned && msg.getOntology().contains(settings.getType().toString()) || msg.getOntology().contains("Protector") || msg.getOntology().contains("Chaotic")) {
                 Gson _gson = new GsonBuilder().create();
                 this.settings.setSeparate(false);
                 response.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
@@ -498,22 +521,21 @@ public class God extends Agent {
             var runtime = jade.core.Runtime.instance();
             regionsProfile.setParameter(Profile.CONTAINER_NAME, settings.getName() + tmp.getGod().getName());
             regionsProfile.setParameter(Profile.MAIN_HOST, "localhost");
-            var regionsContainerController  = runtime.createAgentContainer(regionsProfile);
+            var regionsContainerController = runtime.createAgentContainer(regionsProfile);
             ACLMessage response2 = new ACLMessage(ACLMessage.INFORM);
             jade.core.Location location = here();
             //response2.setContentObject(location);
             /*
-            */
+             */
 
             try {
                 var god1 = this.getContainerController().createNewAgent(settings.getName() + tmp.getGod().getName(), "teamwork.agents.God",
-                        new Object[]{true,list,new AID[]{this.getAID(), msg.getSender(),},location});
+                        new Object[]{true, list, new AID[]{this.getAID(), msg.getSender(),}, location});
                 //var god = regionsContainerController.createNewAgent(settings.getName() + tmp.getGod().getName(), "teamwork.agents.God",
-                  //      new Object[]{true, list, new AID[]{this.getAID(), msg.getSender(),}, location});
+                //      new Object[]{true, list, new AID[]{this.getAID(), msg.getSender(),}, location});
                 //god.start();
                 god1.start();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("Exception " + e.getClass().getSimpleName() + ": " + e.getMessage());
                 System.out.println("Couldn't start God agents");
                 runtime.shutDown();
@@ -521,8 +543,7 @@ public class God extends Agent {
             }
             //this.myAgent.doMove(location);
             System.out.println("CREATED SUPERGOD:" + settings.getName() + tmp.getGod().getName());
-        }
-        else {
+        } else {
             Common.removeAgentFromDf(this);
             //this.settings.setSeparate(true);
             Common.registerAgentInDf(this, "1");
@@ -538,7 +559,7 @@ public class God extends Agent {
         GodAction action;
         boolean sep = true;
 
-        System.out.println(settings.getName()+": start");
+        System.out.println(settings.getName() + ": start");
         if (settings.getChanceToCooperatePercent() > 50) {
             ACLMessage message = new ACLMessage(ACLMessage.QUERY_IF);
             message.setLanguage("Cyclic");
@@ -547,16 +568,17 @@ public class God extends Agent {
             int i = 0;
             List<DFAgentDescription> godDescriptors = new ArrayList<>();
             for (var d : godDescriptors2) {
-
-                if (d.getAllLanguages().hasNext())
-                {if (settings.getKnownGods().contains(d.getName().getLocalName())&& !d.getAllLanguages().next().toString().equals("0") && !d.getAllLanguages().next().toString().equals("2")) {
-                   // System.out.println(d.getAllLanguages().next());
-                    godDescriptors.add(d);
-                }}
+                if (d.getAllLanguages().hasNext()) {
+                    if (settings.getKnownGods().contains(d.getName().getLocalName()) && d.getAllLanguages().next().toString().equals("1")) {
+                        System.out.println(d.getName().getLocalName());
+                        godDescriptors.add(d);
+                    }
+                }
 
             }
 
-            if (godDescriptors.size()>0) {
+
+            if (godDescriptors.size() > 0) {
                 Random rnd = new Random();
                 message.addReceiver(godDescriptors.get(rnd.nextInt(godDescriptors.size())).getName());
                 send(message);
@@ -566,7 +588,7 @@ public class God extends Agent {
                 ACLMessage msg3 = blockingReceive(ontology);
 
                 if (msg3 != null) {
-                    System.out.println(msg3.getSender().getLocalName()+ " to " + settings.getName() + " " + msg3.getPerformative() + ": " + msg3.getOntology().toString());
+                    System.out.println(msg3.getSender().getLocalName() + " to " + settings.getName() + " " + msg3.getPerformative() + ": " + msg3.getOntology().toString());
                     if (msg3.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
                         try {
                             ProcessReplyTurn(msg3);
@@ -574,39 +596,41 @@ public class God extends Agent {
                         } catch (StaleProxyException | IOException e) {
                             e.printStackTrace();
                         }
-                    }
-                    else {
+                    } else {
                         sep = true;
                     }
 
                 }
             }
         }
-        if(sep){
+        if (sep) {
             settings.setSeparate(true);
         }
-        System.out.println(settings.getName()+": end");
-        if (settings.getSeparate()){
-        switch(msg.getOntology()) {
-            case "Your Turn (God)":
-                RegionWrapper[] knownRegions = _gson.fromJson(msg.getContent(), RegionWrapper[].class);
-                regionsFromCreatorOrDestroyer = new ArrayList<>();
-                for(var kr : knownRegions)
-                    regionsFromCreatorOrDestroyer.add(kr);
-                action = ProcessGodTurn(knownRegions);
-                break;
-            case "Your Turn (Chaotic)":
-                action = ProcessChaoticTurn();
-                break;
-            case "Your Turn (Protector)":
-                ProtectorTurnInfoWrapper protectorInfo = _gson.fromJson(msg.getContent(), ProtectorTurnInfoWrapper.class);
-                action = ProcessProtectorTurn(protectorInfo);
-                break;
-            default:
-                action = new GodDoNothingAction(getLocalName());
-                break;
-        }}
-        else{
+        System.out.println(settings.getName() + ": end");
+        System.out.println(settings.getSeparate());
+        System.out.println(msg.getOntology());
+        if (settings.getSeparate()) {
+            switch (msg.getOntology()) {
+                case "Your Turn (God)":
+                    RegionWrapper[] knownRegions = _gson.fromJson(msg.getContent(), RegionWrapper[].class);
+                    regionsFromCreatorOrDestroyer = new ArrayList<>();
+                    for (var kr : knownRegions)
+                        regionsFromCreatorOrDestroyer.add(kr);
+                    action = ProcessGodTurn(knownRegions);
+                    break;
+                case "Your Turn (Chaotic)":
+                    action = ProcessChaoticTurn();
+                    break;
+                case "Your Turn (Protector)":
+                    ProtectorTurnInfoWrapper protectorInfo = _gson.fromJson(msg.getContent(), ProtectorTurnInfoWrapper.class);
+                    System.out.println("prote");
+                    action = ProcessProtectorTurn(protectorInfo);
+                    break;
+                default:
+                    action = new GodDoNothingAction(getLocalName());
+                    break;
+            }
+        } else {
             action = new GodDoNothingAction(getLocalName());
         }
         settings.setSeparate(sep);
@@ -635,15 +659,19 @@ public class God extends Agent {
                 }
                 switch (msg.getPerformative()) {
                     case ACLMessage.REQUEST:
-                        if (msg.getOntology().equals("Initial Information") )//&& settings.getSeparate())
-                        {turned = false;
-                            Common.responseWithInformationAbout(getAgent(), settings, msg);}
-                        else if(msg.getOntology().equals("Teach"))
+                        if (msg.getOntology().equals("Initial Information"))//&& settings.getSeparate())
+                        {
+                            turned = false;
+                            Common.responseWithInformationAbout(getAgent(), settings, msg);
+                        }
+                        break;
+                    case ACLMessage.INFORM_REF:
+                        if (msg.getOntology().equals("Teach"))
                             Teach(msg);
                         break;
                     case ACLMessage.INFORM:
                         if (msg.getOntology().startsWith("Your Turn")) {
-                            System.out.println(settings.getName()+" got message from Time");
+                            System.out.println(settings.getName() + " got message from Time");
                             processTurn(msg);
                         }
                         break;
@@ -660,7 +688,6 @@ public class God extends Agent {
             block();
         }
     };
-
 
 
 }

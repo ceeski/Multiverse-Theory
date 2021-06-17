@@ -9,20 +9,23 @@ import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import org.javatuples.Pair;
-import teamwork.agents.wrappers.GodWrapper;
-import teamwork.agents.wrappers.RegionWrapper;
-import teamwork.agents.wrappers.TimeWrapper;
 import teamwork.agents.actions.GodAction;
 import teamwork.agents.actions.GodInfluenceRegionAction;
-import teamwork.agents.wrappers.ProtectorTurnInfoWrapper;
+import teamwork.agents.enums.GodType;
 import teamwork.agents.utility.Common;
+import teamwork.agents.wrappers.GodWrapper;
+import teamwork.agents.wrappers.ProtectorTurnInfoWrapper;
+import teamwork.agents.wrappers.RegionWrapper;
+import teamwork.agents.wrappers.TimeWrapper;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.lang.reflect.Type;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Time extends Agent {
@@ -32,18 +35,25 @@ public class Time extends Agent {
     List<GodAction> turnActions = new ArrayList<>();
     int round = 0;
     boolean endMessageShown = false;
+    boolean everyoneDied = false;
 
     @Override
     protected void setup() {
         settings = (TimeWrapper)getArguments()[0];
         round = 0;
         endMessageShown = false;
+        boolean everyoneDied = false;
         addBehaviour(timeFlow);
     }
 
     /**
      * Logs message to the file and to the console
      */
+    private void say(String message, String colored) {
+        logToFile(message);
+        System.out.println(colored);
+    }
+
     private void say(String message) {
         logToFile(message);
         System.out.println(message);
@@ -79,11 +89,18 @@ public class Time extends Agent {
      */
     private void logActions() {
         StringBuilder sb = new StringBuilder();
+        StringBuilder newColor = new StringBuilder();
         for(var action : turnActions) {
             sb.append(action);
+            int color = 7;
+            if (action.getGodType().equals(GodType.DESTRUCTOR)){color = 88;}
+            else if (action.getGodType().equals(GodType.CREATOR)){color = 49;}
+            else if (action.getGodType().equals(GodType.CHAOTIC)){color = 13;}
+            newColor.append("\033[38;5;"+color+"m"+action.toString()+"\033[0m");
+            //System.out.println("\033[38;5;"+color+"m"+action.toString()+"\033[0m");
         }
 
-        say(sb.toString());
+        say(sb.toString(), newColor.toString());
     }
 
     /**
@@ -145,6 +162,43 @@ public class Time extends Agent {
     }
 
     /**
+     * Checks if everyone died
+     */
+    private boolean checkRegionPopulation() {
+        regions = new ArrayList<>();
+        boolean wellbeing = true;
+
+        Gson _gson = new GsonBuilder().create();
+        DFAgentDescription[] regionDescriptors = Common.findAgentsInDf(this, Region.class);
+        int i = 0;
+        for(var regionDescriptor : regionDescriptors) {
+            var regionAID = regionDescriptor.getName();
+            ACLMessage message = new ACLMessage(ACLMessage.REQUEST_WHEN);
+            message.setOntology("Initial Information");
+            message.addReceiver(regionAID);
+
+            send(message);
+
+            MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
+            MessageTemplate ontology = MessageTemplate.MatchOntology("Information");
+            MessageTemplate template = MessageTemplate.and(performative, ontology);
+
+            ACLMessage response = blockingReceive(template);
+            if(response == null) {
+                say("Time haven't got the response from region " + regionAID.getLocalName());
+                return false;
+            }
+            regions.add(_gson.fromJson(response.getContent(), RegionWrapper.class));
+            if (regions.get(i).getPopulation() > 0)
+            {
+                  wellbeing = false;
+            }
+            i++;
+        }
+        return wellbeing;
+    }
+
+    /**
      * Calculates turn order and return gods in their order as wrappers
      */
     private List<GodWrapper> getGodsTurnOrder() {
@@ -163,11 +217,12 @@ public class Time extends Agent {
     CyclicBehaviour timeFlow = new CyclicBehaviour(this) {
         @Override
         public void action() {
-            //Step 0: Check if finished
-            if(round >= settings.getNumberOfTurns()) {
+            //Step 0: Check if finished - the program went through all of the rounds or everyone died
+            if(round > 0){everyoneDied = checkRegionPopulation();}
+            if(round >= settings.getNumberOfTurns() || everyoneDied) {
                 if(!endMessageShown) {
                     endMessageShown = true;
-                    say("SIMULATION FINISHED AFTER " + round + " ROUNDS\n");
+                    say("SIMULATION FINISHED AFTER " + round + " ROUNDS out of "+settings.getNumberOfTurns()+"\n");
                     //Log final state of regions
                     getGodsAndRegionsInfo();
                     logRegionsState();
@@ -184,6 +239,7 @@ public class Time extends Agent {
 
             //Step 1: Get all gods and regions with their actual state in DF
             getGodsAndRegionsInfo();
+
 
             //Log1: Regions at the beginning of the turn
             logRegionsState();
@@ -253,6 +309,7 @@ public class Time extends Agent {
                 //3.3: Save action performed by god
                 try {
                     turnActions.add(_gson.fromJson(response.getContent(), (Type) Class.forName(response.getOntology())));
+                    turnActions.get(turnActions.size()-1).setGodType(god.getType());
                 } catch (ClassNotFoundException e) {
                     say("Action type " + response.getOntology() + " could not be found from god " + god.getName());
                     return;
