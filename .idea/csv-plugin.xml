@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\teamwork\agents\actions\GodMeetOthersAction.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\teamwork\agents\wrappers\GodWrapper.java">
           <value>
             <Attribute>
