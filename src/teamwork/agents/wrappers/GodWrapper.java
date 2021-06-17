@@ -1,8 +1,13 @@
 package teamwork.agents.wrappers;
 
+import org.javatuples.Pair;
+import teamwork.agents.enums.ElementType;
 import teamwork.agents.enums.GodType;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 public class GodWrapper {
     private Boolean separate;
@@ -247,6 +252,61 @@ public class GodWrapper {
     }
 
     public void updateRestraintSkill(int restraintSkill) {
-        this.restraintSkill += restraintSkill;
+        this.restraintSkill += restraintSkill;}
+        /**
+         * Adds knowledge about element (up to 10)
+         * @param element
+         */
+        public void learnAbout(ElementType element){
+            if (element == ElementType.AIR && airSkill < 10)
+                airSkill++;
+            if (element == ElementType.EARTH && earthSkill < 10)
+                earthSkill++;
+            if (element == ElementType.LOVE && loveSkill < 10)
+                loveSkill++;
+            if (element == ElementType.RESTRAINT && restraintSkill < 10)
+                restraintSkill++;
+            if (element == ElementType.FIRE && fireSkill < 10)
+                fireSkill++;
+            if (element == ElementType.WATER && waterSkill < 10)
+                waterSkill++;
+            if (element == ElementType.DARKNESS && darknessSkill < 10)
+                darknessSkill++;
+            if (element == ElementType.LIGHT && lightSkill < 10)
+                lightSkill++;
+            if (element == ElementType.KNOWLEDGE && knowledgeSkill < 10)
+                knowledgeSkill++;
+            if (element == ElementType.AMUSEMENT && amusementSkill < 10)
+                amusementSkill++;
+        }
+
+        /**
+         * Gets element that can be taught by this God
+         * @return
+         */
+        public ElementType getElementToTeach () {
+            List<Pair<ElementType, Integer>> knownElements = new ArrayList<>();
+            knownElements.add(new Pair<>(ElementType.AIR, airSkill));
+            knownElements.add(new Pair<>(ElementType.EARTH, earthSkill));
+            knownElements.add(new Pair<>(ElementType.WATER, waterSkill));
+            knownElements.add(new Pair<>(ElementType.FIRE, fireSkill));
+            knownElements.add(new Pair<>(ElementType.LIGHT, lightSkill));
+            knownElements.add(new Pair<>(ElementType.DARKNESS, darknessSkill));
+            knownElements.add(new Pair<>(ElementType.LOVE, loveSkill));
+            knownElements.add(new Pair<>(ElementType.RESTRAINT, restraintSkill));
+            knownElements.add(new Pair<>(ElementType.KNOWLEDGE, knowledgeSkill));
+            knownElements.add(new Pair<>(ElementType.AMUSEMENT, amusementSkill));
+
+            knownElements = knownElements.stream().sorted((o1, o2) -> Integer.compare(Math.abs(o2.getValue1()), Math.abs(o1.getValue1()))).collect(Collectors.toList());
+
+            int maxVal = Math.abs(knownElements.get(0).getValue1());
+            //We want to limit possible actions to only the ones with maximal (the same) change:
+            knownElements = knownElements.stream().takeWhile(entry -> Math.abs(entry.getValue1()) == maxVal).collect(Collectors.toList());
+
+            Random rand = new Random();
+            Pair<ElementType, Integer> element = knownElements.get(rand.nextInt(knownElements.size()));
+
+            return element.getValue0();
+        }
+
     }
-}

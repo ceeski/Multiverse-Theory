@@ -16,6 +16,7 @@ import org.javatuples.Triplet;
 import teamwork.agents.actions.GodAction;
 import teamwork.agents.actions.GodDoNothingAction;
 import teamwork.agents.actions.GodInfluenceRegionAction;
+import teamwork.agents.actions.GodLearnAction;
 import teamwork.agents.enums.ElementType;
 import teamwork.agents.enums.GodType;
 import teamwork.agents.utility.Common;
@@ -28,11 +29,14 @@ import teamwork.agents.wrappers.RegionWrapper;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.lang.Thread.sleep;
+
 
 public class God extends Agent {
     private GodWrapper settings;
     RegionWrapper[] knownRegions;
     private static final int BALANCE = 575; //Balance is slightly higher to represent the fact that people will use resources
+    private static final int SMALL_CHANGE = 45; //If change is small (below this number) - god might consider learning something
     private static final int MAX = 1000;
     private static final int MIN = 0;
     public boolean start = true;
@@ -44,6 +48,57 @@ public class God extends Agent {
         Common.registerAgentInDf(this, "1");
         addBehaviour(processMessage);
 
+    }
+
+    /**
+     * Function that checks all requirements for learning (free skillpoint slots, have friends) and checking chance for learning action and eventually, learns something
+     * @return GodLearnAction if learning was successful, null otherwise,
+     */
+    GodLearnAction ConsiderLearningSomething() {
+        if(!GodHelper.hasFreeSkillpoints(settings))
+            return null;
+        if(settings.getKnownGods().isEmpty())
+            return null;
+
+        Random rnd = new Random();
+        if(rnd.nextInt() % 100 >= settings.getChanceToShareKnowledgePercent())
+            return null;
+
+        //At this point we want to learn something, we start with picking a teacher
+        String teacherName = settings.getKnownGods().get(rnd.nextInt(settings.getKnownGods().size()));
+
+        Gson _gson = new GsonBuilder().create();
+
+        ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
+        message.addReceiver(new AID(teacherName, AID.ISLOCALNAME));
+        message.setOntology("Teach");
+
+        send(message);
+
+        MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.CONFIRM);
+        MessageTemplate ontology = MessageTemplate.MatchOntology("Teach");
+        MessageTemplate template = MessageTemplate.and(performative, ontology);
+        ACLMessage response = blockingReceive(template);
+        if(response == null)
+            return null;
+
+        ElementType learnedElement = _gson.fromJson(response.getContent(), ElementType.class);
+        settings.learnAbout(learnedElement);
+
+        return new GodLearnAction(settings.getName(), learnedElement);
+    }
+
+    /**
+     * Function that responds when God is asked about teaching
+     */
+    void Teach(ACLMessage message) {
+        Gson _gson = new GsonBuilder().create();
+
+        ACLMessage response = message.createReply();
+        response.setPerformative(ACLMessage.CONFIRM);
+        response.setOntology("Teach");
+        response.setContent(_gson.toJson(settings.getElementToTeach()));
+        send(response);
     }
 
     /**
@@ -97,6 +152,13 @@ public class God extends Agent {
 
             int maxPossibleChange = Math.abs(possibleActions.get(0).getValue2());
 
+            //Consider learning something instead of taking small action
+            if(maxPossibleChange <= SMALL_CHANGE) {
+                var learningAction = ConsiderLearningSomething();
+                if(learningAction != null)
+                    return learningAction;
+            }
+
             //We want to limit possible actions to only the ones with maximal (the same) change:
             possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
 
@@ -132,6 +194,13 @@ public class God extends Agent {
             }).sorted((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2()))).collect(Collectors.toList());
 
             int maxPossibleChange = Math.abs(possibleActions.get(0).getValue2());
+
+            //Consider learning something instead of taking small action
+            if(maxPossibleChange <= SMALL_CHANGE) {
+                var learningAction = ConsiderLearningSomething();
+                if(learningAction != null)
+                    return learningAction;
+            }
 
             //We want to limit possible actions to only the ones with maximal (the same) change:
             possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
@@ -175,6 +244,13 @@ public class God extends Agent {
 
             int maxPossibleChange = Math.abs(possibleActions.get(0).getValue2());
 
+            //Consider learning something instead of taking small action
+            if(maxPossibleChange <= SMALL_CHANGE) {
+                var learningAction = ConsiderLearningSomething();
+                if(learningAction != null)
+                    return learningAction;
+            }
+
             //We want to limit possible actions to only the ones with maximal (the same) change:
             possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
 
@@ -197,6 +273,13 @@ public class God extends Agent {
         boolean willSkipTurn = rnd.nextInt() % 100 < 33;
         if (willSkipTurn)
             return new GodDoNothingAction(getLocalName());
+
+        //50% (out of remaining 66, so 33 overall) that god will attempt to learn something
+        if(rnd.nextInt() % 100 < 50) {
+            var learningAction = ConsiderLearningSomething();
+            if(learningAction != null)
+                return learningAction;
+        }
 
         //Get all possible region influences
         var possibilities = GodHelper.getPossibleElementChanges(settings);
@@ -264,6 +347,13 @@ public class God extends Agent {
 
         //We want to limit possible actions to only the ones with maximal (the same) change:
         possibleActions = possibleActions.stream().takeWhile(entry -> Math.abs(entry.getValue2()) == maxPossibleChange).collect(Collectors.toList());
+
+        //Consider learning something instead of taking small action, but he is less likely to do it
+        if(maxPossibleChange <= SMALL_CHANGE / 2) {
+            var learningAction = ConsiderLearningSomething();
+            if(learningAction != null)
+                return learningAction;
+        }
 
         //Now we will take random one of proposed ones
         Random rand = new Random();
@@ -406,8 +496,7 @@ public class God extends Agent {
             myData.put("end", "false");
             System.out.println(settings.getName()+": start");
             if (settings.getChanceToCooperatePercent() > 50) {
-                ACLMessage message = new ACLMessage();
-                message.setPerformative(ACLMessage.QUERY_IF);
+                ACLMessage message = new ACLMessage(ACLMessage.QUERY_IF);
                 message.setLanguage("Cyclic");
                 message.setOntology("good");
                 List<DFAgentDescription> godDescriptors2 = Arrays.asList(Common.findAgentsInDf(this.myAgent, God.class));//(DFAgentDescription[]) Arrays.stream(Common.findAgentsInDf(this.getAgent(), God.class)).filter(i -> settings.getKnownGods().contains(i.getName())).toArray();
@@ -415,7 +504,7 @@ public class God extends Agent {
                 int i = 0;
                 List<DFAgentDescription> godDescriptors = new ArrayList<>();
                 for (var d : godDescriptors2) {
-                    if (settings.getKnownGods().contains(d.getName().getLocalName()) && !godDescriptors2.getClass().equals(SuperGod.class)) {
+                    if (settings.getKnownGods().contains(d.getName().getLocalName())) {
                         godDescriptors.add(d);
                         //System.out.println(d.getName().getLocalName() + " " + settings.getName() + "|");
                     }
@@ -484,6 +573,10 @@ public class God extends Agent {
                         if (msg.getOntology().equals("Initial Information") )//&& settings.getSeparate())
                         {Common.responseWithInformationAbout(getAgent(), settings, msg);
                             myAgent.removeBehaviour(askToBecomeSupergod);}
+                        if(msg.getOntology().equals("Initial Information"))
+                            Common.responseWithInformationAbout(getAgent(), settings, msg);
+                        else if(msg.getOntology().equals("Teach"))
+                            Teach(msg);
                         break;
                     case ACLMessage.INFORM:
                         if (msg.getOntology().startsWith("Your Turn")) {
@@ -494,12 +587,7 @@ public class God extends Agent {
                                 DataStore ds = new DataStore();
                                 ds.put("end","false");
                                 askToBecomeSupergod.setDataStore(ds);
-                                while(askToBecomeSupergod.getDataStore().get("end").toString().equals("true"))
-                                {/*System.out.println("DATA:"+askToBecomeSupergod.getDataStore().get("end").toString());*/};
-
-                                //ds.put("end","false");
-
-                                //askToBecomeSupergod.setDataStore(ds);
+                                while(!askToBecomeSupergod.getDataStore().get("end").toString().equals("true")){sleep(1);}
                                 processTurn(msg);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();

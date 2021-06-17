@@ -5,7 +5,6 @@ import teamwork.agents.enums.ElementType;
 import teamwork.agents.wrappers.GodWrapper;
 import teamwork.agents.wrappers.RegionWrapper;
 
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -116,5 +115,26 @@ public class GodHelper {
                 Math.abs(500 - region.getDarknessResource()) + Math.abs(500 - region.getEarthResource()) + Math.abs(500 - region.getAirResource()) +
                 Math.abs(500 - region.getKnowledgeResource()) + Math.abs(500 - region.getAmusementResource()) + Math.abs(500 - region.getLoveResource()) +
                 Math.abs(500 - region.getRestraintResource());
+    }
+
+    /**
+     * Checks if God has at least one free skillpoint
+     * @param god Settings of a god
+     * @return True if it has, false otherwise
+     */
+    public static boolean hasFreeSkillpoints(GodWrapper god) {
+        int sum = 0;
+        sum += god.getAirSkill();
+        sum += god.getAmusementSkill();
+        sum += god.getDarknessSkill();
+        sum += god.getEarthSkill();
+        sum += god.getLoveSkill();
+        sum += god.getFireSkill();
+        sum += god.getKnowledgeSkill();
+        sum += god.getLightSkill();
+        sum += god.getRestraintSkill();
+        sum += god.getWaterSkill();
+
+        return sum < god.getMaxSkillPoints();
     }
 }
