@@ -9,6 +9,7 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.wrapper.StaleProxyException;
 import org.javatuples.Pair;
+import org.javatuples.Quartet;
 import org.javatuples.Triplet;
 import teamwork.agents.actions.GodAction;
 import teamwork.agents.actions.GodDoNothingAction;
@@ -50,11 +51,12 @@ public class God extends Agent {
             { for (var l : p.getRegions()){
                 regionsFromCreatorOrDestroyer.add((RegionWrapper)l );}}
             List<AID> godSubHolons = Arrays.asList((AID[])getArguments()[2]);
-            settings = gods.get(0).getGod();
+            settings = CalculateTheBestOption(gods);
             settings.setName(this.getLocalName());
             settings.setSeparate(false);
             //ACLMessage msg = (ACLMessage) getArguments()[3];
             Location location = (Location)getArguments()[3];
+            Common.registerAgentInDf(this, "2");
             /*try {
                 location = (Location)msg.getContentObject();
             } catch (UnreadableException e) {
@@ -70,9 +72,72 @@ public class God extends Agent {
             gods = new ArrayList<>();
             regionsFromCreatorOrDestroyer = new ArrayList<>();
             godSubHolons =  new ArrayList<>();
+            Common.registerAgentInDf(this, "1");
         }
-        Common.registerAgentInDf(this, "1");
+
         addBehaviour(processMessage);
+    }
+
+    private GodWrapper CalculateTheBestOption(List<GodRegionWrapper> gods) {
+        int index = 0;
+        List<Quartet<ElementType, Integer, Integer, Integer>> possibleChanges = new ArrayList<>();
+        for (var g : gods){
+            if(g.getGod().getType().equals(GodType.PROTECTOR)) {
+                Triplet<ElementType, Integer, Integer> c = CalculateTheBestProtector((GodWrapper)g.getGod());
+                possibleChanges.add(new Quartet<>(c.getValue0(), c.getValue1(), c.getValue2(), index));
+            }
+            else if(g.getGod().getType().equals(GodType.CHAOTIC)) {
+                Triplet<ElementType, Integer, Integer> c = CalculateTheBestChaotic((GodWrapper)g.getGod());
+                possibleChanges.add(new Quartet<>(c.getValue0(), c.getValue1(), c.getValue2(), index));
+            }
+            else{
+                Triplet<ElementType, Integer, Integer> c = CalculateTheBestCreatorDestructor((GodWrapper)g.getGod());
+                possibleChanges.add(new Quartet<>(c.getValue0(), c.getValue1(), c.getValue2(), index));
+            }
+            index++;
+        }
+        return gods.get(index % gods.size()).getGod();
+    }
+
+    private Triplet<ElementType, Integer, Integer>  CalculateTheBestProtector(GodWrapper god) {
+        var possibilities = GodHelper.getPossibleElementChanges(god);
+        List<Triplet<ElementType, Integer, Integer>> possibleChanges = new ArrayList<>();
+
+        for(var element : ElementType.AllTypes()) {
+            Pair<Integer, Integer> bounds = possibilities.get(element);
+            if(bounds.getValue0().equals(bounds.getValue1()) && bounds.getValue0() == 0)
+                continue;
+            possibleChanges.add(new Triplet<>(element, bounds.getValue0(), bounds.getValue1()));
+        }
+        return possibleChanges.get(0);
+    }
+
+    private Triplet<ElementType, Integer, Integer>  CalculateTheBestChaotic(GodWrapper god) {
+        var possibilities = GodHelper.getPossibleElementChanges(god);
+        List<Triplet<ElementType, Integer, Integer>> possibleChanges = new ArrayList<>();
+
+        for(var element : ElementType.AllTypes()) {
+            Pair<Integer, Integer> bounds = possibilities.get(element);
+            if(bounds.getValue0().equals(bounds.getValue1()) && bounds.getValue0() == 0)
+                continue;
+            possibleChanges.add(new Triplet<>(element, bounds.getValue0(), bounds.getValue1()));
+        }
+        possibleChanges.sort((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2())));
+        return possibleChanges.get(0);
+    }
+
+    private Triplet<ElementType, Integer, Integer> CalculateTheBestCreatorDestructor(GodWrapper god) {
+        var possibilities = GodHelper.getPossibleElementChanges(god);
+        List<Triplet<ElementType, Integer, Integer>> possibleChanges = new ArrayList<>();
+
+        for(var element : ElementType.AllTypes()) {
+            Pair<Integer, Integer> bounds = possibilities.get(element);
+            if(bounds.getValue0().equals(bounds.getValue1()) && bounds.getValue0() == 0)
+                continue;
+            possibleChanges.add(new Triplet<>(element, bounds.getValue0(), bounds.getValue1()));
+        }
+       possibleChanges.sort((o1, o2) -> Integer.compare(Math.abs(o2.getValue2()), Math.abs(o1.getValue2())));
+        return possibleChanges.get(0);
     }
 
 
@@ -484,7 +549,7 @@ public class God extends Agent {
             for (var d : godDescriptors2) {
 
                 if (d.getAllLanguages().hasNext())
-                {if (settings.getKnownGods().contains(d.getName().getLocalName())&& d.getAllLanguages().next().toString().equals("1")) {
+                {if (settings.getKnownGods().contains(d.getName().getLocalName())&& !d.getAllLanguages().next().toString().equals("0") && !d.getAllLanguages().next().toString().equals("2")) {
                    // System.out.println(d.getAllLanguages().next());
                     godDescriptors.add(d);
                 }}
@@ -516,6 +581,9 @@ public class God extends Agent {
 
                 }
             }
+        }
+        if(sep){
+            settings.setSeparate(true);
         }
         System.out.println(settings.getName()+": end");
         if (settings.getSeparate()){

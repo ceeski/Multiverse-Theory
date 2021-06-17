@@ -100,7 +100,7 @@ public class Time extends Agent {
 
         for(var godDescriptor : godDescriptors) {
             if (godDescriptor.getAllLanguages().hasNext()) {
-                if (godDescriptor.getAllLanguages().next().toString().equals("1")) {
+                if (!godDescriptor.getAllLanguages().next().toString().equals("0")) {
                     var godAID = godDescriptor.getName();
                     ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
                     message.setOntology("Initial Information");

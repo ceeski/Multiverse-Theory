@@ -1,13 +1,12 @@
 {
   "time": {
-    "numberOfTurns": 20,
+    "numberOfTurns": 10,
     "pathToLogFile": "./testlog.txt"
   },
   "regions": [
     {
       "name":  "Average",
-      "separate": true,
-      "population": 500,
+      "population": 10,
 
       "heatResource":  500,
       "waterResource": 500,
@@ -26,7 +25,6 @@
     },
     {
       "name":  "Low",
-      "separate": true,
       "population": 700,
 
       "heatResource":  300,
@@ -51,11 +49,11 @@
       "separate": true,
       "type": "Creator",
 
-      "speed":  20,
+      "speed":  90,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   75,
+      "chanceToCooperatePercent":   60,
 
-      "knownGods": ["Hades"],
+      "knownGods": ["Apollo"],
       "knownRegions":  ["Average", "Low"],
 
       "maxSkillPoints": 30,
@@ -63,8 +61,8 @@
       "fireSkill":  1,
       "waterSkill": 7,
 
-      "lightSkill":  0,
-      "darknessSkill": 5,
+      "lightSkill":  10,
+      "darknessSkill": 0,
 
       "earthSkill":  0,
       "airSkill": 4,
@@ -80,75 +78,17 @@
       "separate": true,
       "type": "Creator",
 
-      "speed":  20,
+      "speed":  100,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   75,
+      "chanceToCooperatePercent":   0,
 
-      "knownGods": ["Hades"],
+      "knownGods": ["Poseidon"],
       "knownRegions":  ["Average", "Low"],
 
       "maxSkillPoints": 30,
 
       "fireSkill":  1,
-      "waterSkill": 7,
-
-      "lightSkill":  0,
-      "darknessSkill": 5,
-
-      "earthSkill":  0,
-      "airSkill": 4,
-
-      "knowledgeSkill":  0,
-      "amusementSkill": 0,
-
-      "loveSkill":  0,
-      "restraintSkill": 0
-    },
-    {
-      "name": "Hercules",
-      "separate": true,
-      "type": "Creator",
-
-      "speed":  20,
-      "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   75,
-
-      "knownGods": ["Hades"],
-      "knownRegions":  ["Average", "Low"],
-
-      "maxSkillPoints": 30,
-
-      "fireSkill":  1,
-      "waterSkill": 7,
-
-      "lightSkill":  0,
-      "darknessSkill": 5,
-
-      "earthSkill":  0,
-      "airSkill": 4,
-
-      "knowledgeSkill":  0,
-      "amusementSkill": 0,
-
-      "loveSkill":  0,
-      "restraintSkill": 0
-    },
-    {
-      "name": "Hera",
-      "separate": true,
-      "type": "Creator",
-
-      "speed":  20,
-      "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   75,
-
-      "knownGods": ["Hades"],
-      "knownRegions":  ["Average", "Low"],
-
-      "maxSkillPoints": 30,
-
-      "fireSkill":  1,
-      "waterSkill": 7,
+      "waterSkill": 3,
 
       "lightSkill":  0,
       "darknessSkill": 5,
@@ -169,9 +109,9 @@
 
       "speed":  20,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   75,
+      "chanceToCooperatePercent":   100,
 
-      "knownGods": ["Hades"],
+      "knownGods": ["Hefajstos"],
       "knownRegions":  ["Average", "Low"],
 
       "maxSkillPoints": 30,
@@ -198,9 +138,9 @@
 
       "speed":  20,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   75,
+      "chanceToCooperatePercent":   0,
 
-      "knownGods": ["Hades"],
+      "knownGods": ["Nimfa"],
       "knownRegions":  ["Average", "Low"],
 
       "maxSkillPoints": 30,
@@ -227,9 +167,9 @@
 
       "speed":  20,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   75,
+      "chanceToCooperatePercent":   0,
 
-      "knownGods": ["Hades"],
+      "knownGods": ["Zeus"],
       "knownRegions":  ["Average", "Low"],
 
       "maxSkillPoints": 30,
@@ -256,9 +196,9 @@
 
       "speed":  20,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   75,
+      "chanceToCooperatePercent":   0,
 
-      "knownGods": ["Hades"],
+      "knownGods": ["Aurora"],
       "knownRegions":  ["Average", "Low"],
 
       "maxSkillPoints": 30,
@@ -285,9 +225,9 @@
 
       "speed":  20,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   75,
+      "chanceToCooperatePercent":   0,
 
-      "knownGods": ["Poseidon"],
+      "knownGods": ["Hades"],
       "knownRegions":  ["Average", "Low"],
 
       "maxSkillPoints": 30,
@@ -309,11 +249,12 @@
     },
     {
       "name": "Hades",
+      "separate": true,
       "type": "Destructor",
 
       "speed":  15,
       "chanceToShareKnowledgePercent": 20,
-      "chanceToCooperatePercent":   20,
+      "chanceToCooperatePercent":   0,
 
       "knownGods": ["Hermes", "Poseidon"],
       "knownRegions":  ["Low"],
@@ -336,14 +277,15 @@
       "restraintSkill": 7
     },
     {
-      "name": "Hermes",
-      "type": "Chaotic",
+      "name": "Persefona",
+      "separate": true,
+      "type": "Creator",
 
       "speed":  40,
       "chanceToShareKnowledgePercent": 50,
-      "chanceToCooperatePercent":   50,
+      "chanceToCooperatePercent":   0,
 
-      "knownGods": ["Hades"],
+      "knownGods": ["Apollo"],
       "knownRegions":  ["Average"],
 
       "maxSkillPoints": 25,
