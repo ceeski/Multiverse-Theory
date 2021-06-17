@@ -15046,3 +15046,945 @@ Region [Low]:
 	Population: [0]
 	Heat: [276]; Water: [488]; Light: [276]; Darkness: [585]; Earth: [276]
 	Air: [433]; Knowledge: [276]; Amusement: [276]; Love: [276]; Restraint: [29]
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Artemis] applies [Water] on region [Low] with value [+19]
+Action: [Poseidon] applies [Water] on region [Low] with value [+82]
+Action: [Hermes] applies [Love] on region [Average] with value [-25]
+Action: [Athena] applies [Water] on region [Low] with value [+103]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [1282]
+	Heat: [458]; Water: [458]; Light: [458]; Darkness: [458]; Earth: [458]
+	Air: [458]; Knowledge: [458]; Amusement: [458]; Love: [433]; Restraint: [458]
+Region [Low]:
+	Population: [422]
+	Heat: [286]; Water: [490]; Light: [286]; Darkness: [136]; Earth: [286]
+	Air: [286]; Knowledge: [286]; Amusement: [286]; Love: [286]; Restraint: [286]
+----------
+Action: [Hades] applies [Darkness] on region [Low] with value [-136]
+Action: [Athena] applies [Darkness] on region [Low] with value [+110]
+Action: [Poseidon] applies [Darkness] on region [Low] with value [+39]
+
+
+ROUND NUMBER 3
+Region [Average]:
+	Population: [2710]
+	Heat: [375]; Water: [375]; Light: [375]; Darkness: [375]; Earth: [375]
+	Air: [375]; Knowledge: [375]; Amusement: [375]; Love: [350]; Restraint: [375]
+Region [Low]:
+	Population: [179]
+	Heat: [280]; Water: [484]; Light: [280]; Darkness: [143]; Earth: [280]
+	Air: [280]; Knowledge: [280]; Amusement: [280]; Love: [280]; Restraint: [280]
+----------
+Action: [Poseidon] applies [Water] on region [Average] with value [+131]
+Action: [Athena] applies [Water] on region [Average] with value [+54]
+Action: [Hades] applies [Darkness] on region [Low] with value [-143]
+
+
+ROUND NUMBER 4
+Region [Average]:
+	Population: [3990]
+	Heat: [260]; Water: [445]; Light: [260]; Darkness: [260]; Earth: [260]
+	Air: [260]; Knowledge: [260]; Amusement: [260]; Love: [235]; Restraint: [260]
+Region [Low]:
+	Population: [11]
+	Heat: [280]; Water: [484]; Light: [280]; Darkness: [0]; Earth: [280]
+	Air: [280]; Knowledge: [280]; Amusement: [280]; Love: [280]; Restraint: [280]
+----------
+Action: [Athena] applies [Water] on region [Average] with value [+150]
+Action: [Poseidon] applies [Water] on region [Average] with value [+44]
+Action: [Hades] applies [Restraint] on region [Low] with value [-51]
+
+
+ROUND NUMBER 5
+Region [Average]:
+	Population: [1190]
+	Heat: [221]; Water: [600]; Light: [221]; Darkness: [221]; Earth: [221]
+	Air: [221]; Knowledge: [221]; Amusement: [221]; Love: [196]; Restraint: [221]
+Region [Low]:
+	Population: [0]
+	Heat: [280]; Water: [484]; Light: [280]; Darkness: [0]; Earth: [280]
+	Air: [280]; Knowledge: [280]; Amusement: [280]; Love: [280]; Restraint: [229]
+----------
+Action: [Poseidon] applies [Darkness] on region [Low] with value [+142]
+Action: [Athena] applies [Darkness] on region [Average] with value [-31]
+Action: [Hades] applies [Restraint] on region [Low] with value [-43]
+
+
+ROUND NUMBER 6
+Region [Average]:
+	Population: [86]
+	Heat: [219]; Water: [598]; Light: [219]; Darkness: [188]; Earth: [219]
+	Air: [219]; Knowledge: [219]; Amusement: [219]; Love: [194]; Restraint: [219]
+Region [Low]:
+	Population: [0]
+	Heat: [280]; Water: [484]; Light: [280]; Darkness: [142]; Earth: [280]
+	Air: [280]; Knowledge: [280]; Amusement: [280]; Love: [280]; Restraint: [186]
+----------
+Action: [Athena] applies [Darkness] on region [Average] with value [+171]
+Action: [Poseidon] applies [Darkness] on region [Average] with value [+1]
+Action: [Hades] applies [Darkness] on region [Low] with value [-142]
+
+
+ROUND NUMBER 7
+Region [Average]:
+	Population: [9]
+	Heat: [219]; Water: [598]; Light: [219]; Darkness: [360]; Earth: [219]
+	Air: [219]; Knowledge: [219]; Amusement: [219]; Love: [194]; Restraint: [219]
+Region [Low]:
+	Population: [0]
+	Heat: [280]; Water: [484]; Light: [280]; Darkness: [0]; Earth: [280]
+	Air: [280]; Knowledge: [280]; Amusement: [280]; Love: [280]; Restraint: [186]
+----------
+Action: [Athena] applies [Darkness] on region [Low] with value [+97]
+Action: [Hades] applies [Restraint] on region [Low] with value [-73]
+Action: [Poseidon] applies [Darkness] on region [Low] with value [+11]
+
+
+ROUND NUMBER 8
+Region [Average]:
+	Population: [0]
+	Heat: [219]; Water: [598]; Light: [219]; Darkness: [360]; Earth: [219]
+	Air: [219]; Knowledge: [219]; Amusement: [219]; Love: [194]; Restraint: [219]
+Region [Low]:
+	Population: [0]
+	Heat: [280]; Water: [484]; Light: [280]; Darkness: [108]; Earth: [280]
+	Air: [280]; Knowledge: [280]; Amusement: [280]; Love: [280]; Restraint: [113]
+----------
+Action: [Athena] applies [Darkness] on region [Low] with value [+62]
+Action: [Poseidon] applies [Darkness] on region [Low] with value [-3]
+Action: [Hades] applies [Darkness] on region [Low] with value [-108]
+
+
+ROUND NUMBER 9
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Hermes] applies [Love] on region [Average] with value [+21]
+Action: [Poseidon] applies [Water] on region [Low] with value [+176]
+Action: [Artemis] applies [Water] on region [Low] with value [+26]
+Action: [Athena] applies [Water] on region [Low] with value [+173]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [1284]
+	Heat: [458]; Water: [458]; Light: [458]; Darkness: [458]; Earth: [458]
+	Air: [458]; Knowledge: [458]; Amusement: [458]; Love: [479]; Restraint: [458]
+Region [Low]:
+	Population: [389]
+	Heat: [287]; Water: [662]; Light: [287]; Darkness: [137]; Earth: [287]
+	Air: [287]; Knowledge: [287]; Amusement: [287]; Love: [287]; Restraint: [287]
+----------
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Artemis] applies [Water] on region [Low] with value [+40]
+Action: [Hermes] does nothing
+Action: [Athena] applies [Water] on region [Low] with value [+70]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Poseidon] applies [Water] on region [Low] with value [+187]
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [1296]
+	Heat: [458]; Water: [458]; Light: [458]; Darkness: [458]; Earth: [458]
+	Air: [458]; Knowledge: [458]; Amusement: [458]; Love: [458]; Restraint: [458]
+Region [Low]:
+	Population: [404]
+	Heat: [287]; Water: [584]; Light: [287]; Darkness: [137]; Earth: [287]
+	Air: [287]; Knowledge: [287]; Amusement: [287]; Love: [287]; Restraint: [287]
+----------
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Hermes] applies [Restraint] on region [Average] with value [+0]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Athena] applies [Water] on region [Low] with value [+210]
+Action: [Poseidon] applies [Water] on region [Low] with value [+152]
+Action: [Artemis] applies [Water] on region [Low] with value [+33]
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [1296]
+	Heat: [458]; Water: [458]; Light: [458]; Darkness: [458]; Earth: [458]
+	Air: [458]; Knowledge: [458]; Amusement: [458]; Love: [458]; Restraint: [458]
+Region [Low]:
+	Population: [385]
+	Heat: [287]; Water: [682]; Light: [287]; Darkness: [137]; Earth: [287]
+	Air: [287]; Knowledge: [287]; Amusement: [287]; Love: [287]; Restraint: [287]
+----------
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Artemis] applies [Water] on region [Low] with value [+115]
+Action: [Hermes] does nothing
+Action: [Athena] applies [Water] on region [Low] with value [+55]
+Action: [Poseidon] applies [Water] on region [Low] with value [+182]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [1296]
+	Heat: [458]; Water: [458]; Light: [458]; Darkness: [458]; Earth: [458]
+	Air: [458]; Knowledge: [458]; Amusement: [458]; Love: [458]; Restraint: [458]
+Region [Low]:
+	Population: [394]
+	Heat: [287]; Water: [639]; Light: [287]; Darkness: [137]; Earth: [287]
+	Air: [287]; Knowledge: [287]; Amusement: [287]; Love: [287]; Restraint: [287]
+----------
+Action: [Poseidon] applies [Darkness] on region [Low] with value [+80]
+Action: [Hades] applies [Darkness] on region [Low] with value [-137]
+Action: [Athena] applies [Darkness] on region [Low] with value [+28]
+
+
+ROUND NUMBER 3
+Region [Average]:
+	Population: [2772]
+	Heat: [374]; Water: [374]; Light: [374]; Darkness: [374]; Earth: [374]
+	Air: [374]; Knowledge: [374]; Amusement: [374]; Love: [374]; Restraint: [374]
+Region [Low]:
+	Population: [125]
+	Heat: [283]; Water: [635]; Light: [283]; Darkness: [104]; Earth: [283]
+	Air: [283]; Knowledge: [283]; Amusement: [283]; Love: [283]; Restraint: [283]
+----------
+Action: [Athena] applies [Water] on region [Average] with value [+105]
+Action: [Poseidon] applies [Water] on region [Average] with value [+103]
+Action: [Hades] applies [Restraint] on region [Low] with value [-120]
+
+
+ROUND NUMBER 4
+Region [Average]:
+	Population: [4070]
+	Heat: [257]; Water: [465]; Light: [257]; Darkness: [257]; Earth: [257]
+	Air: [257]; Knowledge: [257]; Amusement: [257]; Love: [257]; Restraint: [257]
+Region [Low]:
+	Population: [21]
+	Heat: [283]; Water: [635]; Light: [283]; Darkness: [104]; Earth: [283]
+	Air: [283]; Knowledge: [283]; Amusement: [283]; Love: [283]; Restraint: [163]
+----------
+Action: [Athena] applies [Darkness] on region [Low] with value [+121]
+Action: [Hades] applies [Restraint] on region [Low] with value [-82]
+Action: [Poseidon] applies [Darkness] on region [Low] with value [-43]
+
+
+ROUND NUMBER 5
+Region [Average]:
+	Population: [1271]
+	Heat: [216]; Water: [424]; Light: [216]; Darkness: [216]; Earth: [216]
+	Air: [216]; Knowledge: [216]; Amusement: [216]; Love: [216]; Restraint: [216]
+Region [Low]:
+	Population: [3]
+	Heat: [283]; Water: [635]; Light: [283]; Darkness: [182]; Earth: [283]
+	Air: [283]; Knowledge: [283]; Amusement: [283]; Love: [283]; Restraint: [81]
+----------
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Poseidon] applies [Water] on region [Average] with value [+178]
+Action: [Athena] applies [Water] on region [Average] with value [+111]
+
+
+ROUND NUMBER 6
+Region [Average]:
+	Population: [89]
+	Heat: [213]; Water: [710]; Light: [213]; Darkness: [213]; Earth: [213]
+	Air: [213]; Knowledge: [213]; Amusement: [213]; Love: [213]; Restraint: [213]
+Region [Low]:
+	Population: [0]
+	Heat: [283]; Water: [635]; Light: [283]; Darkness: [32]; Earth: [283]
+	Air: [283]; Knowledge: [283]; Amusement: [283]; Love: [283]; Restraint: [81]
+----------
+Action: [Hades] applies [Restraint] on region [Low] with value [-31]
+Action: [Poseidon] applies [Darkness] on region [Low] with value [+152]
+Action: [Athena] applies [Darkness] on region [Low] with value [+138]
+
+
+ROUND NUMBER 7
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Athena] applies [Water] on region [Low] with value [+225]
+Action: [Hermes] does nothing
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Artemis] applies [Water] on region [Low] with value [+197]
+Action: [Poseidon] applies [Water] on region [Low] with value [+45]
+
+
+ROUND NUMBER 2
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Hermes] does nothing
+Action: [Poseidon] applies [Water] on region [Low] with value [+141]
+Action: [Artemis] applies [Water] on region [Low] with value [+166]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Athena] applies [Water] on region [Low] with value [+168]
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [1296]
+	Heat: [458]; Water: [458]; Light: [458]; Darkness: [458]; Earth: [458]
+	Air: [458]; Knowledge: [458]; Amusement: [458]; Love: [458]; Restraint: [458]
+Region [Low]:
+	Population: [298]
+	Heat: [290]; Water: [765]; Light: [290]; Darkness: [140]; Earth: [290]
+	Air: [290]; Knowledge: [290]; Amusement: [290]; Love: [290]; Restraint: [290]
+----------
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Artemis] applies [Water] on region [Low] with value [+24]
+Action: [Poseidon] applies [Water] on region [Low] with value [+148]
+Action: [Athena] applies [Water] on region [Low] with value [+47]
+Action: [Hermes] does nothing
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [1296]
+	Heat: [458]; Water: [458]; Light: [458]; Darkness: [458]; Earth: [458]
+	Air: [458]; Knowledge: [458]; Amusement: [458]; Love: [458]; Restraint: [458]
+Region [Low]:
+	Population: [419]
+	Heat: [286]; Water: [505]; Light: [286]; Darkness: [136]; Earth: [286]
+	Air: [286]; Knowledge: [286]; Amusement: [286]; Love: [286]; Restraint: [286]
+----------
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Hermes] does nothing
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Artemis] applies [Water] on region [Low] with value [+178]
+Action: [Athena] applies [Water] on region [Low] with value [+204]
+Action: [Poseidon] applies [Water] on region [Low] with value [+57]
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [1296]
+	Heat: [458]; Water: [458]; Light: [458]; Darkness: [458]; Earth: [458]
+	Air: [458]; Knowledge: [458]; Amusement: [458]; Love: [458]; Restraint: [458]
+Region [Low]:
+	Population: [339]
+	Heat: [289]; Water: [728]; Light: [289]; Darkness: [139]; Earth: [289]
+	Air: [289]; Knowledge: [289]; Amusement: [289]; Love: [289]; Restraint: [289]
+----------
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Poseidon] applies [Water] on region [Low] with value [+87]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Athena] applies [Water] on region [Low] with value [+47]
+Action: [Hermes] does nothing
+Action: [Artemis] applies [Water] on region [Low] with value [+70]
+
+
+ROUND NUMBER 2
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Athena] applies [Water] on region [Low] with value [+43]
+Action: [Hermes] applies [Love] on region [Average] with value [-1]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Artemis] applies [Water] on region [Low] with value [+227]
+Action: [Poseidon] applies [Water] on region [Low] with value [+127]
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [1296]
+	Heat: [458]; Water: [458]; Light: [458]; Darkness: [458]; Earth: [458]
+	Air: [458]; Knowledge: [458]; Amusement: [458]; Love: [457]; Restraint: [458]
+Region [Low]:
+	Population: [385]
+	Heat: [287]; Water: [684]; Light: [287]; Darkness: [137]; Earth: [287]
+	Air: [287]; Knowledge: [287]; Amusement: [287]; Love: [287]; Restraint: [287]
+----------
+Action: [Hermes] does nothing
+Action: [Poseidon] applies [Darkness] on region [Low] with value [+172]
+Action: [Athena] applies [Darkness] on region [Low] with value [+3]
+Action: [Artemis] applies [Darkness] on region [Low] with value [+62]
+Action: [Hades] applies [Darkness] on region [Low] with value [-137]
+
+
+ROUND NUMBER 3
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Poseidon] applies [Water] on region [Low] with value [+43]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Hermes] applies [Love] on region [Average] with value [-20]
+Action: [Artemis] applies [Water] on region [Low] with value [+190]
+Action: [Athena] applies [Water] on region [Low] with value [+208]
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [1285]
+	Heat: [458]; Water: [458]; Light: [458]; Darkness: [458]; Earth: [458]
+	Air: [458]; Knowledge: [458]; Amusement: [458]; Love: [438]; Restraint: [458]
+Region [Low]:
+	Population: [337]
+	Heat: [289]; Water: [730]; Light: [289]; Darkness: [139]; Earth: [289]
+	Air: [289]; Knowledge: [289]; Amusement: [289]; Love: [289]; Restraint: [289]
+----------
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Hermes] does nothing
+Action: [Athena] applies [Water] on region [Low] with value [+155]
+Action: [Poseidon] applies [Water] on region [Low] with value [+29]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Artemis] applies [Water] on region [Low] with value [+220]
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [1296]
+	Heat: [458]; Water: [458]; Light: [458]; Darkness: [458]; Earth: [458]
+	Air: [458]; Knowledge: [458]; Amusement: [458]; Love: [458]; Restraint: [458]
+Region [Low]:
+	Population: [380]
+	Heat: [287]; Water: [691]; Light: [287]; Darkness: [137]; Earth: [287]
+	Air: [287]; Knowledge: [287]; Amusement: [287]; Love: [287]; Restraint: [287]
+----------
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Artemis] applies [Water] on region [Low] with value [+59]
+Action: [Hermes] applies [Knowledge] on region [Average] with value [-56]
+Action: [Athena] applies [Water] on region [Low] with value [+155]
+Action: [Poseidon] applies [Water] on region [Low] with value [+36]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [1263]
+	Heat: [459]; Water: [459]; Light: [459]; Darkness: [459]; Earth: [459]
+	Air: [459]; Knowledge: [403]; Amusement: [459]; Love: [459]; Restraint: [459]
+Region [Low]:
+	Population: [413]
+	Heat: [286]; Water: [536]; Light: [286]; Darkness: [136]; Earth: [286]
+	Air: [286]; Knowledge: [286]; Amusement: [286]; Love: [286]; Restraint: [286]
+----------
+Action: [Hermes] does nothing
+Action: [Artemis] applies [Darkness] on region [Low] with value [+78]
+Action: [Athena] applies [Darkness] on region [Low] with value [+141]
+Action: [Poseidon] applies [Darkness] on region [Low] with value [+105]
+Action: [Hades] applies [Darkness] on region [Low] with value [-136]
+
+
+ROUND NUMBER 3
+Region [Average]:
+	Population: [2643]
+	Heat: [378]; Water: [378]; Light: [378]; Darkness: [378]; Earth: [378]
+	Air: [378]; Knowledge: [322]; Amusement: [378]; Love: [378]; Restraint: [378]
+Region [Low]:
+	Population: [320]
+	Heat: [275]; Water: [525]; Light: [275]; Darkness: [313]; Earth: [275]
+	Air: [275]; Knowledge: [275]; Amusement: [275]; Love: [275]; Restraint: [275]
+----------
+Action: [Poseidon] applies [Water] on region [Average] with value [+91]
+Action: [Athena] applies [Water] on region [Average] with value [+50]
+Action: [Hermes] applies [Knowledge] on region [Average] with value [+1]
+Action: [Artemis] applies [Water] on region [Average] with value [+43]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+
+
+ROUND NUMBER 4
+Region [Average]:
+	Population: [3881]
+	Heat: [266]; Water: [450]; Light: [266]; Darkness: [266]; Earth: [266]
+	Air: [266]; Knowledge: [211]; Amusement: [266]; Love: [266]; Restraint: [266]
+Region [Low]:
+	Population: [109]
+	Heat: [272]; Water: [522]; Light: [272]; Darkness: [160]; Earth: [272]
+	Air: [272]; Knowledge: [272]; Amusement: [272]; Love: [272]; Restraint: [272]
+----------
+Action: [Hermes] does nothing
+Action: [Artemis] applies [Water] on region [Average] with value [+122]
+Action: [Athena] applies [Water] on region [Average] with value [+88]
+Action: [Poseidon] applies [Darkness] on region [Low] with value [+140]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+
+
+ROUND NUMBER 5
+Region [Average]:
+	Population: [1227]
+	Heat: [226]; Water: [620]; Light: [226]; Darkness: [226]; Earth: [226]
+	Air: [226]; Knowledge: [171]; Amusement: [226]; Love: [226]; Restraint: [226]
+Region [Low]:
+	Population: [32]
+	Heat: [271]; Water: [521]; Light: [271]; Darkness: [149]; Earth: [271]
+	Air: [271]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [271]
+----------
+Action: [Artemis] applies [Darkness] on region [Average] with value [-49]
+Action: [Hermes] does nothing
+Action: [Athena] applies [Darkness] on region [Average] with value [+63]
+Action: [Poseidon] applies [Darkness] on region [Low] with value [+7]
+Action: [Hades] applies [Darkness] on region [Low] with value [-149]
+
+
+ROUND NUMBER 6
+Region [Average]:
+	Population: [110]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [237]; Earth: [223]
+	Air: [223]; Knowledge: [168]; Amusement: [223]; Love: [223]; Restraint: [223]
+Region [Low]:
+	Population: [2]
+	Heat: [271]; Water: [521]; Light: [271]; Darkness: [7]; Earth: [271]
+	Air: [271]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [271]
+----------
+Action: [Hermes] applies [Amusement] on region [Average] with value [+32]
+Action: [Poseidon] applies [Darkness] on region [Average] with value [+31]
+Action: [Athena] applies [Darkness] on region [Low] with value [+81]
+Action: [Artemis] applies [Darkness] on region [Low] with value [+56]
+Action: [Hades] applies [Restraint] on region [Low] with value [-89]
+
+
+ROUND NUMBER 7
+Region [Average]:
+	Population: [11]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [268]; Earth: [223]
+	Air: [223]; Knowledge: [168]; Amusement: [255]; Love: [223]; Restraint: [223]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [271]; Darkness: [144]; Earth: [271]
+	Air: [271]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [182]
+----------
+Action: [Hermes] does nothing
+Action: [Artemis] applies [Darkness] on region [Low] with value [+77]
+Action: [Hades] applies [Darkness] on region [Low] with value [-144]
+Action: [Athena] applies [Darkness] on region [Low] with value [+143]
+Action: [Poseidon] applies [Darkness] on region [Low] with value [-47]
+
+
+ROUND NUMBER 8
+Region [Average]:
+	Population: [1]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [268]; Earth: [223]
+	Air: [223]; Knowledge: [168]; Amusement: [255]; Love: [223]; Restraint: [223]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [271]; Darkness: [173]; Earth: [271]
+	Air: [271]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [182]
+----------
+Action: [Hermes] does nothing
+Action: [Athena] applies [Darkness] on region [Low] with value [+33]
+Action: [Artemis] applies [Darkness] on region [Average] with value [+173]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Poseidon] applies [Darkness] on region [Low] with value [+140]
+
+
+ROUND NUMBER 9
+Region [Average]:
+	Population: [0]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [441]; Earth: [223]
+	Air: [223]; Knowledge: [168]; Amusement: [255]; Love: [223]; Restraint: [223]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [271]; Darkness: [196]; Earth: [271]
+	Air: [271]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [182]
+----------
+Action: [Hermes] does nothing
+Action: [Poseidon] applies [Darkness] on region [Average] with value [+60]
+Action: [Athena] applies [Darkness] on region [Average] with value [+84]
+Action: [Artemis] applies [Darkness] on region [Low] with value [+45]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+
+
+ROUND NUMBER 10
+Region [Average]:
+	Population: [0]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [585]; Earth: [223]
+	Air: [223]; Knowledge: [168]; Amusement: [255]; Love: [223]; Restraint: [223]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [271]; Darkness: [91]; Earth: [271]
+	Air: [271]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [182]
+----------
+Action: [Hermes] does nothing
+Action: [Artemis] applies [Darkness] on region [Low] with value [+26]
+Action: [Poseidon] applies [Darkness] on region [Low] with value [-30]
+Action: [Athena] applies [Darkness] on region [Low] with value [+150]
+Action: [Hades] applies [Restraint] on region [Low] with value [-33]
+
+
+ROUND NUMBER 11
+Region [Average]:
+	Population: [0]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [585]; Earth: [223]
+	Air: [223]; Knowledge: [168]; Amusement: [255]; Love: [223]; Restraint: [223]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [271]; Darkness: [237]; Earth: [271]
+	Air: [271]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [149]
+----------
+Action: [Hermes] does nothing
+Action: [Poseidon] applies [Darkness] on region [Low] with value [+187]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Artemis] applies [Darkness] on region [Low] with value [+161]
+Action: [Athena] applies [Darkness] on region [Low] with value [+163]
+
+
+ROUND NUMBER 12
+Region [Average]:
+	Population: [0]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [585]; Earth: [223]
+	Air: [223]; Knowledge: [168]; Amusement: [255]; Love: [223]; Restraint: [223]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [271]; Darkness: [598]; Earth: [271]
+	Air: [271]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [149]
+----------
+Action: [Hermes] applies [Restraint] on region [Average] with value [-7]
+Action: [Poseidon] applies [Air] on region [Average] with value [+14]
+Action: [Hades] applies [Darkness] on region [Low] with value [+250]
+Action: [Athena] applies [Air] on region [Low] with value [+77]
+Action: [Artemis] applies [Air] on region [Average] with value [+94]
+
+
+ROUND NUMBER 13
+Region [Average]:
+	Population: [0]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [585]; Earth: [223]
+	Air: [331]; Knowledge: [168]; Amusement: [255]; Love: [223]; Restraint: [216]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [271]; Darkness: [848]; Earth: [271]
+	Air: [348]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [149]
+----------
+Action: [Hermes] does nothing
+Action: [Poseidon] applies [Air] on region [Average] with value [-76]
+Action: [Hades] applies [Darkness] on region [Low] with value [+152]
+Action: [Artemis] applies [Air] on region [Low] with value [+23]
+Action: [Athena] applies [Air] on region [Average] with value [-77]
+
+
+ROUND NUMBER 14
+Region [Average]:
+	Population: [0]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [585]; Earth: [223]
+	Air: [178]; Knowledge: [168]; Amusement: [255]; Love: [223]; Restraint: [216]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [271]; Darkness: [1000]; Earth: [271]
+	Air: [371]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [149]
+----------
+Action: [Hermes] applies [Knowledge] on region [Average] with value [-17]
+Action: [Poseidon] applies [Air] on region [Average] with value [+154]
+Action: [Hades] applies [Restraint] on region [Low] with value [-112]
+Action: [Athena] applies [Air] on region [Average] with value [-39]
+Action: [Artemis] applies [Air] on region [Low] with value [-51]
+
+
+ROUND NUMBER 15
+Region [Average]:
+	Population: [0]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [585]; Earth: [223]
+	Air: [293]; Knowledge: [151]; Amusement: [255]; Love: [223]; Restraint: [216]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [271]; Darkness: [1000]; Earth: [271]
+	Air: [320]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [37]
+----------
+Action: [Hermes] applies [Restraint] on region [Average] with value [+19]
+Action: [Poseidon] applies [Air] on region [Average] with value [+25]
+Action: [Artemis] applies [Air] on region [Average] with value [+58]
+Action: [Athena] applies [Air] on region [Low] with value [+122]
+Action: [Hades] applies [Light] on region [Low] with value [-12]
+
+
+ROUND NUMBER 16
+Region [Average]:
+	Population: [0]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [585]; Earth: [223]
+	Air: [376]; Knowledge: [151]; Amusement: [255]; Love: [223]; Restraint: [235]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [247]; Darkness: [1000]; Earth: [271]
+	Air: [442]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [37]
+----------
+Action: [Artemis] applies [Air] on region [Average] with value [-47]
+Action: [Athena] applies [Air] on region [Average] with value [+83]
+Action: [Hermes] does nothing
+Action: [Poseidon] applies [Air] on region [Low] with value [-29]
+Action: [Hades] applies [Light] on region [Low] with value [-116]
+
+
+ROUND NUMBER 17
+Region [Average]:
+	Population: [0]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [585]; Earth: [223]
+	Air: [412]; Knowledge: [151]; Amusement: [255]; Love: [223]; Restraint: [235]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [15]; Darkness: [1000]; Earth: [271]
+	Air: [413]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [37]
+----------
+Action: [Hermes] does nothing
+Action: [Hades] applies [Earth] on region [Low] with value [+36]
+Action: [Athena] applies [Air] on region [Low] with value [+43]
+Action: [Artemis] applies [Air] on region [Low] with value [-74]
+Action: [Poseidon] applies [Air] on region [Low] with value [+53]
+
+
+ROUND NUMBER 18
+Region [Average]:
+	Population: [0]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [585]; Earth: [223]
+	Air: [412]; Knowledge: [151]; Amusement: [255]; Love: [223]; Restraint: [235]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [15]; Darkness: [1000]; Earth: [307]
+	Air: [435]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [37]
+----------
+Action: [Hermes] does nothing
+Action: [Artemis] applies [Air] on region [Low] with value [+23]
+Action: [Hades] applies [Earth] on region [Low] with value [-39]
+Action: [Athena] applies [Air] on region [Average] with value [-16]
+Action: [Poseidon] applies [Air] on region [Low] with value [+156]
+
+
+ROUND NUMBER 19
+Region [Average]:
+	Population: [0]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [585]; Earth: [223]
+	Air: [396]; Knowledge: [151]; Amusement: [255]; Love: [223]; Restraint: [235]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [15]; Darkness: [1000]; Earth: [268]
+	Air: [614]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [37]
+----------
+Action: [Hades] applies [Earth] on region [Low] with value [-103]
+Action: [Artemis] applies [Air] on region [Average] with value [+144]
+Action: [Poseidon] applies [Air] on region [Average] with value [+36]
+Action: [Hermes] does nothing
+Action: [Athena] applies [Air] on region [Average] with value [+117]
+
+
+ROUND NUMBER 20
+Region [Average]:
+	Population: [0]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [585]; Earth: [223]
+	Air: [693]; Knowledge: [151]; Amusement: [255]; Love: [223]; Restraint: [235]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [15]; Darkness: [1000]; Earth: [165]
+	Air: [614]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [37]
+----------
+Action: [Hermes] does nothing
+Action: [Artemis] applies [Darkness] on region [Low] with value [-42]
+Action: [Hades] applies [Earth] on region [Low] with value [+8]
+Action: [Athena] applies [Darkness] on region [Low] with value [-90]
+Action: [Poseidon] applies [Darkness] on region [Low] with value [-55]
+
+
+SIMULATION FINISHED AFTER 20 ROUNDS
+Region [Average]:
+	Population: [0]
+	Heat: [223]; Water: [617]; Light: [223]; Darkness: [585]; Earth: [223]
+	Air: [693]; Knowledge: [151]; Amusement: [255]; Love: [223]; Restraint: [235]
+Region [Low]:
+	Population: [0]
+	Heat: [271]; Water: [521]; Light: [15]; Darkness: [813]; Earth: [173]
+	Air: [614]; Knowledge: [271]; Amusement: [271]; Love: [271]; Restraint: [37]
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Hermes] applies [Love] on region [Average] with value [+86]
+Action: [Poseidon] applies [Water] on region [Low] with value [+138]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [null] does nothing
+Action: [Athena] applies [Water] on region [Low] with value [+157]
+
+
+ROUND NUMBER 2
+ROUND NUMBER 1
+Region [Average]:
+	Population: [500]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Hermes] does nothing
+Action: [null] does nothing
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Athena] applies [Water] on region [Low] with value [+168]
+Action: [null] does nothing
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [1296]
+	Heat: [458]; Water: [458]; Light: [458]; Darkness: [458]; Earth: [458]
+	Air: [458]; Knowledge: [458]; Amusement: [458]; Love: [458]; Restraint: [458]
+Region [Low]:
+	Population: [417]
+	Heat: [286]; Water: [454]; Light: [286]; Darkness: [136]; Earth: [286]
+	Air: [286]; Knowledge: [286]; Amusement: [286]; Love: [286]; Restraint: [286]
+----------
+Action: [Hermes] applies [Knowledge] on region [Average] with value [-49]
+Action: [Hades] applies [Darkness] on region [Low] with value [-136]
+Action: [Athena] applies [Darkness] on region [Low] with value [+166]
+
+
+ROUND NUMBER 3
+Region [Average]:
+	Population: [2709]
+	Heat: [375]; Water: [375]; Light: [375]; Darkness: [375]; Earth: [375]
+	Air: [375]; Knowledge: [326]; Amusement: [375]; Love: [375]; Restraint: [375]
+Region [Low]:
+	Population: [190]
+	Heat: [280]; Water: [448]; Light: [280]; Darkness: [160]; Earth: [280]
+	Air: [280]; Knowledge: [280]; Amusement: [280]; Love: [280]; Restraint: [280]
+----------
+Action: [Hermes] applies [Knowledge] on region [Average] with value [+32]
+Action: [Athena] applies [Water] on region [Average] with value [+215]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+
+
+ROUND NUMBER 4
+Region [Average]:
+	Population: [3948]
+	Heat: [261]; Water: [476]; Light: [261]; Darkness: [261]; Earth: [261]
+	Air: [261]; Knowledge: [244]; Amusement: [261]; Love: [261]; Restraint: [261]
+Region [Low]:
+	Population: [16]
+	Heat: [280]; Water: [448]; Light: [280]; Darkness: [10]; Earth: [280]
+	Air: [280]; Knowledge: [280]; Amusement: [280]; Love: [280]; Restraint: [280]
+----------
+Action: [Hermes] does nothing
+Action: [Athena] applies [Water] on region [Low] with value [+133]
+Action: [Hades] applies [Restraint] on region [Low] with value [-57]
+
+
+ROUND NUMBER 5
+Region [Average]:
+	Population: [1320]
+	Heat: [218]; Water: [433]; Light: [218]; Darkness: [218]; Earth: [218]
+	Air: [218]; Knowledge: [201]; Amusement: [218]; Love: [218]; Restraint: [218]
+Region [Low]:
+	Population: [1]
+	Heat: [280]; Water: [581]; Light: [280]; Darkness: [10]; Earth: [280]
+	Air: [280]; Knowledge: [280]; Amusement: [280]; Love: [280]; Restraint: [223]
+----------

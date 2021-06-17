@@ -44,7 +44,7 @@ public class SuperGod extends God {
             }
         }
         Common.registerAgentInDf(this, "1");
-        //addBehaviour(processMessage);
+        addBehaviour(processMessage);
     }
     int fire = 0, water = 0, light = 0, darkness = 0, earth = 0, air = 0,
             knowledge = 0, amusement =0, love = 0, restraint = 0;

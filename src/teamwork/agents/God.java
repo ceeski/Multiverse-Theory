@@ -289,6 +289,7 @@ public class God extends Agent {
                 Common.registerAgentInDf(this, "0");
             } else {
                 response.setPerformative(ACLMessage.REJECT_PROPOSAL);
+                this.settings.setSeparate(true);
                 response.setOntology("ProcessQuery");
             }
             /*if (settings != null) {
@@ -324,6 +325,7 @@ public class God extends Agent {
     public void processTurn(ACLMessage msg) throws InterruptedException {
         Gson _gson = new GsonBuilder().create();
         GodAction action = new GodDoNothingAction();
+        //System.out.println("This is the " +askToBecomeSupergod.getDataStore().get("end"));
 
         //sleep(10000);
 
@@ -403,7 +405,7 @@ public class God extends Agent {
             myData = new DataStore();
             myData.put("end", "false");
             System.out.println(settings.getName()+": start");
-            if (settings.getChanceToCooperatePercent() > 50 && settings.getSeparate()) {
+            if (settings.getChanceToCooperatePercent() > 50) {
                 ACLMessage message = new ACLMessage();
                 message.setPerformative(ACLMessage.QUERY_IF);
                 message.setLanguage("Cyclic");
@@ -477,101 +479,27 @@ public class God extends Agent {
                     }
 
                 }
-                /*boolean waitForMessage = false;
-                if (msg.getSender().getLocalName().equals("Time") && msg.getPerformative() == ACLMessage.INFORM && settings != null && settings.getChanceToCooperatePercent() > 50 && settings.getSeparate()) {
-
-                    ACLMessage message = new ACLMessage();
-                    message.setPerformative(ACLMessage.QUERY_IF);
-                    message.setOntology("good");
-                    List<DFAgentDescription> godDescriptors2 = Arrays.asList(Common.findAgentsInDf(this.getAgent(), God.class));//(DFAgentDescription[]) Arrays.stream(Common.findAgentsInDf(this.getAgent(), God.class)).filter(i -> settings.getKnownGods().contains(i.getName())).toArray();
-                    //System.out.println(godDescriptors);
-                    int i = 0;
-                    List<DFAgentDescription> godDescriptors = new ArrayList<>();
-                    for (var d : godDescriptors2) {
-                        if (settings.getKnownGods().contains(d.getName().getLocalName())) {
-                            godDescriptors.add(d);
-                            System.out.println(d.getName().getLocalName() + " " + settings.getName() + "|");
-                        }
-
-                    }
-
-                    //Random rnd = new Random();
-                    if (godDescriptors != null) {
-                        message.addReceiver(godDescriptors.get(rnd.nextInt(godDescriptors.size())).getName());
-                        start = false;
-                        waitForMessage = true;
-                        send(message);
-                        MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.ACCEPT_PROPOSAL);
-                        //MessageTemplate performative2 = MessageTemplate.MatchPerformative(ACLMessage.REJECT_PROPOSAL);
-                        MessageTemplate ontology = MessageTemplate.MatchOntology("ProcessQuery"), ontology2 = MessageTemplate.MatchOntology("bad");
-                        MessageTemplate template = MessageTemplate.and(performative, ontology);
-                        MessageTemplate template2 = MessageTemplate.and(performative, ontology2);
-
-                        ACLMessage msg3 = receive();
-
-                        if (msg3 != null) {
-                            System.out.println(msg3.getSender().getName() + "to " + settings.getName() + " " + msg3.getPerformative() + ": " + msg3.getOntology().toString());
-                            if (msg3.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
-                                try {
-                                    ProcessReplyTurn(msg3);
-                                    System.out.println(msg.getSender().getName() + "to " + settings.getName() + " " + msg.getPerformative() + ": " + msg.getOntology().toString());
-                                    start = true;
-                                    //action = new GodDoNothingAction(getLocalName());
-                                    //open = false;
-                                } catch (StaleProxyException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                            else {
-                                start = true;
-                            }
-
-                        }
-                    }
-                }
-*/
-               /* if (!start){
-                    ACLMessage msg3 = msg;
-
-                    if (msg3 != null && (msg3.getPerformative() == ACLMessage.ACCEPT_PROPOSAL || msg3.getPerformative() == ACLMessage.REJECT_PROPOSAL)) {
-                        System.out.println(msg3.getSender().getName() + "to " + settings.getName() + " " + msg3.getPerformative() + ": " + msg3.getOntology().toString());
-
-                        if (settings.getSeparate() && !msg3.getSender().getLocalName().equals("Time")) {
-                        if (msg3.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
-                            try {
-                                ProcessReplyTurn(msg3);
-                                //action = new GodDoNothingAction(getLocalName());
-                                //open = false;
-                            } catch (StaleProxyException e) {
-                                e.printStackTrace();
-                            }
-                        } else if (msg3.getPerformative() == ACLMessage.REJECT_PROPOSAL) {
-                            System.out.println("Supergod was not created");
-                        }
-                    }
-                    start = true;
-                    waitForMessage = false;
-                }
-                }
-*/
                 switch (msg.getPerformative()) {
                     case ACLMessage.REQUEST:
                         if (msg.getOntology().equals("Initial Information") )//&& settings.getSeparate())
-                            Common.responseWithInformationAbout(getAgent(), settings, msg);
+                        {Common.responseWithInformationAbout(getAgent(), settings, msg);
+                            myAgent.removeBehaviour(askToBecomeSupergod);}
                         break;
                     case ACLMessage.INFORM:
-                        if (msg.getOntology().startsWith("Your Turn") && settings.getSeparate()) {
+                        if (msg.getOntology().startsWith("Your Turn")) {
+                            System.out.println(settings.getName()+" got message from Time");
                             try {
-                                //addBehaviour(new Sequential(myAgent, settings, msg));
-                                //this.block();
-                                addBehaviour(askToBecomeSupergod);
+                                myAgent.addBehaviour(askToBecomeSupergod);
+                                askToBecomeSupergod.action();
                                 DataStore ds = new DataStore();
                                 ds.put("end","false");
                                 askToBecomeSupergod.setDataStore(ds);
-
                                 while(askToBecomeSupergod.getDataStore().get("end").toString().equals("true"))
                                 {/*System.out.println("DATA:"+askToBecomeSupergod.getDataStore().get("end").toString());*/};
-                                //removeBehaviour(askToBecomeSupergod);
+
+                                //ds.put("end","false");
+
+                                //askToBecomeSupergod.setDataStore(ds);
                                 processTurn(msg);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();

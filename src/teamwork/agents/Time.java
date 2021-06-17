@@ -102,12 +102,13 @@ public class Time extends Agent {
         DFAgentDescription[] godDescriptors = Common.findAgentsInDf(this, God.class);
         DFAgentDescription[] regionDescriptors = Common.findAgentsInDf(this, Region.class);
         DFAgentDescription[] supergodDescriptors = Common.findAgentsInDf(this, SuperGod.class);
-        for (var d : supergodDescriptors)
+
+        for (var d : godDescriptors)
             System.out.println("Supergod "+d.getName().getLocalName());
         for(var godDescriptor : godDescriptors) {
             if(godDescriptor.getAllLanguages().hasNext()) {
-                if(godDescriptor.getAllLanguages().next().toString().equals("1") && !godDescriptor.getClass().equals(SuperGod.class)) {
-                    System.out.println("God "+godDescriptor.getName().getLocalName());
+                if(godDescriptor.getAllLanguages().next().toString().equals("1")) {
+                    System.out.println("+++"+godDescriptor.getName().getLocalName().toUpperCase()+"+++");
                     var godAID = godDescriptor.getName();
                     ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
                     message.setOntology("Initial Information");
@@ -197,7 +198,7 @@ public class Time extends Agent {
             say("----------\n");
 
             //Step 2: Get gods order
-            getGodsAndRegionsInfo();
+            //getGodsAndRegionsInfo();
             var godsOrder = getGodsTurnOrder();
 
             System.out.println("There are "+godsOrder.size()+"gods in order:");
@@ -207,7 +208,7 @@ public class Time extends Agent {
             System.out.println(list.toString());
 
             //Step 3: Ask each god to perform action
-            getGodsAndRegionsInfo();
+            //getGodsAndRegionsInfo();
             for(var god : godsOrder) {
                 //3.1: Build a message based on god's type
                 ACLMessage message = new ACLMessage(ACLMessage.INFORM);
