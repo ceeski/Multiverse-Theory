@@ -44,6 +44,36 @@
     }
   ],
   "gods": [
+
+    {
+      "separate": true,
+      "name": "Artemis",
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 90,
+      "chanceToCooperatePercent":   90,
+
+      "knownGods": ["Hades", "Hermes", "Poseidon"],
+      "knownRegions":  ["Average", "Low"],
+
+      "maxSkillPoints": 30,
+
+      "fireSkill":  1,
+      "waterSkill": 7,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 4,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
     {
       "separate": true,
       "name": "Poseidon",
@@ -138,7 +168,7 @@
 
       "speed":  40,
       "chanceToShareKnowledgePercent": 50,
-      "chanceToCooperatePercent":   50,
+      "chanceToCooperatePercent":   60,
 
       "knownGods": ["Hades"],
       "knownRegions":  ["Average"],

@@ -101,25 +101,33 @@ public class Time extends Agent {
         Gson _gson = new GsonBuilder().create();
         DFAgentDescription[] godDescriptors = Common.findAgentsInDf(this, God.class);
         DFAgentDescription[] regionDescriptors = Common.findAgentsInDf(this, Region.class);
-
+        DFAgentDescription[] supergodDescriptors = Common.findAgentsInDf(this, SuperGod.class);
+        for (var d : supergodDescriptors)
+            System.out.println("Supergod "+d.getName().getLocalName());
         for(var godDescriptor : godDescriptors) {
-            var godAID = godDescriptor.getName();
-            ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
-            message.setOntology("Initial Information");
-            message.addReceiver(godAID);
+            if(godDescriptor.getAllLanguages().hasNext()) {
+                if(godDescriptor.getAllLanguages().next().toString().equals("1") && !godDescriptor.getClass().equals(SuperGod.class)) {
+                    System.out.println("God "+godDescriptor.getName().getLocalName());
+                    var godAID = godDescriptor.getName();
+                    ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
+                    message.setOntology("Initial Information");
+                    message.addReceiver(godAID);
+                    message.setLanguage("Cyclic");
+                    send(message);
+                    System.out.println("Sent message to "+godAID.getLocalName());
+                    MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
+                    MessageTemplate ontology = MessageTemplate.MatchOntology("Information");
+                    MessageTemplate template = MessageTemplate.and(performative, ontology);
 
-            send(message);
+                    ACLMessage response = blockingReceive(template);
+                    if (response == null) {
+                        say("Time haven't got the response from god " + godAID.getLocalName());
+                        return;
+                    }
+                    gods.add(_gson.fromJson(response.getContent(), GodWrapper.class));
+                }
 
-            MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
-            MessageTemplate ontology = MessageTemplate.MatchOntology("Information");
-            MessageTemplate template = MessageTemplate.and(performative, ontology);
-
-            ACLMessage response = blockingReceive(template);
-            if(response == null) {
-                say("Time haven't got the response from god " + godAID.getLocalName());
-                return;
             }
-            gods.add(_gson.fromJson(response.getContent(), GodWrapper.class));
         }
 
         for(var regionDescriptor : regionDescriptors) {
@@ -127,7 +135,7 @@ public class Time extends Agent {
             ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
             message.setOntology("Initial Information");
             message.addReceiver(regionAID);
-
+            message.setLanguage("Cyclic");
             send(message);
 
             MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
@@ -191,7 +199,8 @@ public class Time extends Agent {
             //Step 2: Get gods order
             getGodsAndRegionsInfo();
             var godsOrder = getGodsTurnOrder();
-            System.out.println("Gods order:");
+
+            System.out.println("There are "+godsOrder.size()+"gods in order:");
             StringBuilder list = new StringBuilder("\t");
             for(var god : godsOrder)
                 list.append(god.getName()).append("; ");
@@ -241,6 +250,7 @@ public class Time extends Agent {
                 message.setContent(content);
 
                 //3.2: Send and wait for the response
+                message.setLanguage("Cyclic");
                 send(message);
 
                 MessageTemplate template = MessageTemplate.MatchPerformative(ACLMessage.CONFIRM);
@@ -276,6 +286,7 @@ public class Time extends Agent {
                 message.setContent(_gson.toJson(actionsForRegion));
 
                 //4.2 Send message and wait for response
+                //message.setLanguage("Cyclic");
                 send(message);
 
                 MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.CONFIRM);

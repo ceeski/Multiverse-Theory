@@ -19,10 +19,25 @@ public class Common {
         dfd.setName( agent.getAID() );
 
         ServiceDescription sd = new ServiceDescription();
+        sd.addLanguages("1");
         sd.setName( agent.getLocalName() );
         sd.setType( agent.getClass().getCanonicalName() );
         dfd.addServices(sd);
+        try {
+            DFService.register(agent, dfd);
+        } catch(FIPAException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public static void registerAgentInDf(Agent agent, String input) {
+        DFAgentDescription dfd = new DFAgentDescription();
+        dfd.setName( agent.getAID() );
+        dfd.addLanguages(input);
+        ServiceDescription sd = new ServiceDescription();
+        sd.setName( agent.getLocalName() );
+        sd.setType( agent.getClass().getCanonicalName() );
+        dfd.addServices(sd);
         try {
             DFService.register(agent, dfd);
         } catch(FIPAException e) {
