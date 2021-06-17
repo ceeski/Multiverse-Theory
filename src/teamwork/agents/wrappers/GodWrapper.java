@@ -1,7 +1,6 @@
 package teamwork.agents.wrappers;
 
 import org.javatuples.Pair;
-import org.javatuples.Triplet;
 import teamwork.agents.enums.ElementType;
 import teamwork.agents.enums.GodType;
 
@@ -12,6 +11,7 @@ import java.util.stream.Collectors;
 
 public class GodWrapper {
     private String name;
+    private  Boolean separate;
     private GodType type;
 
     private int speed;
@@ -41,8 +41,9 @@ public class GodWrapper {
     public GodWrapper() {
     }
 
-    public GodWrapper(String name, GodType type, int speed, int chanceToShareKnowledgePercent, int chanceToCooperatePercent, List<String> knownGods, List<String> knownRegions, int maxSkillPoints, int fireSkill, int waterSkill, int lightSkill, int darknessSkill, int earthSkill, int airSkill, int knowledgeSkill, int amusementSkill, int loveSkill, int restraintSkill) {
+    public GodWrapper( String name, boolean separate, GodType type, int speed, int chanceToShareKnowledgePercent, int chanceToCooperatePercent, List<String> knownGods, List<String> knownRegions, int maxSkillPoints, int fireSkill, int waterSkill, int lightSkill, int darknessSkill, int earthSkill, int airSkill, int knowledgeSkill, int amusementSkill, int loveSkill, int restraintSkill) {
         this.name = name;
+        this.separate = separate;
         this.type = type;
         this.speed = speed;
         this.chanceToShareKnowledgePercent = chanceToShareKnowledgePercent;
@@ -60,6 +61,14 @@ public class GodWrapper {
         this.amusementSkill = amusementSkill;
         this.loveSkill = loveSkill;
         this.restraintSkill = restraintSkill;
+    }
+
+    public Boolean getSeparate() {
+        return separate;
+    }
+
+    public void setSeparate(Boolean separate) {
+        this.separate = separate;
     }
 
     public String getName() {

@@ -99,28 +99,33 @@ public class Time extends Agent {
         DFAgentDescription[] regionDescriptors = Common.findAgentsInDf(this, Region.class);
 
         for(var godDescriptor : godDescriptors) {
-            var godAID = godDescriptor.getName();
-            ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
-            message.setOntology("Initial Information");
-            message.addReceiver(godAID);
+            if (godDescriptor.getAllLanguages().hasNext()) {
+                if (godDescriptor.getAllLanguages().next().toString().equals("1")) {
+                    var godAID = godDescriptor.getName();
+                    ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
+                    message.setOntology("Initial Information");
+                    message.addReceiver(godAID);
+                    message.setLanguage("Cyclic");
 
-            send(message);
+                    send(message);
 
-            MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
-            MessageTemplate ontology = MessageTemplate.MatchOntology("Information");
-            MessageTemplate template = MessageTemplate.and(performative, ontology);
+                    MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
+                    MessageTemplate ontology = MessageTemplate.MatchOntology("Information");
+                    MessageTemplate template = MessageTemplate.and(performative, ontology);
 
-            ACLMessage response = blockingReceive(template);
-            if(response == null) {
-                say("Time haven't got the response from god " + godAID.getLocalName());
-                return;
+                    ACLMessage response = blockingReceive(template);
+                    if (response == null) {
+                        say("Time haven't got the response from god " + godAID.getLocalName());
+                        return;
+                    }
+                    gods.add(_gson.fromJson(response.getContent(), GodWrapper.class));
+                }
             }
-            gods.add(_gson.fromJson(response.getContent(), GodWrapper.class));
         }
 
         for(var regionDescriptor : regionDescriptors) {
             var regionAID = regionDescriptor.getName();
-            ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
+            ACLMessage message = new ACLMessage(ACLMessage.REQUEST_WHEN);
             message.setOntology("Initial Information");
             message.addReceiver(regionAID);
 
@@ -233,6 +238,7 @@ public class Time extends Agent {
                 message.addReceiver(new AID(god.getName(), AID.ISLOCALNAME));
                 message.setOntology(ontology);
                 message.setContent(content);
+                message.setLanguage("Cyclic");
 
                 //3.2: Send and wait for the response
                 send(message);
@@ -267,6 +273,7 @@ public class Time extends Agent {
                 ACLMessage message = new ACLMessage(ACLMessage.INFORM);
                 message.addReceiver(new AID(regionName, AID.ISLOCALNAME));
                 message.setOntology("Recalculate");
+                //message.setLanguage("RegionInfo");
                 message.setContent(_gson.toJson(actionsForRegion));
 
                 //4.2 Send message and wait for response

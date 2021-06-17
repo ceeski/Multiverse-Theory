@@ -5,10 +5,10 @@ import com.google.gson.GsonBuilder;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
-import teamwork.agents.enums.ElementType;
-import teamwork.agents.wrappers.RegionWrapper;
 import teamwork.agents.actions.GodInfluenceRegionAction;
+import teamwork.agents.enums.ElementType;
 import teamwork.agents.utility.Common;
+import teamwork.agents.wrappers.RegionWrapper;
 
 public class Region extends Agent {
     private RegionWrapper settings;
@@ -244,7 +244,7 @@ public class Region extends Agent {
 
             if(msg != null) {
                 switch(msg.getPerformative()) {
-                    case ACLMessage.REQUEST:
+                    case ACLMessage.REQUEST_WHEN:
                         if(msg.getOntology().equals("Initial Information"))
                             Common.responseWithInformationAbout(getAgent(), settings, msg);
                         break;

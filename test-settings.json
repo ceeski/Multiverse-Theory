@@ -6,6 +6,7 @@
   "regions": [
     {
       "name":  "Average",
+      "separate": true,
       "population": 500,
 
       "heatResource":  500,
@@ -25,6 +26,7 @@
     },
     {
       "name":  "Low",
+      "separate": true,
       "population": 700,
 
       "heatResource":  300,
@@ -46,6 +48,7 @@
   "gods": [
     {
       "name": "Poseidon",
+      "separate": true,
       "type": "Creator",
 
       "speed":  20,
@@ -53,6 +56,238 @@
       "chanceToCooperatePercent":   75,
 
       "knownGods": ["Hades"],
+      "knownRegions":  ["Average", "Low"],
+
+      "maxSkillPoints": 30,
+
+      "fireSkill":  1,
+      "waterSkill": 7,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 4,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+    {
+      "name": "Apollo",
+      "separate": true,
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 90,
+      "chanceToCooperatePercent":   75,
+
+      "knownGods": ["Hades"],
+      "knownRegions":  ["Average", "Low"],
+
+      "maxSkillPoints": 30,
+
+      "fireSkill":  1,
+      "waterSkill": 7,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 4,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+    {
+      "name": "Hercules",
+      "separate": true,
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 90,
+      "chanceToCooperatePercent":   75,
+
+      "knownGods": ["Hades"],
+      "knownRegions":  ["Average", "Low"],
+
+      "maxSkillPoints": 30,
+
+      "fireSkill":  1,
+      "waterSkill": 7,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 4,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+    {
+      "name": "Hera",
+      "separate": true,
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 90,
+      "chanceToCooperatePercent":   75,
+
+      "knownGods": ["Hades"],
+      "knownRegions":  ["Average", "Low"],
+
+      "maxSkillPoints": 30,
+
+      "fireSkill":  1,
+      "waterSkill": 7,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 4,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+    {
+      "name": "Nimfa",
+      "separate": true,
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 90,
+      "chanceToCooperatePercent":   75,
+
+      "knownGods": ["Hades"],
+      "knownRegions":  ["Average", "Low"],
+
+      "maxSkillPoints": 30,
+
+      "fireSkill":  1,
+      "waterSkill": 7,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 4,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+    {
+      "name": "Hefajstos",
+      "separate": true,
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 90,
+      "chanceToCooperatePercent":   75,
+
+      "knownGods": ["Hades"],
+      "knownRegions":  ["Average", "Low"],
+
+      "maxSkillPoints": 30,
+
+      "fireSkill":  1,
+      "waterSkill": 7,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 4,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+    {
+      "name": "Aurora",
+      "separate": true,
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 90,
+      "chanceToCooperatePercent":   75,
+
+      "knownGods": ["Hades"],
+      "knownRegions":  ["Average", "Low"],
+
+      "maxSkillPoints": 30,
+
+      "fireSkill":  1,
+      "waterSkill": 7,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 4,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+    {
+      "name": "Zeus",
+      "separate": true,
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 90,
+      "chanceToCooperatePercent":   75,
+
+      "knownGods": ["Hades"],
+      "knownRegions":  ["Average", "Low"],
+
+      "maxSkillPoints": 30,
+
+      "fireSkill":  1,
+      "waterSkill": 7,
+
+      "lightSkill":  0,
+      "darknessSkill": 5,
+
+      "earthSkill":  0,
+      "airSkill": 4,
+
+      "knowledgeSkill":  0,
+      "amusementSkill": 0,
+
+      "loveSkill":  0,
+      "restraintSkill": 0
+    },
+    {
+      "name": "Artemis",
+      "separate": true,
+      "type": "Creator",
+
+      "speed":  20,
+      "chanceToShareKnowledgePercent": 90,
+      "chanceToCooperatePercent":   75,
+
+      "knownGods": ["Poseidon"],
       "knownRegions":  ["Average", "Low"],
 
       "maxSkillPoints": 30,
