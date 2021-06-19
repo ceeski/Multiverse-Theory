@@ -380,6 +380,30 @@ public class God extends Agent {
     }
 
     /**
+     * Processes turn of god that is a supergod
+     */
+    GodAction ProcessSuperGodTurn() {
+        Gson _gson = new GsonBuilder().create();
+        gods = null;
+        for(var godAID : godSubHolons) {
+                    ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
+                    message.setOntology("Initial Information");
+                    message.addReceiver(godAID);
+                    message.setLanguage("Cyclic");
+
+                    //send(message);
+
+                    MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
+                    MessageTemplate ontology = MessageTemplate.MatchOntology("Information");
+                    MessageTemplate template = MessageTemplate.and(performative, ontology);
+
+                    ACLMessage response = blockingReceive(template);
+                    gods.add(_gson.fromJson(response.getContent(), GodRegionWrapper.class));
+        }
+        return new GodDoNothingAction(getLocalName());
+    }
+
+    /**
      * Processes turn of god that knows nothing (chaotic)
      */
     GodAction ProcessChaoticTurn() {
@@ -556,7 +580,7 @@ public class God extends Agent {
      */
     private void processTurn(ACLMessage msg) {
         Gson _gson = new GsonBuilder().create();
-        GodAction action;
+        GodAction action = new GodDoNothingAction();
         boolean sep = true;
 
         System.out.println(settings.getName() + ": start");
@@ -607,8 +631,6 @@ public class God extends Agent {
             settings.setSeparate(true);
         }
         System.out.println(settings.getName() + ": end");
-        System.out.println(settings.getSeparate());
-        System.out.println(msg.getOntology());
         if (settings.getSeparate()) {
             switch (msg.getOntology()) {
                 case "Your Turn (God)":
@@ -623,7 +645,6 @@ public class God extends Agent {
                     break;
                 case "Your Turn (Protector)":
                     ProtectorTurnInfoWrapper protectorInfo = _gson.fromJson(msg.getContent(), ProtectorTurnInfoWrapper.class);
-                    System.out.println("prote");
                     action = ProcessProtectorTurn(protectorInfo);
                     break;
                 default:
@@ -632,13 +653,14 @@ public class God extends Agent {
             }
         } else {
             action = new GodDoNothingAction(getLocalName());
+            //action = ProcessSuperGodTurn();
         }
         settings.setSeparate(sep);
-        turned = true;
         ACLMessage response = msg.createReply();
         response.setPerformative(ACLMessage.CONFIRM);
         response.setOntology(action.actionType());
         response.setContent(_gson.toJson(action));
+        turned = true;
         send(response);
     }
 

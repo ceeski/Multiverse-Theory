@@ -62134,3 +62134,411 @@ Region [Average]:
 	Population: [0]
 	Heat: [553]; Water: [617]; Light: [134]; Darkness: [686]; Earth: [76]
 	Air: [515]; Knowledge: [594]; Amusement: [528]; Love: [528]; Restraint: [551]
+ROUND NUMBER 1
+Region [Average]:
+	Population: [10]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [High]:
+	Population: [10000]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [The Best]:
+	Population: [10000]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [500]; Love: [500]; Restraint: [500]
+Region [Low]:
+	Population: [700]
+	Heat: [300]; Water: [300]; Light: [300]; Darkness: [300]; Earth: [300]
+	Air: [300]; Knowledge: [300]; Amusement: [300]; Love: [300]; Restraint: [300]
+----------
+Action: [Poseidon] does nothing
+Action: [Apollo] does nothing
+Action: [Hefajstos] applies [Fire] on region [Low] with value [+157]
+Action: [Zeus] applies [Water] on region [Low] with value [+115]
+Action: [Persefona] applies [Amusement] on region [Average] with value [+75]
+Action: [Hera] applies [Amusement] on region [Average] with value [+1]
+Action: [Nimfa] applies [Water] on region [Low] with value [+27]
+Action: [Luna] learns about {Earth}
+Action: [Aurora] applies [Darkness] on region [Low] with value [+166]
+Action: [Artemis] applies [Water] on region [Low] with value [+148]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+
+
+ROUND NUMBER 2
+Region [Average]:
+	Population: [25]
+	Heat: [500]; Water: [500]; Light: [500]; Darkness: [500]; Earth: [500]
+	Air: [500]; Knowledge: [500]; Amusement: [576]; Love: [500]; Restraint: [500]
+Region [High]:
+	Population: [25937]
+	Heat: [177]; Water: [177]; Light: [177]; Darkness: [177]; Earth: [177]
+	Air: [177]; Knowledge: [177]; Amusement: [177]; Love: [177]; Restraint: [177]
+Region [The Best]:
+	Population: [25937]
+	Heat: [177]; Water: [177]; Light: [177]; Darkness: [177]; Earth: [177]
+	Air: [177]; Knowledge: [177]; Amusement: [177]; Love: [177]; Restraint: [177]
+Region [Low]:
+	Population: [802]
+	Heat: [431]; Water: [564]; Light: [274]; Darkness: [290]; Earth: [274]
+	Air: [274]; Knowledge: [274]; Amusement: [274]; Love: [274]; Restraint: [274]
+----------
+Action: [PoseidonApollo] applies [Darkness] on region [Low] with value [-45]
+Action: [Persefona] applies [Restraint] on region [Average] with value [+70]
+Action: [Artemis] applies [Darkness] on region [Low] with value [+41]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Aurora] applies [Darkness] on region [Low] with value [-35]
+Action: [Hera] learns about {Water}
+Action: [Nimfa] applies [Water] on region [Average] with value [-18]
+Action: [Zeus] applies [Darkness] on region [Low] with value [+160]
+Action: [ApolloHefajstos] applies [Darkness] on region [Low] with value [-43]
+Action: [Luna] learns about {Earth}
+
+
+ROUND NUMBER 3
+Region [Average]:
+	Population: [60]
+	Heat: [498]; Water: [480]; Light: [498]; Darkness: [498]; Earth: [498]
+	Air: [498]; Knowledge: [498]; Amusement: [574]; Love: [498]; Restraint: [568]
+Region [High]:
+	Population: [259]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [The Best]:
+	Population: [259]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [Low]:
+	Population: [389]
+	Heat: [418]; Water: [551]; Light: [261]; Darkness: [205]; Earth: [261]
+	Air: [261]; Knowledge: [261]; Amusement: [261]; Love: [261]; Restraint: [261]
+----------
+Action: [PoseidonApollo] applies [Darkness] on region [Low] with value [-7]
+Action: [Persefona] applies [Love] on region [Average] with value [+26]
+Action: [Aurora] applies [Darkness] on region [Low] with value [+162]
+Action: [Nimfa] applies [Water] on region [Low] with value [+21]
+Action: [Zeus] applies [Darkness] on region [Low] with value [-27]
+Action: [Luna] learns about {Earth}
+Action: [ApolloHefajstos] applies [Knowledge] on region [Low] with value [+183]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [Artemis] applies [Darkness] on region [Low] with value [+73]
+Action: [Hera] learns about {Water}
+
+
+ROUND NUMBER 4
+Region [Average]:
+	Population: [142]
+	Heat: [494]; Water: [476]; Light: [494]; Darkness: [494]; Earth: [494]
+	Air: [494]; Knowledge: [494]; Amusement: [570]; Love: [520]; Restraint: [564]
+Region [High]:
+	Population: [1]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [The Best]:
+	Population: [1]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [Low]:
+	Population: [193]
+	Heat: [412]; Water: [566]; Light: [255]; Darkness: [250]; Earth: [255]
+	Air: [255]; Knowledge: [438]; Amusement: [255]; Love: [255]; Restraint: [255]
+----------
+Action: [PoseidonApollo] applies [Darkness] on region [Low] with value [+187]
+Action: [Persefona] applies [Love] on region [Average] with value [+33]
+Action: [Nimfa] applies [Water] on region [Low] with value [-62]
+Action: [Artemis] applies [Darkness] on region [Low] with value [+1]
+Action: [Zeus] applies [Darkness] on region [Low] with value [+158]
+Action: [Hera] learns about {Water}
+Action: [Luna] learns about {Earth}
+Action: [Aurora] applies [Darkness] on region [Low] with value [+15]
+Action: [ApolloHefajstos] applies [Knowledge] on region [Low] with value [+24]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+
+
+ROUND NUMBER 5
+Region [Average]:
+	Population: [328]
+	Heat: [483]; Water: [465]; Light: [483]; Darkness: [483]; Earth: [483]
+	Air: [483]; Knowledge: [483]; Amusement: [559]; Love: [542]; Restraint: [553]
+Region [High]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [The Best]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [Low]:
+	Population: [109]
+	Heat: [409]; Water: [501]; Light: [252]; Darkness: [458]; Earth: [252]
+	Air: [252]; Knowledge: [459]; Amusement: [252]; Love: [252]; Restraint: [252]
+----------
+Action: [PoseidonApollo] applies [Darkness] on region [Low] with value [-24]
+Action: [Persefona] applies [Knowledge] on region [Average] with value [+4]
+Action: [Nimfa] applies [Water] on region [Low] with value [-85]
+Action: [Luna] learns about {Earth}
+Action: [Zeus] applies [Darkness] on region [Low] with value [+58]
+Action: [Hera] learns about {Water}
+Action: [Artemis] applies [Darkness] on region [Low] with value [+163]
+Action: [Aurora] applies [Darkness] on region [Low] with value [+160]
+Action: [Hades] applies [Darkness] on region [Low] with value [-150]
+Action: [ApolloHefajstos] applies [Fire] on region [Low] with value [+123]
+
+
+ROUND NUMBER 6
+Region [Average]:
+	Population: [745]
+	Heat: [458]; Water: [440]; Light: [458]; Darkness: [458]; Earth: [458]
+	Air: [458]; Knowledge: [462]; Amusement: [534]; Love: [517]; Restraint: [528]
+Region [High]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [The Best]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [Low]:
+	Population: [54]
+	Heat: [531]; Water: [415]; Light: [251]; Darkness: [664]; Earth: [251]
+	Air: [251]; Knowledge: [458]; Amusement: [251]; Love: [251]; Restraint: [251]
+----------
+Action: [PoseidonApollo] applies [Darkness] on region [Average] with value [+91]
+Action: [Aurora] applies [Darkness] on region [Average] with value [+25]
+Action: [Artemis] applies [Water] on region [Low] with value [+33]
+Action: [Persefona] applies [Love] on region [Average] with value [+13]
+Action: [Hades] applies [Darkness] on region [Low] with value [+250]
+Action: [Nimfa] applies [Darkness] on region [Low] with value [+75]
+Action: [Luna] applies [Darkness] on region [Average] with value [-42]
+Action: [ApolloHefajstos] applies [Fire] on region [Average] with value [+92]
+Action: [Hera] applies [Darkness] on region [Average] with value [-51]
+Action: [Zeus] applies [Water] on region [Low] with value [+67]
+
+
+ROUND NUMBER 7
+Region [Average]:
+	Population: [1619]
+	Heat: [498]; Water: [388]; Light: [406]; Darkness: [429]; Earth: [406]
+	Air: [406]; Knowledge: [410]; Amusement: [482]; Love: [478]; Restraint: [476]
+Region [High]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [The Best]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [Low]:
+	Population: [3]
+	Heat: [531]; Water: [515]; Light: [251]; Darkness: [989]; Earth: [251]
+	Air: [251]; Knowledge: [458]; Amusement: [251]; Love: [251]; Restraint: [251]
+----------
+Action: [PoseidonApollo] applies [Darkness] on region [Average] with value [+137]
+Action: [Zeus] applies [Water] on region [Average] with value [+36]
+Action: [Aurora] applies [Darkness] on region [Average] with value [+27]
+Action: [Persefona] applies [Restraint] on region [Average] with value [+101]
+Action: [Luna] applies [Darkness] on region [Average] with value [+34]
+Action: [ApolloHefajstos] applies [Knowledge] on region [Average] with value [+48]
+Action: [Artemis] applies [Water] on region [Average] with value [+220]
+Action: [Hera] applies [Water] on region [Average] with value [-26]
+Action: [Nimfa] applies [Water] on region [Low] with value [-81]
+Action: [Hades] applies [Restraint] on region [Low] with value [-31]
+
+
+ROUND NUMBER 8
+Region [Average]:
+	Population: [3050]
+	Heat: [406]; Water: [526]; Light: [314]; Darkness: [535]; Earth: [314]
+	Air: [314]; Knowledge: [366]; Amusement: [390]; Love: [386]; Restraint: [485]
+Region [High]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [The Best]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [Low]:
+	Population: [0]
+	Heat: [531]; Water: [434]; Light: [251]; Darkness: [989]; Earth: [251]
+	Air: [251]; Knowledge: [458]; Amusement: [251]; Love: [251]; Restraint: [220]
+----------
+Action: [PoseidonApollo] applies [Air] on region [Low] with value [+40]
+Action: [ApolloHefajstos] applies [Fire] on region [Average] with value [+110]
+Action: [Zeus] applies [Water] on region [Low] with value [+131]
+Action: [Hades] applies [Restraint] on region [Low] with value [-20]
+Action: [Persefona] applies [Amusement] on region [Average] with value [+185]
+Action: [Artemis] applies [Water] on region [Low] with value [+95]
+Action: [Hera] applies [Fire] on region [Average] with value [-93]
+Action: [Aurora] applies [Air] on region [Low] with value [+53]
+Action: [Nimfa] applies [Darkness] on region [Average] with value [-40]
+Action: [Luna] applies [Fire] on region [Average] with value [+16]
+
+
+ROUND NUMBER 9
+Region [Average]:
+	Population: [4969]
+	Heat: [302]; Water: [389]; Light: [177]; Darkness: [358]; Earth: [177]
+	Air: [177]; Knowledge: [229]; Amusement: [438]; Love: [249]; Restraint: [348]
+Region [High]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [The Best]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [Low]:
+	Population: [0]
+	Heat: [531]; Water: [660]; Light: [251]; Darkness: [989]; Earth: [251]
+	Air: [344]; Knowledge: [458]; Amusement: [251]; Love: [251]; Restraint: [200]
+----------
+Action: [PoseidonApollo] applies [Darkness] on region [Average] with value [+162]
+Action: [Persefona] applies [Amusement] on region [Average] with value [+137]
+Action: [ApolloHefajstos] applies [Fire] on region [Average] with value [+147]
+Action: [Aurora] applies [Darkness] on region [Average] with value [+88]
+Action: [Artemis] applies [Water] on region [Average] with value [+201]
+Action: [Zeus] applies [Water] on region [Average] with value [+196]
+Action: [Hera] applies [Water] on region [Average] with value [-23]
+Action: [Hades] applies [Restraint] on region [Low] with value [-131]
+Action: [Nimfa] applies [Water] on region [Low] with value [+145]
+Action: [Luna] applies [Water] on region [Average] with value [-113]
+
+
+ROUND NUMBER 10
+Region [Average]:
+	Population: [1043]
+	Heat: [415]; Water: [616]; Light: [143]; Darkness: [574]; Earth: [143]
+	Air: [143]; Knowledge: [195]; Amusement: [541]; Love: [215]; Restraint: [314]
+Region [High]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [The Best]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [Low]:
+	Population: [0]
+	Heat: [531]; Water: [805]; Light: [251]; Darkness: [989]; Earth: [251]
+	Air: [344]; Knowledge: [458]; Amusement: [251]; Love: [251]; Restraint: [69]
+----------
+Action: [PoseidonApollo] applies [Air] on region [Low] with value [+14]
+Action: [Zeus] applies [Water] on region [Low] with value [-30]
+Action: [Persefona] applies [Love] on region [Average] with value [+171]
+Action: [ApolloHefajstos] applies [Fire] on region [Average] with value [-7]
+Action: [Artemis] applies [Water] on region [Low] with value [-12]
+Action: [Hera] learns about {Water}
+Action: [Hades] applies [Light] on region [Low] with value [+40]
+Action: [Nimfa] applies [Water] on region [Low] with value [+9]
+Action: [Luna] learns about {Water}
+Action: [Aurora] applies [Air] on region [Low] with value [+93]
+
+
+ROUND NUMBER 11
+Region [Average]:
+	Population: [139]
+	Heat: [404]; Water: [612]; Light: [139]; Darkness: [570]; Earth: [139]
+	Air: [139]; Knowledge: [191]; Amusement: [537]; Love: [382]; Restraint: [310]
+Region [High]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [The Best]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [Low]:
+	Population: [0]
+	Heat: [531]; Water: [772]; Light: [291]; Darkness: [989]; Earth: [251]
+	Air: [451]; Knowledge: [458]; Amusement: [251]; Love: [251]; Restraint: [69]
+----------
+Action: [PoseidonApollo] applies [Air] on region [Average] with value [+48]
+Action: [Persefona] applies [Love] on region [Average] with value [+30]
+Action: [Nimfa] applies [Water] on region [Low] with value [+131]
+Action: [Hades] applies [Light] on region [Low] with value [-29]
+Action: [Zeus] applies [Water] on region [Low] with value [-89]
+Action: [Hera] applies [Air] on region [Average] with value [+22]
+Action: [ApolloHefajstos] applies [Fire] on region [Average] with value [-19]
+Action: [Luna] applies [Air] on region [Average] with value [+19]
+Action: [Artemis] applies [Water] on region [Low] with value [-54]
+Action: [Aurora] applies [Air] on region [Average] with value [-41]
+
+
+ROUND NUMBER 12
+Region [Average]:
+	Population: [21]
+	Heat: [385]; Water: [612]; Light: [139]; Darkness: [570]; Earth: [139]
+	Air: [187]; Knowledge: [191]; Amusement: [537]; Love: [412]; Restraint: [310]
+Region [High]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [The Best]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [Low]:
+	Population: [0]
+	Heat: [531]; Water: [760]; Light: [237]; Darkness: [989]; Earth: [251]
+	Air: [451]; Knowledge: [458]; Amusement: [251]; Love: [251]; Restraint: [69]
+----------
+Action: [PoseidonApollo] applies [Air] on region [Average] with value [-18]
+Action: [Persefona] applies [Restraint] on region [Average] with value [+32]
+Action: [Aurora] applies [Air] on region [Low] with value [-31]
+Action: [Artemis] applies [Water] on region [Low] with value [-80]
+Action: [ApolloHefajstos] applies [Fire] on region [Average] with value [+160]
+Action: [Nimfa] applies [Water] on region [Low] with value [+115]
+Action: [Luna] applies [Fire] on region [Average] with value [-93]
+Action: [Zeus] applies [Water] on region [Low] with value [-22]
+Action: [Hades] applies [Light] on region [Low] with value [-129]
+Action: [Hera] applies [Fire] on region [Average] with value [+97]
+
+
+ROUND NUMBER 13
+Region [Average]:
+	Population: [3]
+	Heat: [549]; Water: [612]; Light: [139]; Darkness: [570]; Earth: [139]
+	Air: [169]; Knowledge: [191]; Amusement: [537]; Love: [412]; Restraint: [342]
+Region [High]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [The Best]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [Low]:
+	Population: [0]
+	Heat: [531]; Water: [773]; Light: [0]; Darkness: [989]; Earth: [251]
+	Air: [420]; Knowledge: [458]; Amusement: [251]; Love: [251]; Restraint: [69]
+----------
+Action: [PoseidonApollo] applies [Air] on region [Average] with value [-14]
+Action: [Nimfa] applies [Water] on region [Average] with value [+31]
+Action: [Zeus] applies [Water] on region [Low] with value [-71]
+Action: [ApolloHefajstos] applies [Knowledge] on region [Average] with value [+45]
+Action: [Persefona] applies [Restraint] on region [Average] with value [+130]
+Action: [Hera] applies [Water] on region [Average] with value [-4]
+Action: [Aurora] applies [Air] on region [Low] with value [-62]
+Action: [Artemis] applies [Water] on region [Low] with value [-60]
+Action: [Luna] applies [Water] on region [Average] with value [-25]
+Action: [Hades] applies [Earth] on region [Low] with value [-42]
+
+
+SIMULATION FINISHED AFTER 13 ROUNDS out of 300
+Region [Average]:
+	Population: [0]
+	Heat: [549]; Water: [614]; Light: [139]; Darkness: [570]; Earth: [139]
+	Air: [155]; Knowledge: [236]; Amusement: [537]; Love: [412]; Restraint: [472]
+Region [High]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [The Best]:
+	Population: [0]
+	Heat: [169]; Water: [169]; Light: [169]; Darkness: [169]; Earth: [169]
+	Air: [169]; Knowledge: [169]; Amusement: [169]; Love: [169]; Restraint: [169]
+Region [Low]:
+	Population: [0]
+	Heat: [531]; Water: [642]; Light: [0]; Darkness: [989]; Earth: [209]
+	Air: [358]; Knowledge: [458]; Amusement: [251]; Love: [251]; Restraint: [69]
