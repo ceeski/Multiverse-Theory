@@ -321,9 +321,9 @@
 
       "speed":  20,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   50,
+      "chanceToCooperatePercent":   100,
 
-      "knownGods": ["Hades"],
+      "knownGods": ["Hades", "Persefona"],
       "knownRegions":  ["Average", "Low"],
 
       "maxSkillPoints": 30,
@@ -379,7 +379,7 @@
 
       "speed":  40,
       "chanceToShareKnowledgePercent": 50,
-      "chanceToCooperatePercent":   30,
+      "chanceToCooperatePercent":   90,
 
       "knownGods": ["Apollo"],
       "knownRegions":  ["Average"],

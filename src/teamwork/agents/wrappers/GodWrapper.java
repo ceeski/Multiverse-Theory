@@ -63,6 +63,34 @@ public class GodWrapper {
         this.restraintSkill = restraintSkill;
     }
 
+    public void updateGod(GodWrapper otherGod){
+        if (!this.name.contains((otherGod.name)))
+        {this.name += otherGod.name;}
+        this.separate = false;
+        this.speed = (this.speed+otherGod.speed)/2;
+        this.chanceToShareKnowledgePercent = (this.chanceToShareKnowledgePercent+otherGod.chanceToShareKnowledgePercent)/2;
+        this.chanceToCooperatePercent = (this.chanceToCooperatePercent + otherGod.chanceToCooperatePercent)/2;
+        for (String known : otherGod.getKnownGods()){
+        if (this.getKnownGods().stream().noneMatch(name -> name.equals(known))) {
+            this.getKnownGods().add(known);
+        }}
+        for (String known : otherGod.getKnownRegions()){
+            if (this.getKnownRegions().stream().noneMatch(name -> name.equals(known))) {
+                this.getKnownRegions().add(known);
+            }}
+        this.maxSkillPoints += otherGod.maxSkillPoints;
+        this.fireSkill += otherGod.fireSkill;
+        this.waterSkill += otherGod.waterSkill;
+        this.lightSkill += otherGod.lightSkill;
+        this.darknessSkill += otherGod.darknessSkill;
+        this.earthSkill += otherGod.earthSkill;
+        this.airSkill += otherGod.airSkill;
+        this.knowledgeSkill += otherGod.knowledgeSkill;
+        this.amusementSkill += otherGod.amusementSkill;
+        this.loveSkill += otherGod.loveSkill;
+        this.restraintSkill += otherGod.restraintSkill;
+    }
+
     public Boolean getSeparate() {
         return separate;
     }

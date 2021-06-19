@@ -207,8 +207,7 @@ public class Time extends Agent {
 
         for(var god : gods) {
             int modifier = (rd.nextInt() % 21) - 10; //Modifier is from -10 to 10
-            godsWithSpeed.add(new Pair<>(god, god.getSpeed() + modifier));
-        }
+            godsWithSpeed.add(new Pair<>(god, god.getSpeed() + modifier));}
 
         //Reverse (descending) sort by speed with modifier and return list of only names
         return godsWithSpeed.stream().sorted((p1, p2) -> (-1) * p1.getValue1().compareTo(p2.getValue1())).map(Pair::getValue0).collect(Collectors.toList());
@@ -285,6 +284,10 @@ public class Time extends Agent {
                         ontology = "Your Turn (Chaotic)";
                         content = "";
                         break;
+                    case SUPERGOD:
+                        ontology = "Your Turn (Supergod)";
+                        content = _gson.toJson(new ProtectorTurnInfoWrapper(regionsForGod, previousActionsForKnownRegions));
+                        break;
                     default:
                         ontology = "Your Turn (God)";
                         content = _gson.toJson(regionsForGod);
@@ -301,15 +304,41 @@ public class Time extends Agent {
 
                 MessageTemplate template = MessageTemplate.MatchPerformative(ACLMessage.CONFIRM);
                 ACLMessage response = blockingReceive(template);
+
                 if(response == null) {
                     say("Time haven't got the response from god " + god.getName());
                     return;
                 }
+                else if ( (response.getOntology().contains("Delete"))) {
+                    ACLMessage msg = response.createReply();
+                    msg.addReceiver(new AID(god.getName(), AID.ISLOCALNAME));
+                    msg.setOntology(ontology);
+                    msg.setContent(content);
+                    msg.setLanguage("Cyclic");
+                    msg.setPerformative(ACLMessage.DISCONFIRM);
+                } /*KillAgent ka = new KillAgent();
+                    ka.setAgent(response.getSender()); // AID of the agent you want to kill
+                    Action action = new Action(getAMS(), ka);
+                    ACLMessage request = new ACLMessage(ACLMessage.REQUEST);
+                    request.setLanguage(FIPANames.ContentLanguage.FIPA_SL);
+                    request.setOntology(JADEManagementOntology.NAME);
+                    try {
+                        getContentManager().registerLanguage(new SLCodec(), FIPANames.ContentLanguage.FIPA_SL);
+                        getContentManager().registerOntology(JADEManagementOntology.getInstance());
+                        getContentManager().fillContent(request, action);
+                        request.addReceiver(action.getActor());
+                        send(request);
+                    }
+                    catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }*/
 
                 //3.3: Save action performed by god
                 try {
+                    if (response.getOntology()!= null){
                     turnActions.add(_gson.fromJson(response.getContent(), (Type) Class.forName(response.getOntology())));
-                    turnActions.get(turnActions.size()-1).setGodType(god.getType());
+                    turnActions.get(turnActions.size()-1).setGodType(god.getType());}
                 } catch (ClassNotFoundException e) {
                     say("Action type " + response.getOntology() + " could not be found from god " + god.getName());
                     return;

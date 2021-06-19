@@ -2,19 +2,18 @@ package teamwork.agents;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import jade.content.lang.sl.SLCodec;
 import jade.core.*;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
+import jade.domain.FIPANames;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.wrapper.StaleProxyException;
 import org.javatuples.Pair;
 import org.javatuples.Quartet;
 import org.javatuples.Triplet;
-import teamwork.agents.actions.GodAction;
-import teamwork.agents.actions.GodDoNothingAction;
-import teamwork.agents.actions.GodInfluenceRegionAction;
-import teamwork.agents.actions.GodLearnAction;
+import teamwork.agents.actions.*;
 import teamwork.agents.enums.ElementType;
 import teamwork.agents.enums.GodType;
 import teamwork.agents.utility.Common;
@@ -39,34 +38,30 @@ public class God extends Agent {
     public static List<GodRegionWrapper> gods;
     public static List<AID> godSubHolons;
     private boolean turned = false;
+    private int change = 0;
+    private boolean isGood;
     private Agent myAgent;
 
     @Override
     protected void setup() {
-        if (getArguments().length > 3) {
-            boolean isHeadOfHolon = (boolean) getArguments()[0];
-            List<GodRegionWrapper> gods = (List<GodRegionWrapper>) getArguments()[1];
-            List<RegionWrapper> regionsFromCreatorOrDestroyer = new ArrayList<>();
+        getContentManager().registerLanguage(new SLCodec(), FIPANames.ContentLanguage.FIPA_SL);
+        if (getArguments().length == 4) {
+            isHeadOfHolon = (boolean)getArguments()[0];
+            gods = (List<GodRegionWrapper>) getArguments()[1];
+            regionsFromCreatorOrDestroyer = new ArrayList<>();
             for (var p : gods) {
                 for (var l : p.getRegions()) {
                     regionsFromCreatorOrDestroyer.add((RegionWrapper) l);
                 }
             }
-            List<AID> godSubHolons = Arrays.asList((AID[]) getArguments()[2]);
+            godSubHolons = Arrays.asList((AID[]) getArguments()[2]);
             settings = CalculateTheBestOption(gods);
             settings.setName(this.getLocalName());
             settings.setSeparate(false);
-            //ACLMessage msg = (ACLMessage) getArguments()[3];
-            Location location = (Location) getArguments()[3];
+            this.settings.setType(GodType.SUPERGOD);
+            jade.core.Location location = (Location) getArguments()[3];
             Common.registerAgentInDf(this, "2");
-            /*try {
-                location = (Location)msg.getContentObject();
-            } catch (UnreadableException e) {
-                e.printStackTrace();
-            }*/
-            /*if(location != null)
-                this.myAgent.doMove(location);*/
-        } else if (getArguments().length == 1) {
+        } else {
             settings = (GodWrapper) getArguments()[0];
             settings.setSeparate(true);
             isHeadOfHolon = false;
@@ -74,6 +69,7 @@ public class God extends Agent {
             regionsFromCreatorOrDestroyer = new ArrayList<>();
             godSubHolons = new ArrayList<>();
             Common.registerAgentInDf(this, "1");
+            isGood = settings.getType().equals(GodType.CREATOR);
         }
 
         addBehaviour(processMessage);
@@ -81,6 +77,7 @@ public class God extends Agent {
 
     private GodWrapper CalculateTheBestOption(List<GodRegionWrapper> gods) {
         int index = 0;
+        int speed = 0;
         List<Quartet<ElementType, Integer, Integer, Integer>> possibleChanges = new ArrayList<>();
         for (var g : gods) {
             if (g.getGod().getType().equals(GodType.PROTECTOR)) {
@@ -93,9 +90,12 @@ public class God extends Agent {
                 Triplet<ElementType, Integer, Integer> c = CalculateTheBestCreatorDestructor((GodWrapper) g.getGod());
                 possibleChanges.add(new Quartet<>(c.getValue0(), c.getValue1(), c.getValue2(), index));
             }
+            speed += g.getSpeed();
             index++;
         }
-        return gods.get(index % gods.size()).getGod();
+        GodWrapper god  = gods.get(index % gods.size()).getGod();
+        god.setSpeed(speed*index);
+        return god;
     }
 
     private Triplet<ElementType, Integer, Integer> CalculateTheBestProtector(GodWrapper god) {
@@ -282,6 +282,7 @@ public class God extends Agent {
             Random rand = new Random();
             Triplet<String, ElementType, Integer> action = possibleActions.get(rand.nextInt(possibleActions.size()));
             int finalChange = GodHelper.finalElementChange(action.getValue2(), action.getValue1(), settings);
+            change = finalChange;
             return new GodInfluenceRegionAction(getLocalName(), action.getValue0(), Collections.singletonList(action.getValue1()), Collections.singletonList(finalChange));
         } else if (settings.getType().equals(GodType.DESTRUCTOR)) {
             //Destructor calculates all possible negative changes: if value > balance it tries to add as much as they can to reach balance
@@ -325,6 +326,7 @@ public class God extends Agent {
             Random rand = new Random();
             Triplet<String, ElementType, Integer> action = possibleActions.get(rand.nextInt(possibleActions.size()));
             int finalChange = GodHelper.finalElementChange(action.getValue2(), action.getValue1(), settings);
+            change = finalChange;
             return new GodInfluenceRegionAction(getLocalName(), action.getValue0(), Collections.singletonList(action.getValue1()), Collections.singletonList(finalChange));
         } else if (settings.getType().equals(GodType.NEUTRAL)) {
             //NEUTRAL works exactly the same way as creator (code is repeated so it can be easier to change separately), but all possibilities of change are divided by 2, so instead of [-180, 250] it would be [-90, 125]
@@ -374,33 +376,141 @@ public class God extends Agent {
             Random rand = new Random();
             Triplet<String, ElementType, Integer> action = possibleActions.get(rand.nextInt(possibleActions.size()));
             int finalChange = GodHelper.finalElementChange(action.getValue2(), action.getValue1(), settings);
+            change = finalChange;
             return new GodInfluenceRegionAction(getLocalName(), action.getValue0(), Collections.singletonList(action.getValue1()), Collections.singletonList(finalChange));
         }
         return new GodDoNothingAction(getLocalName());
     }
 
+    void GetSubHolonsSettings(){
+        Gson _gson = new GsonBuilder().create();
+        //gods = null;
+        int goodness = 0;
+        for(var godAID : godSubHolons) {
+            ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
+            message.setOntology("Initial Information");
+            message.addReceiver(godAID);
+            message.setLanguage("Cyclic");
+
+            send(message);
+
+            MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
+            MessageTemplate ontology = MessageTemplate.MatchOntology("Information");
+            MessageTemplate template = MessageTemplate.and(performative, ontology);
+
+            ACLMessage response = blockingReceive(template);
+            if (response.getLanguage().contains("good")) goodness++;
+            else if (response.getLanguage().contains("bad")) goodness--;
+            this.settings.updateGod(_gson.fromJson(response.getContent(), GodRegionWrapper.class));
+
+            //gods.add(_gson.fromJson(response.getContent(), GodRegionWrapper.class));
+        }
+        System.out.println(this.getLocalName()+"duper");
+        this.settings.setType(GodType.SUPERGOD);
+        isGood = goodness >= 0;
+    }
+
     /**
      * Processes turn of god that is a supergod
      */
-    GodAction ProcessSuperGodTurn() {
+    void ProcessSubGodTurn(ProtectorTurnInfoWrapper supergodInfo, ACLMessage msg) {
+        Gson _gson = new GsonBuilder().create();
+        GodAction action = new GodDoNothingAction();
+        switch(settings.getType()) {
+            case PROTECTOR:
+                action = ProcessProtectorTurn(supergodInfo);
+                break;
+            case CHAOTIC:
+                action = ProcessChaoticTurn();
+                break;
+            default:
+                RegionWrapper[] knownRegions = supergodInfo.getRegions().toArray(new RegionWrapper[0]);
+                action = ProcessGodTurn(knownRegions);
+                break;
+        }
+        String better = "";
+        int value = _gson.fromJson(msg.getProtocol(), Integer.class);
+        if (action.actionType().contains("GodInfluence")){
+            GodInfluenceRegionAction action1 = (GodInfluenceRegionAction) action;
+            List<RegionWrapper> list =  supergodInfo.getRegions().stream().filter(o->o.getName()==action1.getRegionName()).collect(Collectors.toList());
+            better = Math.abs(list.get(0).getElementOfType(action1.getElements().get(0).getType())-575)>value ? "better":"worse";
+        }
+        if (better.contains("better")){
+            Common.removeAgentFromDf(this);
+            settings.setSeparate(true);
+            Common.registerAgentInDf(this, "0");
+        }
+        System.out.println("It is "+better+" than the supergod");
+        ACLMessage response = msg.createReply();
+        response.setPerformative(ACLMessage.CONFIRM);
+        response.setOntology("Subgod");
+        response.setContent(better);
+        turned = true;
+        send(response);
+    }
+
+    GodAction CreateSuperGodAction(ProtectorTurnInfoWrapper supergodInfo) throws ClassNotFoundException {
+        Gson _gson = new GsonBuilder().create();
+        settings.setType(isGood?GodType.CREATOR:GodType.DESTRUCTOR);
+        GodAction action = ProcessGodTurn(supergodInfo.getRegions().toArray(new RegionWrapper[0]));
+        settings.setType(GodType.SUPERGOD);
+        return action;
+    }
+    /**
+     * Processes turn of god that is a supergod
+     */
+    GodAction ProcessSuperGodTurn(ProtectorTurnInfoWrapper supergodInfo) throws ClassNotFoundException {
         Gson _gson = new GsonBuilder().create();
         gods = null;
-        for(var godAID : godSubHolons) {
-                    ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
-                    message.setOntology("Initial Information");
+        int differenceFromBalance = 0;
+        GodAction action = CreateSuperGodAction(supergodInfo);
+        if (action.actionType().contains("GodInfluenceRegionAction")){
+            GodInfluenceRegionAction action1 = (GodInfluenceRegionAction) action;
+            List<RegionWrapper> list =  supergodInfo.getRegions().stream().filter(o->o.getName()==action1.getRegionName()).collect(Collectors.toList());
+            differenceFromBalance = Math.abs(list.get(0).getElementOfType(action1.getElements().get(0).getType())-575);
+        }
+        System.out.println("There are "+godSubHolons.size()+ " subholons");
+        int i = 0;
+        while(i < godSubHolons.size()) {
+                   AID godAID = godSubHolons.get(i);
+                    ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+                    message.setOntology("Your Turn (Subgod)");
                     message.addReceiver(godAID);
                     message.setLanguage("Cyclic");
+                    message.setContent(_gson.toJson(supergodInfo));
+                    message.setProtocol(_gson.toJson(differenceFromBalance));
 
-                    //send(message);
+                    send(message);
 
-                    MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
-                    MessageTemplate ontology = MessageTemplate.MatchOntology("Information");
+                    MessageTemplate performative = MessageTemplate.MatchPerformative(ACLMessage.CONFIRM);
+                    MessageTemplate ontology = MessageTemplate.MatchOntology("Subgod");
                     MessageTemplate template = MessageTemplate.and(performative, ontology);
 
                     ACLMessage response = blockingReceive(template);
-                    gods.add(_gson.fromJson(response.getContent(), GodRegionWrapper.class));
+                    System.out.println(this.getLocalName()+" received message: "+response.getContent());
+                    i++;
+                    if (response.getContent().contains("better")) {
+                        List<AID> temp = godSubHolons;
+                        godSubHolons = new ArrayList<>();
+                        for (var a : temp) {
+                            if (a != godAID) {
+                                godSubHolons.add(a);
+                            }
+                        }
+                        //System.out.println("There are "+godSubHolons.size()+" subholons");
+                        if (godSubHolons.size() < 1){
+                            Common.removeAgentFromDf(this);
+                            //myAgent.doDelete();
+                            return new GodDeleteAction();
+                        }
+                        GetSubHolonsSettings();
+                        action = CreateSuperGodAction(supergodInfo);
+                        i = 0;
+                    }
+                    //GodAction action1 = _gson.fromJson(response.getContent(), (Type) Class.forName(response.getOntology()));
+                    //gods.add(_gson.fromJson(response.getContent(), GodRegionWrapper.class));
         }
-        return new GodDoNothingAction(getLocalName());
+        return action;
     }
 
     /**
@@ -442,7 +552,7 @@ public class God extends Agent {
 
         int regionIndex = rnd.nextInt(settings.getKnownRegions().size());
         String regionName = settings.getKnownRegions().get(regionIndex);
-
+        change = finalValue;
         return new GodInfluenceRegionAction(getLocalName(), regionName, Collections.singletonList(element), Collections.singletonList(finalValue));
     }
 
@@ -499,6 +609,8 @@ public class God extends Agent {
         Random rand = new Random();
         Triplet<String, ElementType, Integer> action = possibleActions.get(rand.nextInt(possibleActions.size()));
         int finalChange = GodHelper.finalElementChange(action.getValue2(), action.getValue1(), settings);
+        change = finalChange;
+        //isGood = GodHelper.checkBalance(finalChange,action.getValue1(), settings);
         return new GodInfluenceRegionAction(getLocalName(), action.getValue0(), Collections.singletonList(action.getValue1()), Collections.singletonList(finalChange));
     }
 
@@ -516,6 +628,7 @@ public class God extends Agent {
                 this.settings.setSeparate(false);
                 response.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
                 response.setOntology("ProcessQuery");
+                isHeadOfHolon = false;
                 response.setContent(_gson.toJson(new GodRegionWrapper(settings, regionsFromCreatorOrDestroyer)));
                 Common.removeAgentFromDf(this);
                 Common.registerAgentInDf(this, "0");
@@ -532,41 +645,37 @@ public class God extends Agent {
      * Reply to accept or reject from other god
      */
     public void ProcessReplyTurn(ACLMessage msg) throws StaleProxyException, IOException {
+        this.settings.setSeparate(false);
         if (msg != null && msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
-            Common.removeAgentFromDf(this);
-            this.settings.setSeparate(false);
-            Common.registerAgentInDf(this, "0");
             Gson _gson = new GsonBuilder().create();
             GodRegionWrapper tmp = (_gson.fromJson(msg.getContent(), GodRegionWrapper.class));
+            String name = settings.getName() + tmp.getGod().getName();
             List<GodRegionWrapper> list = new ArrayList<>();
             list.add(tmp);
             list.add(new GodRegionWrapper(settings, regionsFromCreatorOrDestroyer));
             var regionsProfile = new ProfileImpl();
             var runtime = jade.core.Runtime.instance();
-            regionsProfile.setParameter(Profile.CONTAINER_NAME, settings.getName() + tmp.getGod().getName());
-            regionsProfile.setParameter(Profile.MAIN_HOST, "localhost");
-            var regionsContainerController = runtime.createAgentContainer(regionsProfile);
-            ACLMessage response2 = new ACLMessage(ACLMessage.INFORM);
+            isHeadOfHolon = false;
             jade.core.Location location = here();
-            //response2.setContentObject(location);
-            /*
-             */
-
             try {
                 var god1 = this.getContainerController().createNewAgent(settings.getName() + tmp.getGod().getName(), "teamwork.agents.God",
-                        new Object[]{true, list, new AID[]{this.getAID(), msg.getSender(),}, location});
+                       new Object[]{true, list, new AID[]{this.getAID(), msg.getSender(),},location});
                 //var god = regionsContainerController.createNewAgent(settings.getName() + tmp.getGod().getName(), "teamwork.agents.God",
-                //      new Object[]{true, list, new AID[]{this.getAID(), msg.getSender(),}, location});
-                //god.start();
+                 //     new Object[]{true, list, new AID[]{this.getAID(), msg.getSender(),}, location});
+                this.turned = true;
                 god1.start();
+                //god.move(location);
+                //god.start();
             } catch (Exception e) {
                 System.out.println("Exception " + e.getClass().getSimpleName() + ": " + e.getMessage());
                 System.out.println("Couldn't start God agents");
                 runtime.shutDown();
                 return;
             }
+            Common.removeAgentFromDf(this);
+            Common.registerAgentInDf(this, "0");
             //this.myAgent.doMove(location);
-            System.out.println("CREATED SUPERGOD:" + settings.getName() + tmp.getGod().getName());
+            System.out.println(settings.getName()+" CREATED SUPERGOD:" + name);
         } else {
             Common.removeAgentFromDf(this);
             //this.settings.setSeparate(true);
@@ -576,12 +685,27 @@ public class God extends Agent {
 
 
     /**
+     * Reply to accept or reject from other god (as a supergod)
+     */
+    public void ProcessReplyTurnSuperGod(ACLMessage msg) throws StaleProxyException, IOException {
+        if (msg != null && msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
+               Gson _gson = new GsonBuilder().create();
+               GodRegionWrapper tmp = (_gson.fromJson(msg.getContent(), GodRegionWrapper.class));
+               String name = settings.getName() + tmp.getGod().getName();
+               godSubHolons.add(msg.getSender());
+               settings.setName(name);
+               System.out.println(settings.getName()+" CREATED SUPERGOD:" + settings.getName());
+        }
+    }
+
+
+    /**
      * Interprets what kind of information god got, calls appropriate function and responds
      */
-    private void processTurn(ACLMessage msg) {
+    private void processTurn(ACLMessage msg) throws ClassNotFoundException {
         Gson _gson = new GsonBuilder().create();
         GodAction action = new GodDoNothingAction();
-        boolean sep = true;
+        boolean sep = false;
 
         System.out.println(settings.getName() + ": start");
         if (settings.getChanceToCooperatePercent() > 50) {
@@ -615,23 +739,25 @@ public class God extends Agent {
                     System.out.println(msg3.getSender().getLocalName() + " to " + settings.getName() + " " + msg3.getPerformative() + ": " + msg3.getOntology().toString());
                     if (msg3.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
                         try {
+                            if (!settings.getType().equals(GodType.SUPERGOD)){
                             ProcessReplyTurn(msg3);
-                            sep = false;
+                            isHeadOfHolon = false;}
+                            else {
+                                ProcessReplyTurnSuperGod(msg3);
+                            }
                         } catch (StaleProxyException | IOException e) {
                             e.printStackTrace();
                         }
                     } else {
                         sep = true;
+                        isHeadOfHolon = false;
                     }
 
                 }
             }
         }
-        if (sep) {
-            settings.setSeparate(true);
-        }
-        System.out.println(settings.getName() + ": end");
-        if (settings.getSeparate()) {
+        System.out.println(settings.getName() + ": end"+(isHeadOfHolon));
+        if (settings.getSeparate() || (settings.getType().equals(GodType.SUPERGOD))) {
             switch (msg.getOntology()) {
                 case "Your Turn (God)":
                     RegionWrapper[] knownRegions = _gson.fromJson(msg.getContent(), RegionWrapper[].class);
@@ -647,6 +773,10 @@ public class God extends Agent {
                     ProtectorTurnInfoWrapper protectorInfo = _gson.fromJson(msg.getContent(), ProtectorTurnInfoWrapper.class);
                     action = ProcessProtectorTurn(protectorInfo);
                     break;
+                case "Your Turn (Supergod)":
+                    ProtectorTurnInfoWrapper supergodInfo = _gson.fromJson(msg.getContent(), ProtectorTurnInfoWrapper.class);
+                    action = ProcessSuperGodTurn(supergodInfo);
+                    break;
                 default:
                     action = new GodDoNothingAction(getLocalName());
                     break;
@@ -655,7 +785,7 @@ public class God extends Agent {
             action = new GodDoNothingAction(getLocalName());
             //action = ProcessSuperGodTurn();
         }
-        settings.setSeparate(sep);
+        if(sep) settings.setSeparate(sep);
         ACLMessage response = msg.createReply();
         response.setPerformative(ACLMessage.CONFIRM);
         response.setOntology(action.actionType());
@@ -667,12 +797,12 @@ public class God extends Agent {
     CyclicBehaviour processMessage = new CyclicBehaviour(this) {
         @Override
         public void action() {
-
+            Gson _gson = new GsonBuilder().create();
             MessageTemplate tmp = MessageTemplate.MatchLanguage("Cyclic");
             ACLMessage msg = blockingReceive(tmp);
             Random rnd = new Random();
             if (msg != null) {
-                //If message is not from time and god don't know the sender, add sender to known gods
+                //If message is not from time and god doesn't know the sender, add sender to known gods
                 if (!msg.getSender().getLocalName().equals("Time")) {
                     if (settings.getKnownGods().stream().noneMatch(name -> name.equals(msg.getSender().getLocalName()))) {
                         settings.getKnownGods().add(msg.getSender().getLocalName());
@@ -684,17 +814,61 @@ public class God extends Agent {
                         if (msg.getOntology().equals("Initial Information"))//&& settings.getSeparate())
                         {
                             turned = false;
-                            Common.responseWithInformationAbout(getAgent(), settings, msg);
+                            if (isHeadOfHolon && !settings.getSeparate()) {
+                                System.out.println(getLocalName()+" subholons");
+                                GetSubHolonsSettings();
+                            }
+                            if (!settings.getType().equals(GodType.CREATOR) && !settings.getType().equals(GodType.DESTRUCTOR)) {
+                                isGood = rnd.nextDouble() < 0.5;
+                            }
+                            Common.responseWithInformationAbout(getAgent(), settings, msg, isGood ? "good" : "bad");
                         }
                         break;
                     case ACLMessage.INFORM_REF:
                         if (msg.getOntology().equals("Teach"))
                             Teach(msg);
                         break;
+                    case ACLMessage.DISCONFIRM:
+                        if (msg.getOntology().contains("Your Turn")) {
+                            Common.removeAgentFromDf(this.myAgent);
+                            /*KillAgent ka = new KillAgent();
+                            ka.setAgent(getAID()); // AID of the agent you want to kill
+                            Action action = new Action(getAMS(), ka);
+                            ACLMessage request = new ACLMessage(ACLMessage.REQUEST);
+                            request.setLanguage(FIPANames.ContentLanguage.FIPA_SL);
+                            request.setOntology(JADEManagementOntology.NAME);
+                            try {
+                                getContentManager().registerLanguage(new SLCodec(), FIPANames.ContentLanguage.FIPA_SL);
+                                getContentManager().registerOntology(JADEManagementOntology.getInstance());
+                                getContentManager().fillContent(request, action);
+                                request.addReceiver(action.getActor());
+                                send(request);
+                            }
+                            catch (Exception ex) {
+                                ex.printStackTrace();
+                            }*/
+                        }
+                        break;
                     case ACLMessage.INFORM:
                         if (msg.getOntology().startsWith("Your Turn")) {
-                            System.out.println(settings.getName() + " got message from Time");
-                            processTurn(msg);
+                            System.out.println(settings.getName() +", "+settings.getType()+ ": got message from "+msg.getSender().getLocalName());
+                            if (msg.getOntology().contains("Subgod"))
+                            {
+                                ProtectorTurnInfoWrapper subgodInfo = _gson.fromJson(msg.getContent(), ProtectorTurnInfoWrapper.class);
+                                ProcessSubGodTurn(subgodInfo, msg);
+                            }
+                            else{
+                                try {
+                                    processTurn(msg);
+                                } catch (ClassNotFoundException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        else if (msg.getOntology().contains("Separated")) {
+                                settings.setSeparate(true);
+                                Common.removeAgentFromDf(this.myAgent);
+                                Common.registerAgentInDf(this.myAgent, "0");
                         }
                         break;
                     case ACLMessage.QUERY_IF:

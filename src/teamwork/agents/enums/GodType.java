@@ -19,7 +19,9 @@ public enum GodType {
     @SerializedName("Chaotic")
     CHAOTIC("Chaotic"),
     @SerializedName("Protector")
-    PROTECTOR("Protector");
+    PROTECTOR("Protector"),
+    @SerializedName("Supergod")
+    SUPERGOD("Supergod");
 
     private final String type;
     public String getType() {

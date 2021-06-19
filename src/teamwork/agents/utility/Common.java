@@ -95,6 +95,15 @@ public class Common {
         response.setContent(_gson.toJson(settings));
         agent.send(response);
     }
+    public static <T> void responseWithInformationAbout(Agent agent, T settings, ACLMessage msg, String goodness) {
+        Gson _gson = new GsonBuilder().create();
+        ACLMessage response = msg.createReply();
+        response.setPerformative(ACLMessage.INFORM);
+        response.setOntology("Information");
+        response.setLanguage(goodness);
+        response.setContent(_gson.toJson(settings));
+        agent.send(response);
+    }
 
     /**
      * Clamps value between min and max

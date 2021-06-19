@@ -37,6 +37,8 @@ public class RegionWrapper {
         this.restraintResource = restraintResource;
     }
 
+
+
     @Override
     public String toString() {
         return String.format("Region [%s]:\n\tPopulation: [%d]\n\tHeat: [%d]; Water: [%d]; Light: [%d]; Darkness: [%d]; Earth: [%d]\n\tAir: [%d]; Knowledge: [%d]; Amusement: [%d]; Love: [%d]; Restraint: [%d]\n",
@@ -53,6 +55,43 @@ public class RegionWrapper {
             good = bad;
         }
         return before + good + middle + el + end;
+    }
+
+    public int getElementOfType(String type){
+        int resource = 0;
+        switch (type) {
+            case "Air":
+                resource = this.airResource;
+                break;
+            case "Fire":
+                resource = this.heatResource;
+                break;
+            case "Love":
+                resource = this.loveResource;
+                break;
+            case "Earth":
+                resource = this.earthResource;
+                break;
+            case "Light":
+                resource = this.lightResource;
+                break;
+            case "Water":
+                resource = this.waterResource;
+                break;
+            case "Darkness":
+                resource = this.darknessResource;
+                break;
+            case "Amusement":
+                resource = this.amusementResource;
+                break;
+            case "Knowledge":
+                resource = this.knowledgeResource;
+                break;
+            case "Restraint":
+                resource = this.restraintResource;
+                break;
+        }
+        return resource;
     }
 
     public boolean isNotBalance(int el){

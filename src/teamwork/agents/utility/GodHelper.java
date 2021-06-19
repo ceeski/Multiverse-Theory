@@ -5,7 +5,6 @@ import teamwork.agents.enums.ElementType;
 import teamwork.agents.wrappers.GodWrapper;
 import teamwork.agents.wrappers.RegionWrapper;
 
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -106,6 +105,50 @@ public class GodHelper {
         }
 
         return plannedValue;
+    }
+
+    /**
+            * Checks balance
+     * @param finalValue Value that god wants to use
+     * @param element Element
+     * @param god God's information
+            */
+    public static boolean checkBalance(int finalValue, ElementType element, GodWrapper god) {
+        boolean balance = false;
+        switch(element) {
+            case WATER:
+                balance = Math.abs(god.getWaterSkill()+finalValue-575)< Math.abs(god.getWaterSkill()-575);
+                break;
+            case FIRE:
+                balance = Math.abs(god.getFireSkill()+finalValue-575)< Math.abs(god.getFireSkill()-575);
+                break;
+            case LIGHT:
+                balance = Math.abs(god.getLightSkill()+finalValue-575)< Math.abs(god.getLightSkill()-575);
+                break;
+            case DARKNESS:
+                balance = Math.abs(god.getDarknessSkill()+finalValue-575)< Math.abs(god.getDarknessSkill()-575);
+                break;
+            case EARTH:
+                balance = Math.abs(god.getEarthSkill()+finalValue-575)< Math.abs(god.getEarthSkill()-575);
+                break;
+            case AIR:
+                balance = Math.abs(god.getAirSkill()+finalValue-575)< Math.abs(god.getAirSkill()-575);
+                break;
+            case KNOWLEDGE:
+                balance = Math.abs(god.getKnowledgeSkill()+finalValue-575)< Math.abs(god.getKnowledgeSkill()-575);
+                break;
+            case AMUSEMENT:
+                balance = Math.abs(god.getAmusementSkill()+finalValue-575)< Math.abs(god.getAmusementSkill()-575);
+                break;
+            case LOVE:
+                balance = Math.abs(god.getLoveSkill()+finalValue-575)< Math.abs(god.getLoveSkill()-575);
+                break;
+            case RESTRAINT:
+                balance = Math.abs(god.getRestraintSkill()+finalValue-575)< Math.abs(god.getRestraintSkill()-575);
+                break;
+        }
+
+        return balance;
     }
 
     /**
