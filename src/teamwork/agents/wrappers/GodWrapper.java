@@ -64,8 +64,8 @@ public class GodWrapper {
     }
 
     public void updateGod(GodWrapper otherGod){
-        if (!this.name.contains((otherGod.name)))
-        {this.name += otherGod.name;}
+        /*if (!this.name.contains((otherGod.name)))
+        {this.name += otherGod.name;}*/
         this.separate = false;
         this.speed = (this.speed+otherGod.speed)/2;
         this.chanceToShareKnowledgePercent = (this.chanceToShareKnowledgePercent+otherGod.chanceToShareKnowledgePercent)/2;

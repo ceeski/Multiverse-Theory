@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import static java.lang.Thread.sleep;
+
 public class Time extends Agent {
     TimeWrapper settings;
     List<GodWrapper> gods = new ArrayList<>();
@@ -96,8 +98,8 @@ public class Time extends Agent {
             if (action.getGodType().equals(GodType.DESTRUCTOR)){color = 88;}
             else if (action.getGodType().equals(GodType.CREATOR)){color = 49;}
             else if (action.getGodType().equals(GodType.CHAOTIC)){color = 13;}
+            else if (action.getGodType().equals(GodType.SUPERGOD)){color = 21;}
             newColor.append("\033[38;5;"+color+"m"+action.toString()+"\033[0m");
-            //System.out.println("\033[38;5;"+color+"m"+action.toString()+"\033[0m");
         }
 
         say(sb.toString(), newColor.toString());
@@ -106,12 +108,13 @@ public class Time extends Agent {
     /**
      * Loads all gods and regions currently registered in DF to lists (as wrappers)
      */
-    private void getGodsAndRegionsInfo() {
+    private void getGodsAndRegionsInfo() throws InterruptedException {
         gods = new ArrayList<>();
         regions = new ArrayList<>();
         turnActions = new ArrayList<>();
 
         Gson _gson = new GsonBuilder().create();
+        sleep(1);
         DFAgentDescription[] godDescriptors = Common.findAgentsInDf(this, God.class);
         DFAgentDescription[] regionDescriptors = Common.findAgentsInDf(this, Region.class);
 
@@ -223,7 +226,11 @@ public class Time extends Agent {
                     endMessageShown = true;
                     say("SIMULATION FINISHED AFTER " + round + " ROUNDS out of "+settings.getNumberOfTurns()+"\n");
                     //Log final state of regions
-                    getGodsAndRegionsInfo();
+                    try {
+                        getGodsAndRegionsInfo();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     logRegionsState();
                 }
                 block();
@@ -237,7 +244,11 @@ public class Time extends Agent {
             say("ROUND NUMBER " + round + "\n");
 
             //Step 1: Get all gods and regions with their actual state in DF
-            getGodsAndRegionsInfo();
+            try {
+                getGodsAndRegionsInfo();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
 
             //Log1: Regions at the beginning of the turn
@@ -316,23 +327,7 @@ public class Time extends Agent {
                     msg.setContent(content);
                     msg.setLanguage("Cyclic");
                     msg.setPerformative(ACLMessage.DISCONFIRM);
-                } /*KillAgent ka = new KillAgent();
-                    ka.setAgent(response.getSender()); // AID of the agent you want to kill
-                    Action action = new Action(getAMS(), ka);
-                    ACLMessage request = new ACLMessage(ACLMessage.REQUEST);
-                    request.setLanguage(FIPANames.ContentLanguage.FIPA_SL);
-                    request.setOntology(JADEManagementOntology.NAME);
-                    try {
-                        getContentManager().registerLanguage(new SLCodec(), FIPANames.ContentLanguage.FIPA_SL);
-                        getContentManager().registerOntology(JADEManagementOntology.getInstance());
-                        getContentManager().fillContent(request, action);
-                        request.addReceiver(action.getActor());
-                        send(request);
-                    }
-                    catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }*/
+                }
 
                 //3.3: Save action performed by god
                 try {

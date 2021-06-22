@@ -89,9 +89,9 @@
 
       "speed":  90,
       "chanceToShareKnowledgePercent": 90,
-      "chanceToCooperatePercent":   60,
+      "chanceToCooperatePercent":   90,
 
-      "knownGods": ["Apollo"],
+      "knownGods": ["Apollo", "Hefajstos", "Aurora"],
       "knownRegions":  ["The Best"],
 
       "maxSkillPoints": 30,

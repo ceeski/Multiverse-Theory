@@ -2,10 +2,12 @@ package teamwork.agents.utility;
 
 import org.javatuples.Pair;
 import teamwork.agents.enums.ElementType;
+import teamwork.agents.enums.GodType;
 import teamwork.agents.wrappers.GodWrapper;
 import teamwork.agents.wrappers.RegionWrapper;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -39,6 +41,43 @@ public class GodHelper {
               put(ElementType.LOVE, lovePair);
               put(ElementType.RESTRAINT, restraintPair);
         }};
+    }
+
+    public static GodType getMaxGodType(List<GodType> types){
+        GodType el = GodType.CHAOTIC;
+        int max = 0, c = 0, d = 0, ch = 0, p =0;
+        for (var element : types)
+        {
+            switch(element) {
+                case CREATOR:
+                    c+=1;
+                    if (c>max){
+                    max = c;
+                    el = GodType.CREATOR;}
+                    break;
+                case DESTRUCTOR:
+                    d+=1;
+                    if (d>max){
+                        max = d;
+                        el = GodType.DESTRUCTOR;}
+                    break;
+                case CHAOTIC:
+                    ch+=1;
+                    if (ch>max){
+                        max = ch;
+                        el = GodType.CHAOTIC;}
+                    break;
+                case PROTECTOR:
+                    p+=1;
+                    if (p>max){
+                        max = p;
+                        el = GodType.PROTECTOR;}
+                    break;
+                default:
+                    break;
+            }
+        }
+        return el;
     }
 
     /**
